@@ -8,7 +8,10 @@ import animate from "../../utils/animUtils";
 // );
 animate(
   ".tagline",
-  { visibility: ["hidden", "visible", "visible", "visible", "hidden"], opacity: [0, 1, 1, 1, 0] },
+  {
+    visibility: ["hidden", "visible", "visible", "visible", "hidden"],
+    opacity: [0, 1, 1, 1, 0],
+  },
   { timeRange: "exit 0% 80%", fill: "both", easing: "ease-in" }
 );
 // animate(
@@ -18,12 +21,12 @@ animate(
 // )
 animate(
   "#logo",
-  {width: ["100vmin", "100px"]},
+  { width: ["100vmin", "100px"] },
   { timeRange: "exit 40% 80%", fill: "both", easing: "linear" }
-)
+);
 animate(
   ".logoWrap",
-  { height: ['80lvh', '100px']},
+  { height: ["80lvh", "100px"] },
   { timeRange: "exit 60% 100%", fill: "both", easing: "linear" }
 );
 
@@ -41,3 +44,16 @@ animate(
 //     easing: "cubic-bezier(0.3, 0.3, 0.1, 1)",
 //   }
 // );
+
+animate(
+  ".upcoming",
+  [
+    { visibility: "hidden", opacity: 0, top: "30lvh" },
+    { visibility: "visible", opacity: 1, top: "20lvh" },
+  ],
+  {
+    timeRange: "contain 0% 20%",
+    fill: "both",
+    easing: "linear",
+  }
+);
