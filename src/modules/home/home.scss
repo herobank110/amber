@@ -119,5 +119,5 @@
 .warped1 {
   width: 1200px;
   // prettier-ignore
-  & > .mask1 { @include animUtils.stroked(200, 2s, 0s); }
+  & > .mask1 { @include animUtils.stroked(200, 2s, 0s, $reverse:1); }
 }
