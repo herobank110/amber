@@ -7,7 +7,7 @@
 }
 
 .logoWrap {
-    position: fixed;
+  position: fixed;
   width: 100%;
   display: grid;
   justify-content: center;
@@ -15,11 +15,13 @@
 }
 
 .tagline {
-    font-size: 1.5rem;
-    padding: 0 1ch;
-    overflow: hidden;
+  font-size: 1.5rem;
+  padding: 0 1ch;
+  overflow: hidden;
+  margin-bottom: 7lvh;
 }
 
-.t1 > section {
-    background: white;
+.t2 > section {
+  background: white;
+  height: 100%;
 }
