@@ -8,6 +8,7 @@
 
 .logoWrap {
   position: fixed;
+  z-index: 10;
   width: 100%;
   display: grid;
   justify-content: center;
@@ -100,4 +101,9 @@
     width: 80%;
     margin-left: 10%;
   }
+}
+
+.t4 > div {
+    height: 100%;
+    background: white;
 }
