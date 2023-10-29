@@ -1,5 +1,5 @@
 // @ts-ignore
-declare var _: typeof import("../../node_modules/lil-gui/dist/lil-gui.esm");
+declare var _: typeof import("../../node_modules/lil-gui/dist/lil-gui.esm.d.ts");
 
 declare module "lil-gui" {
   export var BooleanController: typeof _.BooleanController;
