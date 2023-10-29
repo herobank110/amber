@@ -1,12 +1,13 @@
 .t1 > section {
   height: 100%;
-  background: white;
+  background: #ea230c;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .logoWrap {
+    position: fixed;
   width: 100%;
   display: grid;
   justify-content: center;
@@ -15,6 +16,10 @@
 
 .tagline {
     font-size: 1.5rem;
-    padding: 1ch;
-//   margin-top: 30lvh;
+    padding: 0 1ch;
+    overflow: hidden;
+}
+
+.t1 > section {
+    background: white;
 }
