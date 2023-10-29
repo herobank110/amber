@@ -59,3 +59,10 @@ animate(
     easing: "linear",
   }
 );
+
+animate(
+  ".warped1 .mask1",
+  { "stroke-dashoffset": [0, 200] },
+  // { "opacity": [0, 1] },
+  { timeRange: "contain 10% 30%", fill: "both", easing: "linear" }
+);

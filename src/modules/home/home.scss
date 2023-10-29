@@ -1,6 +1,5 @@
 @use "../../utils/_animUtils.scss" as animUtils;
 
-
 .t1 > section {
   height: 100%;
   background: #ea230c;
@@ -120,6 +119,8 @@
 .warped1 {
   width: 80%;
   margin-left: 10%;
-  // prettier-ignore
-  & > .mask1 { @include animUtils.stroked(200, 2s, 0s); }
+  & > .mask1 {
+    stroke-dasharray: 200;
+    // stroke-dashoffset: 200;
+  }
 }
