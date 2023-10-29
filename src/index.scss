@@ -4,30 +4,62 @@ body {
 
 // logo animation
 
-#logo {
-    width: 100vmin;
-    aspect-ratio: 1 / 1;
+@keyframes stroke-in {
+    to {
+        stroke-dashoffset: var(--to-length);
+    }
 }
 
-@keyframes stroke-in { to { stroke-dashoffset: var(--to-length); } }
 @mixin stroked($length, $duration, $delay) {
-  stroke-dasharray: $length;
-  stroke-dashoffset: 0;
-  --to-length: #{$length};
-  animation: stroke-in $duration $delay forwards;
+    stroke-dasharray: $length;
+    stroke-dashoffset: 0;
+    --to-length: #{$length};
+    animation: stroke-in $duration $delay forwards;
 }
 
-@keyframes fade-in { to { fill-opacity: 0; } }
+@keyframes fade-in {
+    to {
+        fill-opacity: 0;
+    }
+}
+
 @mixin faded($duration, $delay) {
-  fill-opacity: 100;
-  animation: fade-in $duration $delay forwards;
+    fill-opacity: 100;
+    animation: fade-in $duration $delay forwards;
 }
 
 // timings
-#mask4 { @include stroked(116, 1.0s, 0s); }
-#mask3 { @include stroked(62, .5s, 0.7s); }
-#mask1 { @include stroked(90, .8s, 1.2s); }
-#mask2 { @include stroked(12, .3s, 1.6s); }
-#mask5 { @include faded(.5s, 2.7s); }
-#mask6 { @include faded(.7s, 3.0s); }
-#mask7 { @include faded(1.2s, 3.3s); }
+
+#logo {
+    width: 100vmin;
+    aspect-ratio: 1 / 1;
+
+    & .mask4 {
+        @include stroked(116, 1.0s, 0s);
+    }
+
+    & .mask3 {
+        @include stroked(62, .5s, 0.7s);
+    }
+
+    & .mask1 {
+        @include stroked(90, .8s, 1.2s);
+    }
+
+    & .mask2 {
+        @include stroked(12, .3s, 1.6s);
+    }
+
+    & .mask5 {
+        @include faded(.5s, 2.7s);
+    }
+
+    & .mask6 {
+        @include faded(.7s, 3.0s);
+    }
+
+    & .mask7 {
+        @include faded(1.2s, 3.3s);
+    }
+
+}
