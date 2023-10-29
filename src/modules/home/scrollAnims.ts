@@ -52,7 +52,7 @@ animate(
     { visibility: "visible", opacity: 1, top: "20lvh" },
   ],
   {
-    timeRange: "contain 0% 20%",
+    timeRange: "contain -20% 0%",
     fill: "both",
     easing: "linear",
   }
