@@ -1,3 +1,6 @@
+@use "../../utils/_animUtils.scss" as animUtils;
+
+
 .t1 > section {
   height: 100%;
   background: #ea230c;
@@ -104,6 +107,17 @@
 }
 
 .t4 > div {
-    height: 100%;
-    background: white;
+  height: 100%;
+  background: white;
+}
+
+.t5 > section {
+  height: 100%;
+  background: white;
+}
+
+.warped1 {
+  width: 1200px;
+  // prettier-ignore
+  & > .mask1 { @include animUtils.stroked(200, 2s, 0s); }
 }

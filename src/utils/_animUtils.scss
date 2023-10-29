@@ -1,0 +1,23 @@
+@keyframes stroke-in {
+  to {
+    stroke-dashoffset: var(--to-length);
+  }
+}
+
+@mixin stroked($length, $duration, $delay) {
+  stroke-dasharray: $length;
+  stroke-dashoffset: 0;
+  --to-length: #{$length};
+  animation: stroke-in $duration $delay forwards;
+}
+
+@keyframes fade-in {
+  to {
+    fill-opacity: 0;
+  }
+}
+
+@mixin faded($duration, $delay) {
+  fill-opacity: 100;
+  animation: fade-in $duration $delay forwards;
+}
