@@ -2,9 +2,9 @@
   "name": "amber",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "dev": "parcel src/index.html --open"
+    "dev": "parcel --dist-dir=build src/index.html --open",
+    "build": "parcel build --dist-dir=build --public-url=. --no-source-maps src/index.html"
   },
   "repository": {
     "type": "git",
