@@ -1,0 +1,30 @@
+// alternating colors for background tracks for debugging
+
+.t {
+  background: linear-gradient(#fff4 50%, #0003 50%) top / 100lvh 100lvh,
+    linear-gradient(var(--col1) 50%, var(--col2) 50%) top / 20lvh 20lvh;
+}
+
+.t:nth-child(odd) {
+  --col1: #e8abae;
+  --col2: #f16363;
+}
+
+.t:nth-child(even) {
+  --col1: #92f0cf;
+  --col2: #78d685;
+}
+
+// debug opacity
+:root {
+  --debug-opacity: 100%;
+}
+
+.t > * {
+  opacity: var(--debug-opacity);
+}
+
+// lilgui debug theme
+.lil-gui > .children {
+  background-color: black;
+}
