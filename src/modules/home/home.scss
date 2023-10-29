@@ -18,10 +18,20 @@
   font-size: 1.5rem;
   padding: 0 1ch;
   overflow: hidden;
-  margin-bottom: 7lvh;
+//   margin-bottom: 7lvh;
 }
 
-.t2 > section {
+.t2 > div {
   background: white;
   height: 100%;
+}
+
+.t3 > section {
+  background: white;
+  height: 100%;
+
+  &>h2 {
+    margin: 0;
+    padding: 2ch;
+  }
 }

@@ -9,18 +9,23 @@ import animate from "../../utils/animUtils";
 animate(
   ".tagline",
   { visibility: ["hidden", "visible", "visible", "visible", "hidden"], opacity: [0, 1, 1, 1, 0] },
-  { timeRange: "exit 0% 60%", fill: "both", easing: "ease-in" }
+  { timeRange: "exit 0% 80%", fill: "both", easing: "ease-in" }
 );
-animate(
-  ".tagline",
-  { marginTop: ["0lvh", "23vmin"] },
-  { timeRange: "exit 65% 80%", fill: "both", easing: "linear" }
-)
+// animate(
+//   ".tagline",
+//   { marginTop: ["20px", "23vmin"] },
+//   { timeRange: "exit 65% 80%", fill: "both", easing: "linear" }
+// )
 animate(
   "#logo",
   {width: ["100vmin", "100px"]},
   { timeRange: "exit 40% 80%", fill: "both", easing: "linear" }
 )
+animate(
+  ".logoWrap",
+  { height: ['80lvh', '100px']},
+  { timeRange: "exit 60% 100%", fill: "both", easing: "linear" }
+);
 
 // animate(
 //   ".splash",
