@@ -49,12 +49,12 @@ animate(
   ".upcoming",
   [
     { visibility: "hidden", opacity: 0, top: "23lvh" },
-    { visibility: "visible", opacity: 1, top: "16lvh", offset: 0.15 },
+    { visibility: "visible", opacity: 1, top: "16lvh", offset: 0.25 },
     { visibility: "visible", opacity: 1, top: "16lvh", offset: 0.8 },
     { visibility: "hidden", opacity: 0, top: "10lvh" },
   ],
   {
-    timeRange: "contain -30% 150%",
+    timeRange: "contain -65% 150%",
     fill: "both",
     easing: "linear",
   }
