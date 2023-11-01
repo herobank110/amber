@@ -46,12 +46,19 @@ animate(
 // );
 
 animate(
-  ".upcoming",
+  ".udpcoming",
   [
-    { visibility: "hidden", opacity: 0, top: "23lvh" },
-    { visibility: "visible", opacity: 1, top: "16lvh", offset: 0.25 },
-    { visibility: "visible", opacity: 1, top: "16lvh", offset: 0.8 },
-    { visibility: "hidden", opacity: 0, top: "10lvh" },
+    { visibility: "hidden", opacity: 0, top: "23lvh", position: "fixed" },
+    { visibility: "visible", opacity: 1, top: "16lvh", position: "fixed", offset: 0.25 },
+    { visibility: "visible", opacity: 1, top: "16lvh", position: "fixed", offset: 0.8 },
+    {
+      visibility: "visible",
+      opacity: 1,
+      marginTop: "16lvh",
+      position: "relative",
+      offset: 0.8,
+    },
+    // { visibility: "hidden", opacity: 0, top: "10lvh" },
   ],
   {
     timeRange: "contain -65% 150%",
