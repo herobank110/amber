@@ -29,7 +29,19 @@
 .t2 > div {
   background: white;
   height: 100%;
+  position: relative;
 }
+
+.musicNote1 {
+  background: url('./rsrc/musicNote1.png') center / cover;
+  width: 50px;
+  aspect-ratio: 4/5;
+
+  position: absolute;
+  top: 70%;
+  left: 10px;
+}
+
 
 .t3 > section {
   background: white;
