@@ -53,6 +53,7 @@
 
   & .poster {
     width: 100%;
+    max-width: 50lvh;  // need to see it on one screen without scrolling
     aspect-ratio: 5/3;
     background: url("./rsrc/upcoming.jpg") center / cover;
     border-radius: 15px;

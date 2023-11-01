@@ -6,8 +6,8 @@
 // timings
 
 #logo {
-  width: 100vmin;
-  max-width: 500px;
+  width: 100vw;
+  max-width: max(500px, 70lvh);
   aspect-ratio: 1 / 1;
 
   // prettier-ignore
