@@ -7,7 +7,7 @@
 
 #logo {
   width: 100vw;
-  max-width: max(500px, 70lvh);
+  max-width: min(500px, 70%);
   aspect-ratio: 1 / 1;
 
   // prettier-ignore
