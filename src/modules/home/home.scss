@@ -164,9 +164,14 @@
   }
 }
 
+.t4 > section {
+  height: 100%;
+  background: white;
+}
+
 .past {
   position: fixed;
-  z-index: 1000;
+  // z-index: 1000;
   background-color: green;
   top: 0;
   width: 100%;

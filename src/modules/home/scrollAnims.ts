@@ -89,6 +89,16 @@ animate(".upcoming .poster",
     { timeRange: "contain 120% 160%", fill: "both", easing: "linear" }
 )
 
+// crossfade in past poster grid
+animate(".past",
+    [
+      { visibility: "hidden", opacity: 0 },
+      { visibility: "visible", opacity: 1 },
+    ],
+    { timeRange: "enter 80% 130%", fill: "both", easing: "linear" }
+
+)
+
 // window.addEventListener("load", () => {
 //   const pastEl = document.querySelector(".past")
 //   if (!pastEl) throw new Error("couldn't find pastEl");
