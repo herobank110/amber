@@ -88,3 +88,14 @@ animate(".upcoming .poster",
     ],
     { timeRange: "contain 120% 160%", fill: "both", easing: "linear" }
 )
+
+// window.addEventListener("load", () => {
+//   const pastEl = document.querySelector(".past")
+//   if (!pastEl) throw new Error("couldn't find pastEl");
+  
+
+
+//   pastEl.innerHTML = 
+
+
+// })
