@@ -50,8 +50,9 @@ animate(
   [
     { visibility: "hidden", opacity: 0, top: "23lvh" },
     { visibility: "visible", opacity: 1, top: "16lvh", offset: 0.15 },
-    { visibility: "visible", opacity: 1, top: "16lvh", offset: 0.6 },
-    { visibility: "hidden", opacity: 0, top: "-50lvh" },
+    // { visibility: "visible", opacity: 1, top: "16lvh", offset: 0.6 },
+    // { visibility: "hidden", opacity: 0, top: "-50lvh" },
+    { visibility: "visible", opacity: 1, top: "16lvh" },
   ],
   {
     timeRange: "contain -65% 250%",
@@ -60,9 +61,30 @@ animate(
   }
 );
 
-animate(
-  ".warped1 .mask1",
-  { "stroke-dashoffset": [0, 200] },
-  // { "opacity": [0, 1] },
-  { timeRange: "contain 10% 30%", fill: "both", easing: "linear" }
+// animate(
+//   ".warped1 .mask1",
+//   { "stroke-dashoffset": [0, 200] },
+//   // { "opacity": [0, 1] },
+//   { timeRange: "contain 10% 30%", fill: "both", easing: "linear" }
+// );
+
+// fade out upcoming header and text
+[".upcoming>h2", ".upcoming .info"].forEach((selector) =>
+  animate(
+    selector,
+    [
+      { visibility: "visible", opacity: 1 },
+      { visibility: "hidden", opacity: 0 },
+    ],
+    { timeRange: "contain 40% 100%", fill: "both", easing: "linear" }
+  )
 );
+
+// fade out poster slightly later, 'crossfade' to past posters
+animate(".upcoming .poster",
+    [
+      { visibility: "visible", opacity: 1 },
+      { visibility: "hidden", opacity: 0 },
+    ],
+    { timeRange: "contain 120% 160%", fill: "both", easing: "linear" }
+)
