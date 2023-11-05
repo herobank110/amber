@@ -46,12 +46,12 @@
 }
 
 h2 {
-    margin: 0 0 0.5rem 0;
-    font-size: 2.5rem;
-    @media screen and (max-width: 500px) {
-      font-size: 2rem;
-    }
+  margin: 0 0 0.5rem 0;
+  font-size: 2.5rem;
+  @media screen and (max-width: 500px) {
+    font-size: 2rem;
   }
+}
 
 .upcoming {
   padding: 2ch;
@@ -133,11 +133,27 @@ h2 {
 }
 
 .past {
-  border-top: 3px dotted #aaa;
-  padding: 2em 2ch 0;
+  // border-top: 3px dotted #aaa;
+  // padding: 2em 2ch 0;
+  padding-top: 2em;
+}
+
+.postersScroll {
+  height: 70lvh;
+  overflow: hidden;
+  display: grid;
+  & > * {
+    grid-area: 1 / 1;
+  }
+}
+
+.postersOverlay {
+  height: 70lvh;
+  background: linear-gradient(0deg, #fff, #0000 20% 80%, #fff);
 }
 
 .posters {
+  // margin-top: -100%;
   // position: fixed;
   // z-index: 1000;
   // background-color: green;
@@ -152,8 +168,6 @@ h2 {
   // place-content: center;
   // place-items: 20px;
   // top: 20px;
-  overflow: hidden;
-  height: 70lvh;
   // max-width: 400px;
   grid-template-columns: repeat(4, 1fr);
   @media screen and (max-width: 576px) {
@@ -196,7 +210,6 @@ h2 {
   @include past-poster(4, 4, "13");
   @include past-poster(4, 5, "05");
 }
-
 
 .musicNote1 {
   top: 77%;

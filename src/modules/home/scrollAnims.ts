@@ -38,6 +38,12 @@ animate(
   { timeRange: "exit 40% 100%", fill: "both", easing: "linear" }
 );
 
+animate(
+  ".posters",
+  { marginTop: ["0lvh", "-80%"] },
+  { timeRange: "cover 0% 100%", fill: "both", easing: "linear" }
+)
+
 // animate(
 //   ".upcoming",
 //   { marginTop: ["20lvh", "-10lvh"]},
