@@ -118,61 +118,14 @@
   }
 }
 
-.t4 > div {
-  height: 100%;
-  background: white;
-  position: relative;
-  & > div {
-    position: absolute;
-  }
-}
-
-.musicNote1 {
-  top: 77%;
-  left: 30%;
-  width: 50px;
-  aspect-ratio: 4/5;
-  background: url("./rsrc/musicNote1.png") center / cover;
-}
-
-.musicNote2 {
-  top: 72%;
-  right: 37%;
-  width: 28px;
-  aspect-ratio: 1/2;
-  background: url("./rsrc/musicNote2.png") center / cover;
-}
-
-.musicNote3 {
-  top: 75%;
-  left: 13%;
-  width: 23px;
-  aspect-ratio: 1/3;
-  background: url("./rsrc/musicNote3.png") center / cover;
-}
-
-.musicNote4 {
-  top: 76%;
-  right: 15%;
-  width: 43px;
-  aspect-ratio: 3/4;
-  background: url("./rsrc/musicNote4.png") center / cover;
-}
-
-.t5 > section {
-  height: 100%;
-  background: white;
-  padding: 0 2ch;
-}
-
-.warped1 {
-  width: 80%;
-  margin-left: 10%;
-  & > .mask1 {
-    stroke-dasharray: 200;
-    // stroke-dashoffset: 200;
-  }
-}
+// .t4 > div {
+//   height: 100%;
+//   background: white;
+//   position: relative;
+//   & > div {
+//     position: absolute;
+//   }
+// }
 
 .t4 > section {
   height: 100%;
@@ -227,6 +180,54 @@
   @include past-poster(4, 3, "09");
   @include past-poster(4, 4, "13");
   @include past-poster(4, 5, "05");
+}
+
+
+.musicNote1 {
+  top: 77%;
+  left: 30%;
+  width: 50px;
+  aspect-ratio: 4/5;
+  background: url("./rsrc/musicNote1.png") center / cover;
+}
+
+.musicNote2 {
+  top: 72%;
+  right: 37%;
+  width: 28px;
+  aspect-ratio: 1/2;
+  background: url("./rsrc/musicNote2.png") center / cover;
+}
+
+.musicNote3 {
+  top: 75%;
+  left: 13%;
+  width: 23px;
+  aspect-ratio: 1/3;
+  background: url("./rsrc/musicNote3.png") center / cover;
+}
+
+.musicNote4 {
+  top: 76%;
+  right: 15%;
+  width: 43px;
+  aspect-ratio: 3/4;
+  background: url("./rsrc/musicNote4.png") center / cover;
+}
+
+.t5 > section {
+  height: 100%;
+  background: white;
+  padding: 0 2ch;
+}
+
+.warped1 {
+  width: 80%;
+  margin-left: 10%;
+  & > .mask1 {
+    stroke-dasharray: 200;
+    // stroke-dashoffset: 200;
+  }
 }
 
 footer {
