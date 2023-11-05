@@ -29,6 +29,17 @@ animate(
   { height: ["80lvh", "100px"] },
   { timeRange: "exit 60% 100%", fill: "both", easing: "linear" }
 );
+animate(
+  ".upcomingCover",
+  { opacity: [1, 0] },
+  { timeRange: "exit 40% 100%", fill: "both", easing: "linear" }
+)
+
+// animate(
+//   ".upcoming",
+//   { marginTop: ["20lvh", "-10lvh"]},
+//   { timeRange: "contain -120% 20%", fill: "both", easing: "ease-out" }
+// )
 
 // animate(
 //   ".splash",
@@ -45,67 +56,67 @@ animate(
 //   }
 // );
 
-animate(
-  ".upcoming",
-  [
-    { visibility: "hidden", opacity: 0, top: "23lvh" },
-    { visibility: "visible", opacity: 1, top: "16lvh", offset: 0.15 },
-    // { visibility: "visible", opacity: 1, top: "16lvh", offset: 0.6 },
-    // { visibility: "hidden", opacity: 0, top: "-50lvh" },
-    { visibility: "visible", opacity: 1, top: "16lvh" },
-  ],
-  {
-    timeRange: "contain -65% 250%",
-    fill: "both",
-    easing: "linear",
-  }
-);
-
 // animate(
-//   ".warped1 .mask1",
-//   { "stroke-dashoffset": [0, 200] },
-//   // { "opacity": [0, 1] },
-//   { timeRange: "contain 10% 30%", fill: "both", easing: "linear" }
+//   ".upcoming",
+//   [
+//     { visibility: "hidden", opacity: 0, top: "23lvh" },
+//     { visibility: "visible", opacity: 1, top: "16lvh", offset: 0.15 },
+//     // { visibility: "visible", opacity: 1, top: "16lvh", offset: 0.6 },
+//     // { visibility: "hidden", opacity: 0, top: "-50lvh" },
+//     { visibility: "visible", opacity: 1, top: "16lvh" },
+//   ],
+//   {
+//     timeRange: "contain -65% 250%",
+//     fill: "both",
+//     easing: "linear",
+//   }
 // );
 
-// fade out upcoming header and text
-[".upcoming>h2", ".upcoming .info"].forEach((selector) =>
-  animate(
-    selector,
-    [
-      { visibility: "visible", opacity: 1 },
-      { visibility: "hidden", opacity: 0 },
-    ],
-    { timeRange: "contain 40% 100%", fill: "both", easing: "linear" }
-  )
-);
+// // animate(
+// //   ".warped1 .mask1",
+// //   { "stroke-dashoffset": [0, 200] },
+// //   // { "opacity": [0, 1] },
+// //   { timeRange: "contain 10% 30%", fill: "both", easing: "linear" }
+// // );
 
-// fade out poster slightly later, 'crossfade' to past posters
-animate(".upcoming .poster",
-    [
-      { visibility: "visible", opacity: 1 },
-      { visibility: "hidden", opacity: 0 },
-    ],
-    { timeRange: "contain 120% 160%", fill: "both", easing: "linear" }
-)
+// // fade out upcoming header and text
+// [".upcoming>h2", ".upcoming .info"].forEach((selector) =>
+//   animate(
+//     selector,
+//     [
+//       { visibility: "visible", opacity: 1 },
+//       { visibility: "hidden", opacity: 0 },
+//     ],
+//     { timeRange: "contain 40% 100%", fill: "both", easing: "linear" }
+//   )
+// );
 
-// crossfade in past poster grid
-animate(".past",
-    [
-      { visibility: "hidden", opacity: 0 },
-      { visibility: "visible", opacity: 1 },
-    ],
-    { timeRange: "enter 80% 130%", fill: "both", easing: "linear" }
+// // fade out poster slightly later, 'crossfade' to past posters
+// animate(".upcoming .poster",
+//     [
+//       { visibility: "visible", opacity: 1 },
+//       { visibility: "hidden", opacity: 0 },
+//     ],
+//     { timeRange: "contain 120% 160%", fill: "both", easing: "linear" }
+// )
 
-)
+// // crossfade in past poster grid
+// animate(".past",
+//     [
+//       { visibility: "hidden", opacity: 0 },
+//       { visibility: "visible", opacity: 1 },
+//     ],
+//     { timeRange: "enter 80% 130%", fill: "both", easing: "linear" }
 
-// window.addEventListener("load", () => {
-//   const pastEl = document.querySelector(".past")
-//   if (!pastEl) throw new Error("couldn't find pastEl");
+// )
+
+// // window.addEventListener("load", () => {
+// //   const pastEl = document.querySelector(".past")
+// //   if (!pastEl) throw new Error("couldn't find pastEl");
   
 
 
-//   pastEl.innerHTML = 
+// //   pastEl.innerHTML = 
 
 
-// })
+// // })
