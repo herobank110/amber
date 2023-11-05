@@ -1,5 +1,25 @@
 @use "../../utils/_animUtils.scss" as animUtils;
 
+.primary {
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  color: white;
+  background: #55abda;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px,
+    rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
+}
+
+.secondary {
+  text-decoration: none;
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  background: white;
+  color: #ea230c;
+  border: 1px solid #ea230c;
+}
+
 .t1 > section {
   height: 100%;
   background: #ea230c;
@@ -89,24 +109,6 @@ h2 {
     width: 250px;
   }
 
-  & .primary {
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    color: white;
-    background: #55abda;
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px,
-      rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
-  }
-
-  & .secondary {
-    margin-top: 0.5rem;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    background: white;
-    color: #55abda;
-    border: 1px solid #55abda;
-  }
-
   @media screen and (min-width: 900px) {
     & .row {
       display: grid;
@@ -145,11 +147,25 @@ h2 {
   & > * {
     grid-area: 1 / 1;
   }
-}
 
-.postersOverlay {
-  height: 70lvh;
-  background: linear-gradient(0deg, #fff, #0000 20% 80%, #fff);
+  & > .postersOverlay {
+    height: 70lvh;
+    background: linear-gradient(0deg, #fff, #0000 20% 80%, #fff);
+  }
+
+  & > .details {
+    margin: 25lvh auto 0;
+    // width: 80%;
+    height: fit-content;
+    padding: 2rem 2.5rem;
+    border-radius: 15px;
+    text-align: center;
+
+
+    background: #fffa;
+    backdrop-filter: blur(1px);
+    box-shadow: 2px 2px 2px 0px #0004, inset 4px 5px 6px 0px #ffffff9c;
+  }
 }
 
 .posters {
@@ -176,6 +192,7 @@ h2 {
 
   & > * {
     display: grid;
+    height: fit-content;
     & > * {
       aspect-ratio: 9 / 12;
       // height: 20lvh;
