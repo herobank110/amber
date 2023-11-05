@@ -31,9 +31,12 @@ animate(
 );
 animate(
   ".upcomingCover",
-  { opacity: [1, 0] },
+  [
+    { visibility: "visible", opacity: 1 },
+    { visibility: "hidden", opacity: 0 },
+  ],
   { timeRange: "exit 40% 100%", fill: "both", easing: "linear" }
-)
+);
 
 // animate(
 //   ".upcoming",
@@ -113,10 +116,7 @@ animate(
 // // window.addEventListener("load", () => {
 // //   const pastEl = document.querySelector(".past")
 // //   if (!pastEl) throw new Error("couldn't find pastEl");
-  
 
-
-// //   pastEl.innerHTML = 
-
+// //   pastEl.innerHTML =
 
 // // })
