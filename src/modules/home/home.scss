@@ -155,16 +155,19 @@ h2 {
 
   & > .details {
     margin: 25lvh auto 0;
-    // width: 80%;
+    width: min(400px, 60vw);
     height: fit-content;
-    padding: 2rem 2.5rem;
+    padding: 5lvh 2.5rem;
     border-radius: 15px;
     text-align: center;
 
-
     background: #fffa;
-    backdrop-filter: blur(1px);
-    box-shadow: 2px 2px 2px 0px #0004, inset 4px 5px 6px 0px #ffffff9c;
+    backdrop-filter: blur(2px);
+    // prettier-ignore
+    box-shadow:
+      2px 2px 2px #0004,
+      inset 2px 5px 8px 2px #f9ff8c66,
+      inset -6px -6px 8px 2px #bb7bdb66;
   }
 }
 
