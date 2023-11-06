@@ -5,7 +5,7 @@
   padding: 0.5rem 1rem;
   border-radius: 4px;
   color: white;
-  background: #55abda;
+  background: #ea230c;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px,
     rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
 }
@@ -168,6 +168,10 @@ h2 {
       2px 2px 2px #0004,
       inset 2px 5px 8px 2px #f9ff8c66,
       inset -6px -6px 8px 2px #bb7bdb66;
+
+    & > h2 {
+      margin-bottom: 1rem;
+    }
   }
 }
 
@@ -294,6 +298,6 @@ footer {
     line-height: 1.5;
   }
   & a {
-    color: black!important;
+    color: black !important;
   }
 }
