@@ -38,24 +38,32 @@ animate(
   { timeRange: "exit 40% 100%", fill: "both", easing: "linear" }
 );
 
-[1, 3].forEach((n) => {
-  animate(
-    `.posters>:nth-child(${n})`,
-    // { marginTop: ["0%", "-120%"] },
-    { marginTop: ["-50lvh", "0lvh"] },
-    { timeRange: "cover 0% 100%", fill: "both", easing: "linear" }
-  );
-});
+// [1, 3].forEach((n) => {
+//   animate(
+//     `.posters>:nth-child(${n})`,
+//     // { marginTop: ["0%", "-120%"] },
+//     { marginTop: ["-50lvh", "0lvh"] },
+//     { timeRange: "cover 0% 100%", fill: "both", easing: "linear" }
+//   );
+// });
 
-[2, 4].forEach((n) => {
+// [2, 4].forEach((n) => {
+//   animate(
+//     `.posters>:nth-child(${n})`,
+//     // { marginTop: ["-120%", "0%"] },
+//     // { marginTop: ["0%", "-120%"] },
+//     { marginTop: ["-50lvh", "0lvh"] },
+//     { timeRange: "cover 0% 100%", fill: "both", easing: "linear" }
+//   );
+// });
+
   animate(
-    `.posters>:nth-child(${n})`,
+    ".posters",
     // { marginTop: ["-120%", "0%"] },
     // { marginTop: ["0%", "-120%"] },
     { marginTop: ["-50lvh", "0lvh"] },
     { timeRange: "cover 0% 100%", fill: "both", easing: "linear" }
   );
-});
 
 // animate(
 //   ".upcoming",

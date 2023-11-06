@@ -135,8 +135,6 @@ h2 {
 }
 
 .past {
-  // border-top: 3px dotted #aaa;
-  // padding: 2em 2ch 0;
   padding-top: 2em;
 }
 
@@ -177,63 +175,48 @@ h2 {
 }
 
 .posters {
-  // margin-top: -100%;
-  // position: fixed;
-  // z-index: 1000;
-  // background-color: green;
-  // top: 0;
-  // width: 100%;
-  // height: 100%;
-  // width: 200px;
-  // margin: 0 auto;
-  // aspect-ratio: 4/3;
-
   display: grid;
-  // place-content: center;
-  // place-items: 20px;
-  // top: 20px;
-  // max-width: 400px;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(7, 1fr);
+  @media screen and (max-width: 1200px) {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  @media screen and (max-width: 750px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
   @media screen and (max-width: 576px) {
-    grid-template-columns: repeat(3, 1fr) 0px;
+    grid-template-columns: repeat(3, 1fr);
   }
 
   & > * {
-    display: grid;
-    height: fit-content;
-    & > * {
-      aspect-ratio: 9 / 12;
-      // height: 20lvh;
-      // min-height: 40lvh;
-    }
+    aspect-ratio: 9 / 12;
   }
 
-  @mixin past-poster($x, $y, $i) {
-    & > :nth-child(#{$x}) > :nth-child(#{$y}) {
+  @mixin past-poster($x, $i) {
+    & > :nth-child(#{$x}) {
       background: url("./rsrc/concert#{$i}.jpg") center / cover;
     }
   }
 
-  @include past-poster(1, 1, "01");
-  @include past-poster(1, 2, "08");
-  @include past-poster(1, 3, "03");
-  @include past-poster(1, 4, "04");
-  @include past-poster(1, 5, "02");
-  @include past-poster(2, 1, "12");
-  @include past-poster(2, 2, "06");
-  @include past-poster(2, 3, "15");
-  @include past-poster(2, 4, "07");
-  @include past-poster(2, 5, "16");
-  @include past-poster(3, 1, "20");
-  @include past-poster(3, 2, "18");
-  @include past-poster(3, 3, "11");
-  @include past-poster(3, 4, "10");
-  @include past-poster(3, 5, "17");
-  @include past-poster(4, 1, "19");
-  @include past-poster(4, 2, "14");
-  @include past-poster(4, 3, "09");
-  @include past-poster(4, 4, "13");
-  @include past-poster(4, 5, "05");
+  @include past-poster(1, "01");
+  @include past-poster(2, "08");
+  @include past-poster(3, "03");
+  @include past-poster(4, "04");
+  @include past-poster(5, "02");
+  @include past-poster(6, "12");
+  @include past-poster(7, "06");
+  @include past-poster(8, "15");
+  @include past-poster(9, "07");
+  @include past-poster(10, "16");
+  @include past-poster(11, "20");
+  @include past-poster(12, "18");
+  @include past-poster(13, "11");
+  @include past-poster(14, "10");
+  @include past-poster(15, "17");
+  @include past-poster(16, "19");
+  @include past-poster(17, "14");
+  @include past-poster(18, "09");
+  @include past-poster(19, "13");
+  @include past-poster(20, "05");
 }
 
 .musicNote1 {
@@ -287,7 +270,6 @@ footer {
   margin-top: 2em;
   padding: 3em 0;
   text-align: center;
-  // border: 0.5rem solid lighten(#ea230c, 10%);
   border-left: none;
   border-right: none;
   background: #ea230c;
