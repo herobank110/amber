@@ -176,8 +176,12 @@ h2 {
 
 .posters {
   display: grid;
+  height: fit-content;
   grid-template-columns: repeat(7, 1fr);
   @media screen and (max-width: 1200px) {
+    grid-template-columns: repeat(6, 1fr);
+  }
+  @media screen and (max-width: 900px) {
     grid-template-columns: repeat(5, 1fr);
   }
   @media screen and (max-width: 750px) {
@@ -189,6 +193,7 @@ h2 {
 
   & > * {
     aspect-ratio: 9 / 12;
+    // height: min-content;
   }
 
   @mixin past-poster($x, $i) {

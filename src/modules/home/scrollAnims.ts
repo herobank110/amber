@@ -61,7 +61,7 @@ animate(
     ".posters",
     // { marginTop: ["-120%", "0%"] },
     // { marginTop: ["0%", "-120%"] },
-    { marginTop: ["-50lvh", "0lvh"] },
+    { marginTop: ["-25lvh", "25lvh"] },
     { timeRange: "cover 0% 100%", fill: "both", easing: "linear" }
   );
 
