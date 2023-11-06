@@ -279,11 +279,21 @@ h2 {
 }
 
 footer {
-  padding: 2ch;
-  margin: 1.5rem 0;
+  margin-top: 2em;
+  padding: 3em 0;
   text-align: center;
-  border: 0.5rem solid lighten(#ea230c, 10%);
+  // border: 0.5rem solid lighten(#ea230c, 10%);
   border-left: none;
   border-right: none;
   background: #ea230c;
+  & > .footerInner {
+    background-color: white;
+    width: 80%;
+    margin: 0 auto;
+    padding: 0.7em;
+    line-height: 1.5;
+  }
+  & a {
+    color: black!important;
+  }
 }
