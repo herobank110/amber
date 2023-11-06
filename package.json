@@ -1,6 +1,6 @@
 {
   "name": "amber",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "description": "",
   "scripts": {
     "dev": "parcel --dist-dir=dev src/index.html --open",
