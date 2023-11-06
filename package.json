@@ -1,12 +1,12 @@
 {
   "name": "amber",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "",
   "scripts": {
     "dev": "parcel --dist-dir=dev src/index.html --open",
     "dist": "parcel build --dist-dir=dist --public-url=. --no-source-maps src/index.html"
   },
-  "browserslist": "cover 99.5%, last 80 versions, not dead",
+  "browserslist": "cover 99.5%, last 3 versions, not dead",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/herobank110/amber.git"
