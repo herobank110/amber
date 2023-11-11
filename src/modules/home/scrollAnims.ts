@@ -6,14 +6,14 @@ import animate from "../../utils/animUtils";
 //   { position: ["fixed", "relative"], translate: ["", `0 ${80 * 0.5}lvh`] },
 //   { timeRange: "exit 15% 50%", fill: "both", easing: "steps(1)" }
 // );
-animate(
-  ".tagline",
-  {
-    visibility: ["hidden", "visible", "visible", "visible", "hidden"],
-    opacity: [0, 1, 1, 1, 0],
-  },
-  { timeRange: "exit 0% 80%", fill: "both", easing: "ease-in" }
-);
+// animate(
+//   ".tagline",
+//   {
+//     visibility: ["hidden", "visible", "visible", "visible", "hidden"],
+//     opacity: [0, 1, 1, 1, 0],
+//   },
+//   { timeRange: "exit 0% 80%", fill: "both", easing: "ease-in" }
+// );
 // animate(
 //   ".tagline",
 //   { marginTop: ["20px", "23vmin"] },
@@ -22,12 +22,12 @@ animate(
 animate(
   "#logo",
   { width: ["100vmin", "100px"] },
-  { timeRange: "exit 40% 80%", fill: "both", easing: "linear" }
+  { timeRange: "exit 0% 50%", fill: "both", easing: "linear" }
 );
 animate(
   ".logoWrap",
   { height: ["80lvh", "100px"] },
-  { timeRange: "exit 60% 100%", fill: "both", easing: "linear" }
+  { timeRange: "exit 10% 100%", fill: "both", easing: "linear" }
 );
 animate(
   ".upcomingCover",
