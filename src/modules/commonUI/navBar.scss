@@ -66,15 +66,21 @@ nav {
         background-color: white;
         width: 60vw;
         height: 100lvh;
-        border-top: 20px solid white; // ???
+        position: absolute;
       }
 
       & .close {
-        background: #ea230c;
-        margin-left: 1em;
-        border-radius: 50%;
-        width: 40px;
-        aspect-ratio: 1 / 1;
+        height: 100px;
+        display: flex;
+        align-items: center;
+
+        & > .img {
+          background: #ea230c;
+          margin-left: 1em;
+          border-radius: 50%;
+          width: 40px;
+          aspect-ratio: 1 / 1;
+        }
       }
 
       visibility: hidden;

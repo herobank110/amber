@@ -45,7 +45,11 @@ const mobileNav = () =>
 const sideBar = () =>
   $("<div>", { class: "sidebar" }).append(
     $("<div>", { class: "inner" }).append(
-      $("<div>", { class: "close" }).on("click", () => toggleSideBar()),
+      $("<div>", { class: "close" }).append(
+        $("<div>", { class: "img" })
+          //
+          .on("click", () => toggleSideBar())
+      ),
       $("<ul>").append(
         navItem({ text: "Upcoming", href: "/#upcoming" }),
         navItem({ text: "Ten Years", href: "/#tenYears" }),
