@@ -14,7 +14,7 @@ const concertsGrid = (props: Concert[]) =>
   $("<div>", { class: "concertsGrid" }).append(
     props
       .sort((a, b) => b.when.localeCompare(a.when))
-      .map((x) => $("<div>", { text: x.when }))
+      .map((x) => concertCard(x))
   );
 
 const concertCard = (props: Concert) =>
