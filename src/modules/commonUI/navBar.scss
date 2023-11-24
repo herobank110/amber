@@ -62,14 +62,24 @@ nav {
       width: 100vw;
       background-color: transparent;
       transform: translate(-100vw, 0px);
-
       transition: background 0.5s, transform 0s;
+
       &.show {
         transform: translate(0px, 0px);
-
         background-color: #0004;
         & > .inner {
           transform: translate(0px, 0px);
+        }
+      }
+
+      & ul {
+        list-style: none;
+      }
+      & li {
+        padding: 0.5em;
+        & > a {
+          color: black;
+          font-size: 1.2em;
         }
       }
 
