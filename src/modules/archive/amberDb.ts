@@ -1,4 +1,4 @@
-type Concert = {
+export type Concert = {
   id: number;
   title: string;
   when: string;
@@ -194,16 +194,16 @@ const database = {
       poster: "Nov 2023.PNG",
     },
     {
-        id: 32,
-        title: "Concert",
-        when: "2016-11-20T19:30",
-        poster: "November 2016.jpeg"
+      id: 32,
+      title: "Concert",
+      when: "2016-11-20T19:30",
+      poster: "November 2016.jpeg",
     },
     {
-        id: 33,
-        title: "An Afternoon of Chamber Music",
-        when: "2015-09-19T14:00",
-        poster: "Sept 2015.jpeg"
+      id: 33,
+      title: "An Afternoon of Chamber Music",
+      when: "2015-09-19T14:00",
+      poster: "Sept 2015.jpeg",
     },
   ] as Concert[],
 };

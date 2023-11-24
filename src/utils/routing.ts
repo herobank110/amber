@@ -2,6 +2,7 @@ import $ from "jquery";
 import { mainHome } from "../modules/home/view";
 import { initHomeScrollAnims } from "../modules/home/scrollAnims";
 import { footer } from "./view";
+import { archivePage } from "../modules/archive/views";
 
 // Importing this file starts it.
 // Changing pages must make a new page request.
@@ -25,5 +26,5 @@ function showHome() {
 }
 
 function showArchive() {
-  throw new Error("not implemented!");
+  archivePage().appendTo(document.body);
 }
