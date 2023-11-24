@@ -1,5 +1,3 @@
-import $ from "jquery";
-import { footer } from "../../utils/view";
 // @ts-ignore
 import logo from "data-url:../../rsrc/rco_logo4.png";
 
@@ -72,7 +70,7 @@ export const mainHome = () =>
         <div class="postersOverlay"></div>
         <div class="details">
           <h2>Past Events</h2>
-          <a href="" class="primary">Go To Concerts Archive</a>
+          <a href="/?archive" class="primary">Go To Concerts Archive</a>
         </div>
       </div>
     </section>
@@ -133,5 +131,3 @@ export const mainHome = () =>
         <a href="https://www.facebook.com/RoathChamber">FB</a>
     </section>
   </div>`;
-
-// export const homePage = () => [mainHome(), footer()];

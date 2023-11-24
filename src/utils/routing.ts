@@ -1,5 +1,5 @@
 import $ from "jquery";
-import { homePage, mainHome } from "../modules/home/view";
+import { mainHome } from "../modules/home/view";
 import { initHomeScrollAnims } from "../modules/home/scrollAnims";
 import { footer } from "./view";
 
@@ -19,10 +19,8 @@ function entry() {
 }
 
 function showHome() {
-document.body.innerHTML = mainHome();
-footer().appendTo(document.body)
-// $(document.body).append(homePage());
-//   homePage().appendTo(document.body);
+  document.body.innerHTML = mainHome();
+  footer().appendTo(document.body);
   initHomeScrollAnims();
 }
 
