@@ -1,0 +1,137 @@
+import $ from "jquery";
+import { footer } from "../../utils/view";
+// @ts-ignore
+import logo from "data-url:../../rsrc/rco_logo4.png";
+
+export const mainHome = () =>
+  `
+  <div class="t t1" style="height: 60lvh">
+    <section>
+      <div class="upcomingCover"></div>
+      <div class="logoWrap">
+        <svg id="logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <image x="0" y="0" width="100" height="100" xlink:href="${logo}" />
+          <g fill="#ffffff" fill-opacity="0" stroke="#ea230c">
+            <path class="mask1"
+              d="m38.65,20.61c8.05,-1.53 13.34,-5.87 12.75,-8.41c-0.59,-2.53 -5.47,-2.36 -7.47,5.56c-2,7.92 -4,27.64 -4.81,33.69c-0.82,6.04 -1.07,10.54 -3.58,27.41"
+              stroke-width="1.19" />
+            <path class="mask2" d="m42.69,16.28l4.34,10.76" />
+            <path class="mask3" d="m49.45,35.24c-9.17,-9.17 -20.62,-3.52 -22.14,6.76c-1.52,10.28 13.31,18.97 22.48,6.34"
+              stroke-width="1.5" />
+            <path class="mask4"
+              d="m16.34,73.66c1.24,-8.41 8.55,-18.48 20.48,-17.52c11.93,0.97 18.07,10.62 17.66,18.07c-0.41,7.45 -8.83,17.79 -18.62,17.72c-9.79,-0.07 -16.97,-4.21 -19.45,-17.72"
+              stroke-width="3" />
+          </g>
+          <g fill="#ea230c">
+            <rect class="mask5" height="4.55" rx="2" ry="2" width="17.03" x="46.07" y="19.52" />
+            <rect class="mask6" height="4.48" width="23.66" x="50.14" y="49.31" />
+            <rect class="mask7" height="4.83" width="29.59" x="54.48" y="78.69" />
+          </g>
+        </svg>
+        <div>
+          <a href="">Upcoming</a>
+          <a href="">Archive</a>
+          <a href="">About Us</a>
+          <a href="">History</a>
+          <a href="">Contact Us</a>
+        </div>
+        <!-- <p class="tagline">
+          Community Orchestra based in Roath, Cardiff.<br>
+          Rehearsals are every Wednesday 7-9pm at Urban Crofters.
+        </p> -->
+      </div>
+    </section>
+  </div>
+  <div class="t t2" style="height: 40lvh">
+    <div></div>
+  </div>
+  <div class="t t3">
+    <section>
+      <div class="upcoming">
+        <h2>Upcoming Concert</h2>
+        <div class="row">
+          <div class="poster"></div>
+          <div class="info">
+            <!-- <p>Join Roath Chamber Orchestra for the first of many concerts to celebrate our 10th anniversary year.</p> -->
+            <p>Sunday, 26 November at 7 PM</p>
+            <a href="https://www.facebook.com/events/637520735235668" class="primary">View Event on Facebook</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="t t4">
+    <section class="past">
+      <div class="postersScroll">
+        <div class="posters">
+          <i></i><i></i><i></i><i></i><i></i>
+          <i></i><i></i><i></i><i></i><i></i>
+          <i></i><i></i><i></i><i></i><i></i>
+          <i></i><i></i><i></i><i></i><i></i>
+        </div>
+        <div class="postersOverlay"></div>
+        <div class="details">
+          <h2>Past Events</h2>
+          <a href="" class="primary">Go To Concerts Archive</a>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- <div class="t t4" style="height: 50lvh">
+    <div>
+      <div class="musicNote1"></div>
+      <div class="musicNote2"></div>
+      <div class="musicNote3"></div>
+      <div class="musicNote4"></div>
+    </div>
+  </div> -->
+  <div class="t t5" style="height: 120lvh">
+    <section>
+      <h2>History</h2>
+      <!-- <svg class="warped1" viewBox="0 0 72 100" xmlns="http://www.w3.org/2000/svg">
+        <image x="0" y="0" width="72" height="100" xlink:href="data-url:./rsrc/warped1.png" />
+        <path class="mask1"d="m9.25,103.13c2.88,-11.42 28.37,-30.17 36.18,-34.74c7.81,-4.57 23.2,-15.63 22.6,-27.76c-0.6,-12.14 -23.32,-26.2 -32.21,-28.49c-8.89,-2.28 -27.64,-3.85 -35.22,-5.41" fill="#000000" fill-opacity="0" id="svg_4" stroke="#ffffff" stroke-width="6"/>
+      </svg> -->
+      <ul>
+        <li>September 2013 - Formation Of St Anne's Orchestra<br>
+          A small group of people sharing a love of music came together to
+          form an orchestra, with Simon Hendry as the conductor.
+        </li>
+        <li>July 2015 - Concert For Children<br>
+          The beginning of an annual tradition of family friendly concerts, featuring
+          engaging pieces and a raffle to conduct the orchestra.
+        </li>
+        <li>March 2016 - New Venue<br>
+          St Anne's Church, the orchestra's rehearsal and performance venue, is
+          shut down. The orchestra continues in St Margaret's Church.
+        </li>
+        <li>November 2019 - Change of Conductor<br>
+          The promising first concert of many under the baton of James Grindle.
+        </li>
+        <li>January 2020 - New Name, New Venue<br>
+          The orchestra moves again, now in Urban Crofters, and becomes known as Roath
+          Chamber Orchestra!
+        </li>
+        <li>March 2020 - Coronovirus Cancels Concert<br>
+          The pandemic ruins the much anticipated Spring concert, but the members' spirit
+          is kept alive with online sessions.
+        </li>
+        <li>April 2022 - Return Of Live Concerts<br>
+          The orchestra delighted the audience with an in-person concert in the new home
+          of Urban Crofters.
+        </li>
+        <li>September 2023 - Ten Year Anniversary<br>
+          Celebrating a decade of music making, made possible thanks to dedicated members
+          and generous audience donations.
+        </li>
+      </ul>
+
+      <h2>Contact Us</h2>
+      <p>Whether you are thinking of joining or have other enquiries, we would be delighted to hear from you!
+      <p>
+        <a href="mailto:roathchamber@gmail.com">EM</a>
+        <a href="https://www.facebook.com/RoathChamber">FB</a>
+    </section>
+  </div>`;
+
+// export const homePage = () => [mainHome(), footer()];
