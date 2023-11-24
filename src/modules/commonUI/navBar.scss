@@ -7,11 +7,16 @@ nav {
   background-color: #ea230c;
   & .logo {
     background: url("../../rsrc/rco_logo_256.jpg") center / cover;
-    height: 100%;
+    height: 100px;
     aspect-ratio: 1 / 1;
   }
 
-  & > ul {
+  $breakpoint: 768px;
+  & > .desktop {
+    @media screen and (max-width: #{$breakpoint}) {
+      display: none;
+    }
+
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     place-items: center;
@@ -22,8 +27,8 @@ nav {
 
     & > li {
       & > a {
-      padding: 0.5em 1em;
-      transition: background-color 0.2s;
+        padding: 0.5em 1em;
+        transition: background-color 0.2s;
         color: #000;
         border-radius: 99px;
         color: black;
@@ -32,6 +37,20 @@ nav {
           background-color: #fff3;
         }
       }
+    }
+  }
+
+  & > .mobile {
+    @media screen and (min-width: #{$breakpoint}) {
+      display: none;
+    }
+
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    &>.hamburger {
+        margin-left: 1em;
+        background: url("../../rsrc/hamburger.png") left / 37% no-repeat;
     }
   }
 }
