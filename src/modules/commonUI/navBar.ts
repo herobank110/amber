@@ -7,10 +7,10 @@ export const makeNavBar = () =>
       navItem({ text: "Upcoming", href: "/#upcoming" }),
       navItem({ text: "Ten Years", href: "/#tenYears" }),
       navItem({ text: "About Us", href: "/#about" }),
-      $('<div>', {class:'logo'}),
+      $("<a>", { href: "/", class: "logo" }),
       navItem({ text: "Archive", href: "/?archive" }),
       navItem({ text: "Contact Us", href: "/#contact" }),
-      $('<span>'),
+      $("<span>")
     )
   );
 
