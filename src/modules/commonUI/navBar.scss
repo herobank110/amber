@@ -56,17 +56,30 @@ nav {
     & > .sidebar {
       position: fixed;
       z-index: 12;
-      background-color: #0004;
       top: 0px;
       left: 0px;
       height: 100lvh;
       width: 100vw;
+      background-color: transparent;
+      transform: translate(-100vw, 0px);
+
+      transition: background 0.5s, transform 0s;
+      &.show {
+        transform: translate(0px, 0px);
+
+        background-color: #0004;
+        & > .inner {
+          transform: translate(0px, 0px);
+        }
+      }
 
       & > .inner {
         background-color: white;
         width: 60vw;
         height: 100lvh;
         position: absolute;
+        transition: transform 0.5s;
+        transform: translate(-60vw, 0px);
       }
 
       & .close {
@@ -81,11 +94,6 @@ nav {
           width: 40px;
           aspect-ratio: 1 / 1;
         }
-      }
-
-      visibility: hidden;
-      &.show {
-        visibility: visible;
       }
     }
   }
