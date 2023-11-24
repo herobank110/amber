@@ -27,11 +27,6 @@ export const mainHome = () =>
           </g>
         </svg>
         <div>
-          <a href="">Upcoming</a>
-          <a href="">Archive</a>
-          <a href="">About Us</a>
-          <a href="">History</a>
-          <a href="">Contact Us</a>
         </div>
         <!-- <p class="tagline">
           Community Orchestra based in Roath, Cardiff.<br>

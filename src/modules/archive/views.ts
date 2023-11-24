@@ -1,10 +1,12 @@
 import $ from "jquery";
 import database, { Concert } from "./amberDb";
+import { makeNavBar } from "../commonUI/navBar";
 
 export const archivePage = () =>
   $("<div>", { id: "archivePage" })
     //
     .append(
+      makeNavBar(),
       $("<h1>", { text: "Concerts Archive" }),
 
       concertsGrid(database.concerts)
@@ -25,6 +27,7 @@ const concertCard = (props: Concert) =>
     }),
     $("<h3>", { class: "title", text: props.title }),
     $("<p>", { class: "when", text: dateFormat(props.when) })
+    
   );
 
 function dateFormat(when: string) {
