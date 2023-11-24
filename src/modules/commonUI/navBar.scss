@@ -69,6 +69,14 @@ nav {
         border-top: 20px solid white; // ???
       }
 
+      & .close {
+        background: #ea230c;
+        margin-left: 1em;
+        border-radius: 50%;
+        width: 40px;
+        aspect-ratio: 1 / 1;
+      }
+
       visibility: hidden;
       &.show {
         visibility: visible;

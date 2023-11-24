@@ -35,14 +35,17 @@ const logoItem = () =>
 
 const mobileNav = () =>
   $("<div>", { class: "mobile" }).append(
-    $("<div>", { class: "hamburger" }).on("click", () => onClickHamburger()),
+    $("<div>", { class: "hamburger" })
+      //
+      .on("click", () => toggleSideBar()),
     logoItem(),
     sideBar()
   );
 
 const sideBar = () =>
   $("<div>", { class: "sidebar" }).append(
-    $("<div>", {class: "inner"}).append(
+    $("<div>", { class: "inner" }).append(
+      $("<div>", { class: "close" }).on("click", () => toggleSideBar()),
       $("<ul>").append(
         navItem({ text: "Upcoming", href: "/#upcoming" }),
         navItem({ text: "Ten Years", href: "/#tenYears" }),
@@ -52,10 +55,6 @@ const sideBar = () =>
       )
     )
   );
-
-function onClickHamburger() {
-  toggleSideBar();
-}
 
 function toggleSideBar() {
   $("nav .mobile .sidebar").toggleClass("show");
