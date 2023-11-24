@@ -2,7 +2,11 @@ import $ from "jquery";
 import "./navBar.scss";
 
 export const makeNavBar = () =>
-  $("<nav>").append(deskopNav(), mobileNav());
+  $("<nav>").append(
+    //
+    deskopNav(),
+    mobileNav()
+  );
 
 type NavItemProps = {
   text: string;
@@ -31,6 +35,28 @@ const logoItem = () =>
 
 const mobileNav = () =>
   $("<div>", { class: "mobile" }).append(
-    $("<div>", { class: "hamburger" }),
+    $("<div>", { class: "hamburger" }).on("click", () => onClickHamburger()),
     logoItem(),
+    sideBar()
   );
+
+const sideBar = () =>
+  $("<div>", { class: "sidebar" }).append(
+    $("<div>", {class: "inner"}).append(
+      $("<ul>").append(
+        navItem({ text: "Upcoming", href: "/#upcoming" }),
+        navItem({ text: "Ten Years", href: "/#tenYears" }),
+        navItem({ text: "About Us", href: "/#about" }),
+        navItem({ text: "Archive", href: "/?archive" }),
+        navItem({ text: "Contact Us", href: "/#contact" })
+      )
+    )
+  );
+
+function onClickHamburger() {
+  toggleSideBar();
+}
+
+function toggleSideBar() {
+  $("nav .mobile .sidebar").toggleClass("show");
+}

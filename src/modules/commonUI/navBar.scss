@@ -48,9 +48,31 @@ nav {
     height: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    &>.hamburger {
-        margin-left: 1em;
-        background: url("../../rsrc/hamburger.png") left / 37% no-repeat;
+    & > .hamburger {
+      margin-left: 1em;
+      background: url("../../rsrc/hamburger.png") left / 37% no-repeat;
+    }
+
+    & > .sidebar {
+      position: fixed;
+      z-index: 12;
+      background-color: #0004;
+      top: 0px;
+      left: 0px;
+      height: 100lvh;
+      width: 100vw;
+
+      & > .inner {
+        background-color: white;
+        width: 60vw;
+        height: 100lvh;
+        border-top: 20px solid white; // ???
+      }
+
+      visibility: hidden;
+      &.show {
+        visibility: visible;
+      }
     }
   }
 }
