@@ -3,6 +3,7 @@ nav {
   top: 0;
   width: 100%;
   height: 100px;
+  z-index: 11;
   background-color: #ea230c;
   & .logo {
     background: url("../../rsrc/rco_logo_256.jpg") center / cover;

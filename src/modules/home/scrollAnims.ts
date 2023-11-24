@@ -39,6 +39,15 @@ export function initHomeScrollAnims() {
     { timeRange: "exit 40% 100%", fill: "both", easing: "linear" }
   );
 
+  animate(
+    "nav",
+    [
+      { visibility: "hidden", opacity: 0 },
+      { visibility: "visible", opacity: 1 },
+    ],
+    { timeRange: "exit 40% 100%", fill: "both", easing: "linear" }
+  )
+
   // [1, 3].forEach((n) => {
   //   animate(
   //     `.posters>:nth-child(${n})`,

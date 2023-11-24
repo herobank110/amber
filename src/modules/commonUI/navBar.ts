@@ -2,7 +2,7 @@ import $ from "jquery";
 import "./navBar.scss";
 
 export const makeNavBar = () =>
-  $("<nav>").append(
+  $("<nav>", {class: "navBar"}).append(
     $("<ul>").append(
       navItem({ text: "Upcoming", href: "/#upcoming" }),
       navItem({ text: "Ten Years", href: "/#tenYears" }),
