@@ -99,7 +99,7 @@ const database = {
     },
     {
       id: 16,
-      title: "The Orchestra's Day Our at the Zoo",
+      title: "The Orchestra's Day Out at the Zoo",
       when: "2023-07-02T15:00",
       poster: "July 2023.PNG",
     },
