@@ -5,9 +5,9 @@ export const archivePage = () =>
   $("<div>", { id: "archivePage" })
     //
     .append(
-        $("<h1>", { text: "Concerts Archive" }),
-    
-        concertsGrid(database.concerts)
+      $("<h1>", { text: "Concerts Archive" }),
+
+      concertsGrid(database.concerts)
     );
 
 const concertsGrid = (props: Concert[]) =>
@@ -24,5 +24,15 @@ const concertCard = (props: Concert) =>
       css: { backgroundImage: `url(${props.poster}` },
     }),
     $("<h3>", { class: "title", text: props.title }),
-    $("<p>", { class: "when", text: props.when })
+    $("<p>", { class: "when", text: dateFormat(props.when) })
   );
+
+function dateFormat(when: string) {
+  return Intl.DateTimeFormat("en-GB", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric"
+  }).format(new Date(when));
+}
