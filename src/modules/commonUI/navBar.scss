@@ -52,6 +52,9 @@ nav {
       margin-left: 1em;
       background: url("../../rsrc/hamburger.png") left / 37% no-repeat;
     }
+    & > .logo {
+      justify-self: center;
+    }
 
     & > .sidebar {
       position: fixed;
