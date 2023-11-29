@@ -70,16 +70,26 @@ export const mainHome = () =>
       </div>
     </section>
   </div>
-  <!-- <div class="t t4" style="height: 50lvh">
+  <div class="t t5">
+    <section class="about">
+      <h2>About Us</h2>
+      <p>Roath Chamber Orchestra (formerly St Anne's Orchestra) was founded in September 2013 by a group of musical young professionals who regularly met on a Wednesday evening for few drinks. On realising there was at least 1/8 of an orchestra in the room the ensemble was formed and the first mission was to find additional keen music makers in the beautiful city of Cardiff!
+      <p>Since then the orchestra has grown in strength and ambition performing at least four public concerts a year including a Family Concert in the Summer Term. Our repertoire is mainly chamber orchestral works (symphonies and overtures) with members of the orchestra regularly volunteering to perform a concerto with the rest of the ensemble. We have performed works by composers such as Bach, Mozart, Beethoven, Schubert and Tchaikovsky.
+      <p>We are particularly looking for regular Viola and Brass players. However, if you would like to be added to our list of deps, please get in touch via email or drop us a Facebook message. @RoathChamber
+    </section>
+  </div>
+  <div class="t t6" style="height: 50lvh">
     <div>
       <div class="musicNote1"></div>
       <div class="musicNote2"></div>
       <div class="musicNote3"></div>
       <div class="musicNote4"></div>
     </div>
-  </div> -->
-  <div class="t t5" style="height: 120lvh">
+  </div>
+  <div class="t t7">
     <section>
+      ${
+        /* 
       <h2>History</h2>
       <!-- <svg class="warped1" viewBox="0 0 72 100" xmlns="http://www.w3.org/2000/svg">
         <image x="0" y="0" width="72" height="100" xlink:href="data-url:./rsrc/warped1.png" />
@@ -118,6 +128,8 @@ export const mainHome = () =>
           and generous audience donations.
         </li>
       </ul>
+      */ ""
+      }
 
       <h2>Contact Us</h2>
       <p>Whether you are thinking of joining or have other enquiries, we would be delighted to hear from you!
