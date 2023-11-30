@@ -293,8 +293,20 @@ footer {
 section.contact {
   background-color: white;
   padding: 2ch;
-  & .fb  >iframe {
-    width: min(300px, 90vw);
-    border-radius: 10px;
+  & .fb {
+    display: none;
+    & > iframe {
+      border-radius: 10px;
+    }
+  }
+  @media screen and (min-width: 360px) {
+    & .wide {
+      display: initial;
+    }
+  }
+  @media screen and (max-width: 359px) {
+    & .narrow {
+      display: inherit;
+    }
   }
 }
