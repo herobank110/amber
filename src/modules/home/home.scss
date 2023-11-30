@@ -106,7 +106,7 @@ h2 {
   }
 
   & a {
-    width: 250px;
+    width: 240px;
   }
 
   @media screen and (min-width: 900px) {
@@ -287,5 +287,14 @@ footer {
   }
   & a {
     color: black !important;
+  }
+}
+
+section.contact {
+  background-color: white;
+  padding: 2ch;
+  & .fb  >iframe {
+    width: min(300px, 90vw);
+    border-radius: 10px;
   }
 }

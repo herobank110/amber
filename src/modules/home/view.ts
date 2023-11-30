@@ -87,7 +87,7 @@ export const mainHome = () =>
     </div>
   </div>
   <div class="t t7">
-    <section>
+    <section class="contact">
       ${
         /* 
       <h2>History</h2>
@@ -130,15 +130,15 @@ export const mainHome = () =>
       </ul>
       */ ""
       }
-
       <h2>Contact Us</h2>
       <p>
         We are particularly looking for regular Viola and Brass players. However,
         if you would like to be added to our list of deps, please get in touch
         via email or drop us a Facebook message.
+      <p class="fb">
+        <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FRoathChamber&tabs&width=300&height=130&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId" width="300" height="130" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
       <p>
-        <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FRoathChamber&tabs&width=340&height=130&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="340" height="130" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-      <p>Email:
+        Email:
         <a href="mailto:roathchamber@gmail.com">roathchamber@gmail.com</a>
     </section>
   </div>`;
