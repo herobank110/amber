@@ -132,9 +132,13 @@ export const mainHome = () =>
       }
 
       <h2>Contact Us</h2>
-      <p>Whether you are thinking of joining or have other enquiries, we would be delighted to hear from you!
       <p>
-        <a href="mailto:roathchamber@gmail.com">EM</a>
-        <a href="https://www.facebook.com/RoathChamber">FB</a>
+        We are particularly looking for regular Viola and Brass players. However,
+        if you would like to be added to our list of deps, please get in touch
+        via email or drop us a Facebook message.
+      <p>
+        <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FRoathChamber&tabs&width=340&height=130&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="340" height="130" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+      <p>Email:
+        <a href="mailto:roathchamber@gmail.com">roathchamber@gmail.com</a>
     </section>
   </div>`;
