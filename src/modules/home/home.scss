@@ -322,7 +322,7 @@ footer {
     padding: 0.7em;
     line-height: 1.5;
     @media screen and (max-width: 500px) {
-      width: 100%;
+      width: unset;
     }
   }
   & a {
