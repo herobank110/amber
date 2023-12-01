@@ -120,6 +120,20 @@ h2 {
   }
 }
 
+section.tenYears {
+  background: white;
+  border-top: 1px solid #aaa;
+  padding: 2em 0 4em;
+
+  & h2 {
+    margin: 0 2ch 1.5rem;
+  }
+
+  & video {
+    width: 100vw;
+  }
+}
+
 // .t4 > div {
 //   height: 100%;
 //   background: white;

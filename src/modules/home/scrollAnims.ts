@@ -1,6 +1,8 @@
-import animate from "../../utils/animUtils";
+import { animate, initVideoScrollAutoPlayPause } from "../../utils/animUtils";
 
 export function initHomeScrollAnims() {
+  initTenYearVideoInteraction();
+
   // create the animations
   // animate(
   //   ".logoWrap",
@@ -46,7 +48,7 @@ export function initHomeScrollAnims() {
       { visibility: "visible", opacity: 1 },
     ],
     { timeRange: "exit 40% 100%", fill: "both", easing: "linear" }
-  )
+  );
 
   // [1, 3].forEach((n) => {
   //   animate(
@@ -157,4 +159,11 @@ export function initHomeScrollAnims() {
   // //   pastEl.innerHTML =
 
   // // })
+}
+
+/** Prepare 10 year video autoplay on scroll in */
+function initTenYearVideoInteraction() {
+  const el = document.querySelector(".tenYears video");
+  if (!el) throw new Error("Couldn't find ten year video");
+  initVideoScrollAutoPlayPause(el);
 }

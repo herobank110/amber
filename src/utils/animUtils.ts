@@ -1,7 +1,7 @@
 import "../lib/scroll-timeline";
 import { queryAncestor } from "./utils";
 
-export default function animate(
+export function animate(
   selector: string,
   keyframes: Keyframe[] | PropertyIndexedKeyframes,
   options: KeyframeAnimationOptions
@@ -12,4 +12,8 @@ export default function animate(
   if (!trackEl) throw new Error(`Couldn't find track for selector ${selector}`);
   const timeline = new ViewTimeline({ subject: trackEl });
   animEl.animate(keyframes, { ...options, timeline });
+}
+
+export function initVideoScrollAutoPlayPause(el: Element) {
+  console.warn("Not implemented");
 }
