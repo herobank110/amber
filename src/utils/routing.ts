@@ -4,6 +4,7 @@ import { initHomeScrollAnims } from "../modules/home/scrollAnims";
 import { footer } from "./view";
 import { archivePage } from "../modules/archive/views";
 import { makeNavBar } from "../modules/commonUI/navBar";
+import { addScrollDebugUI } from "../modules/debug/debug";
 
 // Importing this file starts it.
 // Changing pages must make a new page request.
@@ -21,10 +22,11 @@ function entry() {
 }
 
 function showHome() {
-  document.body.innerHTML += mainHome();
+  document.body.innerHTML = mainHome();
   makeNavBar().prependTo(".t1");
   footer().appendTo(document.body);
   initHomeScrollAnims();
+  addScrollDebugUI();
 }
 
 function showArchive() {
