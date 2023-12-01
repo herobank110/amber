@@ -165,5 +165,8 @@ export function initHomeScrollAnims() {
 function initTenYearVideoInteraction() {
   const el = document.querySelector(".tenYears video");
   if (!el) throw new Error("Couldn't find ten year video");
+  if (!(el instanceof HTMLVideoElement))
+    throw new Error("Invalid ten year element type");
+  el.currentTime = 2.0;
   initVideoScrollAutoPlayPause(el);
 }
