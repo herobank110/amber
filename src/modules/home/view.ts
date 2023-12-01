@@ -65,6 +65,14 @@ export const mainHome = () =>
       </video>
     </section>
   </div>
+  <div class="t t3_8">
+    <div class="musicsNoteRoot">
+      <div class="musicNote1"></div>
+      <div class="musicNote2"></div>
+      <div class="musicNote3"></div>
+      <div class="musicNote4"></div>
+    </div>
+  </div>
   <div class="t t4">
     <section class="past">
       <div class="postersScroll">
@@ -89,14 +97,6 @@ export const mainHome = () =>
       <p>Since then the orchestra has grown in strength and ambition performing at least four public concerts a year including a Family Concert in the Summer Term. Our repertoire is mainly chamber orchestral works (symphonies and overtures) with members of the orchestra regularly volunteering to perform a concerto with the rest of the ensemble. We have performed works by composers such as Bach, Mozart, Beethoven, Schubert and Tchaikovsky.
       <p>We are particularly looking for regular Viola and Brass players. However, if you would like to be added to our list of deps, please get in touch via email or drop us a Facebook message. @RoathChamber
     </section>
-  </div>
-  <div class="t t6" style="height: 50lvh">
-    <div>
-      <div class="musicNote1"></div>
-      <div class="musicNote2"></div>
-      <div class="musicNote3"></div>
-      <div class="musicNote4"></div>
-    </div>
   </div>
   <div class="t t7">
     <section class="contact">
