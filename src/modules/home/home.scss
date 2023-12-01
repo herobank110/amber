@@ -287,25 +287,6 @@ section.about {
   }
 }
 
-footer {
-  margin-top: 2em;
-  padding: 3em 0;
-  text-align: center;
-  border-left: none;
-  border-right: none;
-  background: #ea230c;
-  & > .footerInner {
-    background-color: white;
-    width: 80%;
-    margin: 0 auto;
-    padding: 0.7em;
-    line-height: 1.5;
-  }
-  & a {
-    color: black !important;
-  }
-}
-
 section.contact {
   background-color: white;
   padding: 2ch;
@@ -324,5 +305,24 @@ section.contact {
     & .narrow {
       display: inherit;
     }
+  }
+}
+
+footer {
+  margin-top: 2em;
+  padding: 3em 0;
+  text-align: center;
+  border-left: none;
+  border-right: none;
+  background: #ea230c;
+  & > .footerInner {
+    background-color: white;
+    width: 80%;
+    margin: 0 auto;
+    padding: 0.7em;
+    line-height: 1.5;
+  }
+  & a {
+    color: black !important;
   }
 }
