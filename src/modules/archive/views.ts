@@ -1,6 +1,7 @@
 import $ from "jquery";
 import database, { Concert } from "./amberDb";
 import { makeNavBar } from "../commonUI/navBar";
+import "./archive.scss";
 
 export const archivePage = () =>
   $("<div>", { id: "archivePage" })
