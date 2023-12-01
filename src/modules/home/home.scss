@@ -188,7 +188,7 @@ section.tenYears {
 }
 
 .past {
-  padding-top: 2em;
+  // padding-top: 2em;
 }
 
 .postersScroll {
@@ -277,7 +277,7 @@ section.tenYears {
   @include past-poster(20, "05");
 }
 
-.t5 > section {
+section.about {
   height: 100%;
   background: white;
   padding: 0 2ch;
