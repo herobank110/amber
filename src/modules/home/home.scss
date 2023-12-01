@@ -321,6 +321,9 @@ footer {
     margin: 0 auto;
     padding: 0.7em;
     line-height: 1.5;
+    @media screen and (max-width: 500px) {
+      width: 100%;
+    }
   }
   & a {
     color: black !important;
