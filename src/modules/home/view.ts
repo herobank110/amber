@@ -1,5 +1,7 @@
 // @ts-ignore
 import logo from "data-url:../../rsrc/rco_logo4.png";
+// @ts-ignore
+import sampleVideo from "data-url:../../rsrc/tenYearsSampleVideo.mp4";
 
 export const mainHome = () =>
   `
@@ -51,6 +53,16 @@ export const mainHome = () =>
           </div>
         </div>
       </div>
+    </section>
+  </div>
+  <div class="t t3_5">
+    <section class="tenYears">
+      <h2>Ten Year Anniversary</h2>
+      <video controls>
+        <source type="video/webm" src="/share/10%20Years%20of%20Roath%20Chamber%20Orchestra.webm">
+        <source type="video/mp4" src="/share/10%20Years%20of%20Roath%20Chamber%20Orchestra.mp4">
+        <source type="video/webm" src="${sampleVideo}">
+      </video>
     </section>
   </div>
   <div class="t t4">
