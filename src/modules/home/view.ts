@@ -42,6 +42,7 @@ export const mainHome = () =>
   </div>
   <div class="t t3">
     <section>
+      <a id="upcoming" class="megaScrollAnchor"></a>
       <div class="upcoming">
         <h2>Upcoming Concert</h2>
         <div class="row">
@@ -57,6 +58,7 @@ export const mainHome = () =>
   </div>
   <div class="t t3_5">
     <section class="tenYears">
+      <a id="tenYears" class="megaScrollAnchor"></a>
       <h2>Ten Year Anniversary</h2>
       <video controls>
         <source type="video/webm" src="/share/10%20Years%20of%20Roath%20Chamber%20Orchestra.webm">
@@ -77,6 +79,7 @@ export const mainHome = () =>
   </div>
   <div class="t t4">
     <section class="about">
+      <a id="about" class="megaScrollAnchor"></a>
       <h2>About Us</h2>
       <p>Roath Chamber Orchestra (formerly St Anne's Orchestra) was founded in September 2013 by a group of musical young professionals who regularly met on a Wednesday evening for few drinks. On realising there was at least 1/8 of an orchestra in the room the ensemble was formed and the first mission was to find additional keen music makers in the beautiful city of Cardiff!
       <p>Since then the orchestra has grown in strength and ambition performing at least four public concerts a year including a Family Concert in the Summer Term. Our repertoire is mainly chamber orchestral works (symphonies and overtures) with members of the orchestra regularly volunteering to perform a concerto with the rest of the ensemble. We have performed works by composers such as Bach, Mozart, Beethoven, Schubert and Tchaikovsky.
@@ -102,6 +105,7 @@ export const mainHome = () =>
   </div>
   <div class="t t7">
     <section class="contact">
+      <a id="contact" class="megaScrollAnchor"></a>
       ${
         /* 
       <h2>History</h2>

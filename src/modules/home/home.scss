@@ -1,5 +1,15 @@
 @use "../../utils/_animUtils.scss" as animUtils;
 
+section {
+  position: relative;
+}
+
+.megaScrollAnchor {
+  // apply some margin for scroll links
+  position: absolute;
+  top: -15lvh;
+}
+
 .primary {
   text-decoration: none;
   padding: 0.5rem 1rem;
