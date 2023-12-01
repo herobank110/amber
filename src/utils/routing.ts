@@ -21,7 +21,7 @@ function entry() {
 }
 
 function showHome() {
-  document.body.innerHTML = mainHome();
+  document.body.innerHTML += mainHome();
   makeNavBar().prependTo(".t1");
   footer().appendTo(document.body);
   initHomeScrollAnims();
