@@ -26,9 +26,10 @@ const concertCard = (props: Concert) =>
       class: "media",
       css: { backgroundImage: `url('${props.poster}')` },
     }),
-    $("<h3>", { class: "title", text: props.title }),
-    $("<p>", { class: "when", text: dateFormat(props.when) })
-    
+    $("<div>", { class: "info" }).append(
+      $("<h3>", { class: "title", text: props.title }),
+      $("<p>", { class: "when", text: dateFormat(props.when) })
+    )
   );
 
 function dateFormat(when: string) {
@@ -37,6 +38,6 @@ function dateFormat(when: string) {
     month: "long",
     day: "numeric",
     hour: "numeric",
-    minute: "numeric"
+    minute: "numeric",
   }).format(new Date(when));
 }

@@ -9,15 +9,29 @@
 .concertCard {
   border: 1px solid #ccc;
   border-radius: 4px;
-  padding: 0.5rem 1rem;
+
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+
+  // @media screen and (max-width: 400px) {
+  //   grid-template-columns: auto;
+  // }
+
   & .media {
-    height: 200px;
+    aspect-ratio: 3/2;
     background: white center / cover;
+  }
+
+  & .info {
+    padding: 0.5rem 0.5rem;
   }
 
   & .title,
   .when {
     margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    height: 1.2em;
   }
-
 }
