@@ -15,8 +15,8 @@
 .concertCard {
   display: grid;
   grid-template-columns: 1fr 2fr;
-
   $r: 8px;
+  border-radius: $r;
 
   & .media {
     aspect-ratio: 4/3;
@@ -35,8 +35,10 @@
   & .when {
     margin: 0;
     overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
     text-overflow: ellipsis;
-    width: 100%;
     height: 1.2em;
   }
 
@@ -46,5 +48,11 @@
   }
   & .when {
     font-size: 14px;
+  }
+
+  transition: box-shadow 0.2s ease-in-out, background 0.2s ease-in-out;
+  &:hover {
+    box-shadow: 0 0 0 3px #eee;
+    background: #eee;
   }
 }
