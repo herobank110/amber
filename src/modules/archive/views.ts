@@ -27,8 +27,8 @@ const concertCard = (props: Concert) =>
       css: { backgroundImage: `url('${props.poster}')` },
     }),
     $("<div>", { class: "info" }).append(
-      $("<h3>", { class: "title", text: props.title }),
-      $("<p>", { class: "when", text: dateFormat(props.when) })
+      $("<p>", { class: "when", text: dateFormat(props.when) }),
+      $("<h3>", { class: "title", text: props.title })
     )
   );
 
