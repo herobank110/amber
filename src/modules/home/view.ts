@@ -49,8 +49,8 @@ export const mainHome = () =>
           <div class="poster"></div>
           <div class="info">
             <!-- <p>Join Roath Chamber Orchestra for the first of many concerts to celebrate our 10th anniversary year.</p> -->
-            <p>Sunday, 26 November at 7 PM</p>
-            <a href="https://www.facebook.com/events/637520735235668" class="primary">View Event on Facebook</a>
+            <p>Sunday, 17 December at 7 PM</p>
+            <a href="https://www.facebook.com/events/177429568773354" class="primary">View Event on Facebook</a>
           </div>
         </div>
       </div>
