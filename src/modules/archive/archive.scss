@@ -3,27 +3,26 @@
   margin: 120px auto 0;
   display: flex;
   flex-direction: column;
-  gap: 2em;
+  gap: 1.2em;
 }
 
 .concertCard {
-  border: 1px solid #ccc;
-  border-radius: 4px;
-
   display: grid;
   grid-template-columns: 1fr 2fr;
 
-  // @media screen and (max-width: 400px) {
-  //   grid-template-columns: auto;
-  // }
+  $r: 8px;
 
   & .media {
-    aspect-ratio: 3/2;
+    aspect-ratio: 4/3;
     background: white center / cover;
+    border-radius: $r 0 0 $r;
   }
 
   & .info {
     padding: 0.5rem 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: $r;
+    border-left: none;
   }
 
   & .title,
