@@ -91,6 +91,11 @@ h2 {
   width: calc(100% - 4ch);
   // top: 20lvh;
   // margin-top
+  margin-bottom: 0.5em;
+
+  & h2 {
+    margin-bottom: 0.5em;
+  }
 
   & .poster {
     width: 100%;
