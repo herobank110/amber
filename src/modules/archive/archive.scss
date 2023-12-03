@@ -1,8 +1,14 @@
 .concertsGrid {
   width: min(90%, 600px);
   margin: 120px auto 0;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  @media screen and (min-width: 600px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media screen and (min-width: 1200px) {
+    grid-template-columns: repeat(3, 1fr);
+    width: min(90%, 900px);
+  }
   gap: 1.2em;
 }
 
@@ -21,16 +27,24 @@
   & .info {
     padding: 0.5rem 0.5rem;
     border: 1px solid #ccc;
-    border-radius: $r;
+    border-radius: 0 $r $r 0;
     border-left: none;
   }
 
   & .title,
-  .when {
+  & .when {
     margin: 0;
     overflow: hidden;
     text-overflow: ellipsis;
     width: 100%;
     height: 1.2em;
+  }
+
+  & .title {
+    font-size: 1em;
+    font-weight: 600;
+  }
+  & .when {
+    font-size: 14px;
   }
 }
