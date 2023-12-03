@@ -35,7 +35,7 @@ const concertCard = (props: Concert) =>
 function dateFormat(when: string) {
   return Intl.DateTimeFormat("en-GB", {
     year: "numeric",
-    month: "long",
+    month: "short",
     day: "numeric",
     hour: "numeric",
     minute: "numeric",
