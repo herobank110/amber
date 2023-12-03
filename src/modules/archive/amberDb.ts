@@ -53,7 +53,7 @@ const database = {
       id: 8,
       title: "Christmas",
       when: "2022-12-18T17:00",
-      poster: "/share/concerts/Dec 2-22.JPG",
+      poster: "/share/concerts/Dec 2022.JPG",
     },
     {
       id: 9,
