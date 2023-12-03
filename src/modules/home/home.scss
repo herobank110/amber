@@ -99,6 +99,7 @@ h2 {
     background: url("./rsrc/upcoming.jpg") center / cover;
     border-radius: 15px;
     margin-bottom: 1rem;
+    justify-self: end;
   }
 
   & .info {
@@ -119,7 +120,7 @@ h2 {
     width: 240px;
   }
 
-  @media screen and (min-width: 900px) {
+  @media screen and (min-width: 650px) {
     & .row {
       display: grid;
       grid-template-columns: 1fr 1fr;
