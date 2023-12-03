@@ -10,7 +10,14 @@
   border: 1px solid #ccc;
   border-radius: 4px;
   padding: 0.5rem 1rem;
-  & .title, .when {
+  & .media {
+    height: 200px;
+    background: white center / cover;
+  }
+
+  & .title,
+  .when {
     margin: 0;
   }
+
 }
