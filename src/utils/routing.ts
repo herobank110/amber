@@ -43,4 +43,5 @@ function jumpToHash() {
 
 function showArchive() {
   archivePage().appendTo(document.body);
+  footer().appendTo(document.body);
 }
