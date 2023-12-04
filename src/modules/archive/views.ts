@@ -28,7 +28,7 @@ const concertCard = (props: Concert) =>
         css: { backgroundImage: `url('${props.thumb}')` },
       }),
       $("<div>", { class: "info" }).append(
-        $("<p>", { class: "when", text: dateFormat(props.when) }),
+        $("<p>", { class: "when", text: shortDate(props.when) }),
         $("<h3>", { class: "title", text: props.title })
       )
     )
@@ -37,13 +37,14 @@ const concertCard = (props: Concert) =>
 const concertDetails = (props: Concert) =>
   $("<div>", { class: "concertDetails" }).append(
     $("<div>", { class: "popupInner" }).append(
-      $("<h3>", { text: props.title }),
       $("<div>", { class: "posterWrap" }).append(
         $("<div>", {
           class: "poster",
           css: { backgroundImage: `url('${props.poster}')` },
         })
-      )
+      ),
+      $("<h3>", { text: props.title }),
+      $("<span>", { text: longDate(props.when) })
     )
   );
 
@@ -56,10 +57,21 @@ function onClickConcertCard(concert: Concert) {
   el.appendTo("body");
 }
 
-function dateFormat(when: string) {
+function shortDate(when: string) {
   return Intl.DateTimeFormat("en-GB", {
     year: "numeric",
     month: "long",
     day: "numeric",
+  }).format(new Date(when));
+}
+
+function longDate(when: string) {
+  return Intl.DateTimeFormat("en-GB", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+    hour12: true,
   }).format(new Date(when));
 }
