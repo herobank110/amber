@@ -39,10 +39,11 @@ const concertDetails = (props: Concert) =>
   $("<div>", { class: "concertDetails" })
     .append(
       $("<div>", { class: "popupInner" }).append(
-      $(`<svg viewBox="0 0 10 10" stroke="#000"><path d="M1,1L9,9"/><path d="M1,9L9,1"/></svg>`)
-      .addClass("closeButton")
-      .on("click", hideDetails)
-      ,
+        $(
+          `<svg viewBox="0 0 10 10" stroke="#000"><path d="M1,1L9,9"/><path d="M1,9L9,1"/></svg>`
+        )
+          .addClass("closeButton")
+          .on("click", hideDetails),
         $("<div>", { class: "posterWrap" }).append(
           $("<div>", {
             class: "poster",
@@ -71,7 +72,7 @@ function onClickConcertCard(concert: Concert) {
   $("body")
     .css("--m", m + "px")
     .addClass("modal");
-  el.appendTo("body");
+  el.appendTo("body").hide().fadeIn("fast");
 }
 
 function onClickConcertDetails(e: JQuery.ClickEvent) {
@@ -81,8 +82,11 @@ function onClickConcertDetails(e: JQuery.ClickEvent) {
 }
 
 function hideDetails() {
-  $(".concertDetails").remove();
-  $("body").removeClass("modal")
+  const el = $(".concertDetails");
+  el.fadeOut("fast", "", () => {
+    el.remove();
+    $("body").removeClass("modal");
+  });
 }
 
 function shortDate(when: string) {
