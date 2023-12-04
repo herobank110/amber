@@ -76,7 +76,7 @@
     @media screen and (min-width: 800px) {
       width: 700px;
     }
-    height: 80lvh;
+    height: min(85lvh, 160vw);
     border-radius: 8px;
     padding: $p;
     background: white;
