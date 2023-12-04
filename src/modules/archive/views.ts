@@ -55,7 +55,7 @@ const concertDetails = (props: Concert) =>
         props.facebook
           ? $("<a>", {
               class: "fbLink",
-              href: "https://www.facebook.com/events/1106400593274570/",
+              href: props.facebook,
             }).append(
               //
               facebookLogo(),
