@@ -36,11 +36,15 @@ const concertCard = (props: Concert) =>
 
 const concertDetails = (props: Concert) =>
   $("<div>", { class: "concertDetails" }).append(
-    $("<span>", { text: props.title })
+    $("<div>", { class: "popupInner" }).append(
+      $("<span>", { text: props.title })
+    )
   );
 
 function onClickConcertCard(concert: Concert) {
   const el = concertDetails(concert);
+  const m = window.innerWidth - document.body.clientWidth;
+  $("body").css("--m", m + "px").addClass("modal")
   el.appendTo("body");
 }
 

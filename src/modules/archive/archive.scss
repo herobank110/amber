@@ -56,3 +56,27 @@
     background: #eee;
   }
 }
+
+.concertDetails {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 15;
+  background-color: #0004;
+  display: grid;
+  place-items: center;
+
+  & .popupInner {
+    width: min(80vw, 600px);
+    border-radius: 8px;
+    padding: 1em;
+    background: white;
+  }
+}
+
+body.modal {
+  overflow: hidden;
+  margin-right: var(--m);
+}
