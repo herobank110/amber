@@ -26,7 +26,7 @@ function showHome() {
   makeNavBar().prependTo(".t1");
   footer().appendTo(document.body);
   initHomeScrollAnims();
-  $("a.primary").replaceWith(
+  $("a.primary").eq(0).replaceWith(
     facebookButton("https://www.facebook.com/events/177429568773354")
   );
   jumpToHash();
