@@ -1,7 +1,7 @@
 import $ from "jquery";
 import { mainHome } from "../modules/home/view";
 import { initHomeScrollAnims } from "../modules/home/scrollAnims";
-import { footer } from "./view";
+import { facebookButton, footer } from "./view";
 import { archivePage } from "../modules/archive/views";
 import { makeNavBar } from "../modules/commonUI/navBar";
 import { addScrollDebugUI } from "../modules/debug/debug";
@@ -26,6 +26,9 @@ function showHome() {
   makeNavBar().prependTo(".t1");
   footer().appendTo(document.body);
   initHomeScrollAnims();
+  $("a.primary").replaceWith(
+    facebookButton("https://www.facebook.com/events/177429568773354")
+  );
   jumpToHash();
   addScrollDebugUI();
 }
@@ -35,7 +38,7 @@ function jumpToHash() {
   if (hash != "") {
     const el = document.querySelector(hash);
     if (el) {
-      const y  = el.getBoundingClientRect().top;
+      const y = el.getBoundingClientRect().top;
       window.scrollTo(0, y);
     }
   }
