@@ -69,10 +69,32 @@
   place-items: center;
 
   & .popupInner {
-    width: min(80vw, 600px);
+    $p: 1rem;
+    width: min(calc(95vw - $p * 2), 600px);
+    @media screen and (min-width: 800px) {
+      width: 700px;
+    }
+    height: 80lvh;
     border-radius: 8px;
-    padding: 1em;
+    padding: $p;
     background: white;
+
+    display: grid;
+    grid-template-rows: auto 1fr;
+  }
+
+  & .posterWrap {
+    display: grid;
+    justify-content: center;
+    justify-items: center;
+    align-items: stretch;
+  }
+
+  & .poster {
+    background: white center / cover;
+    aspect-ratio: 3/4;
+    max-height: min(65lvh, 120vw);
+    border-radius: 8px;
   }
 }
 

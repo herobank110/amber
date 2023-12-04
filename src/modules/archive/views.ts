@@ -37,14 +37,22 @@ const concertCard = (props: Concert) =>
 const concertDetails = (props: Concert) =>
   $("<div>", { class: "concertDetails" }).append(
     $("<div>", { class: "popupInner" }).append(
-      $("<span>", { text: props.title })
+      $("<h3>", { text: props.title }),
+      $("<div>", { class: "posterWrap" }).append(
+        $("<div>", {
+          class: "poster",
+          css: { backgroundImage: `url('${props.poster}')` },
+        })
+      )
     )
   );
 
 function onClickConcertCard(concert: Concert) {
   const el = concertDetails(concert);
   const m = window.innerWidth - document.body.clientWidth;
-  $("body").css("--m", m + "px").addClass("modal")
+  $("body")
+    .css("--m", m + "px")
+    .addClass("modal");
   el.appendTo("body");
 }
 
