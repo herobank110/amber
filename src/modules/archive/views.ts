@@ -21,16 +21,28 @@ const concertsGrid = (props: Concert[]) =>
   );
 
 const concertCard = (props: Concert) =>
-  $("<div>", { class: "concertCard" }).append(
-    $("<div>", {
-      class: "media",
-      css: { backgroundImage: `url('${props.thumb}')` },
-    }),
-    $("<div>", { class: "info" }).append(
-      $("<p>", { class: "when", text: dateFormat(props.when) }),
-      $("<h3>", { class: "title", text: props.title })
+  $("<div>", { class: "concertCard" })
+    .append(
+      $("<div>", {
+        class: "media",
+        css: { backgroundImage: `url('${props.thumb}')` },
+      }),
+      $("<div>", { class: "info" }).append(
+        $("<p>", { class: "when", text: dateFormat(props.when) }),
+        $("<h3>", { class: "title", text: props.title })
+      )
     )
+    .on("click", () => onClickConcertCard(props));
+
+const concertDetails = (props: Concert) =>
+  $("<div>", { class: "concertDetails" }).append(
+    $("<span>", { text: props.title })
   );
+
+function onClickConcertCard(concert: Concert) {
+  const el = concertDetails(concert);
+  el.appendTo("body");
+}
 
 function dateFormat(when: string) {
   return Intl.DateTimeFormat("en-GB", {
