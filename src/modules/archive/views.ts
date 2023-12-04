@@ -2,7 +2,7 @@ import $ from "jquery";
 import database, { Concert } from "./amberDb";
 import { makeNavBar } from "../commonUI/navBar";
 import "./archive.scss";
-import { facebookLogo } from "../../utils/view";
+import { closeButton, facebookLogo } from "../../utils/view";
 
 export const archivePage = () =>
   $("<div>", { id: "archivePage" })
@@ -39,16 +39,11 @@ const concertDetails = (props: Concert) =>
   $("<div>", { class: "concertDetails" })
     .append(
       $("<div>", { class: "popupInner" }).append(
-        $(
-          `<svg viewBox="0 0 10 10" stroke="#000"><path d="M1,1L9,9"/><path d="M1,9L9,1"/></svg>`
-        )
-          .addClass("closeButton")
-          .on("click", hideDetails),
+        closeButton().on("click", hideDetails),
         $("<div>", { class: "posterWrap" }).append(
           $("<img>", {
             class: "poster",
-            // css: { backgroundImage: `url('${props.poster}')` },
-            src: props.poster
+            src: props.poster,
           })
         ),
         $("<h3>", { text: props.title }),
