@@ -24,7 +24,7 @@ const concertCard = (props: Concert) =>
   $("<div>", { class: "concertCard" }).append(
     $("<div>", {
       class: "media",
-      css: { backgroundImage: `url('${props.poster}')` },
+      css: { backgroundImage: `url('${props.thumb}')` },
     }),
     $("<div>", { class: "info" }).append(
       $("<p>", { class: "when", text: dateFormat(props.when) }),
