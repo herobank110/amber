@@ -1,7 +1,8 @@
 // @ts-ignore
 import logo from "data-url:../../rsrc/rco_logo4.png";
 // @ts-ignore
-import sampleVideo from "data-url:../../rsrc/tenYearsSampleVideo.mp4";
+// import sampleVideo from "data-url:../../rsrc/tenYearsSampleVideo.mp4";
+const sampleVideo = "https://roathchamber.org/share/10%20Years%20of%20Roath%20Chamber%20Orchestra.webm";
 
 export const mainHome = () =>
   `
