@@ -45,9 +45,10 @@ const concertDetails = (props: Concert) =>
           .addClass("closeButton")
           .on("click", hideDetails),
         $("<div>", { class: "posterWrap" }).append(
-          $("<div>", {
+          $("<img>", {
             class: "poster",
-            css: { backgroundImage: `url('${props.poster}')` },
+            // css: { backgroundImage: `url('${props.poster}')` },
+            src: props.poster
           })
         ),
         $("<h3>", { text: props.title }),
