@@ -2,6 +2,7 @@ import $ from "jquery";
 import database, { Concert } from "./amberDb";
 import { makeNavBar } from "../commonUI/navBar";
 import "./archive.scss";
+import { facebookLogo } from "../../utils/view";
 
 export const archivePage = () =>
   $("<div>", { id: "archivePage" })
@@ -44,7 +45,15 @@ const concertDetails = (props: Concert) =>
         })
       ),
       $("<h3>", { text: props.title }),
-      $("<span>", { text: longDate(props.when) })
+      $("<span>", { text: longDate(props.when) }),
+      $("<a>", {
+        class: "fbLink",
+        href: "https://www.facebook.com/events/1106400593274570/",
+      }).append(
+        //
+        facebookLogo(),
+        $("<span>", { text: "View on Facebook " })
+      )
     )
   );
 
