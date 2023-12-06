@@ -294,6 +294,29 @@ section.about {
   padding: 0 2ch;
 }
 
+.gallery {
+  display: flex;
+  width: min(calc(90vw - 2ch), 170lvh, 900px);
+  aspect-ratio: 1.8 / 1;
+  border: 2px solid #eee;
+  margin: 0 auto 4em;
+  padding: 1em;
+  overflow-x: scroll;
+  gap: 1em;
+  background: #eee;
+  border-radius: 16px;
+  @media screen and (max-width: 500px) {
+    width: calc(100vw - 2em);
+    margin-left: -2ch;
+    border-radius: 0;
+    border: unset;
+  }
+
+  & img {
+    border-radius: 8px;
+  }
+}
+
 .warped1 {
   width: 80%;
   margin-left: 10%;

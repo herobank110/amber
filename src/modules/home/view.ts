@@ -4,6 +4,21 @@ import logo from "data-url:../../rsrc/rco_logo4.png";
 // import sampleVideo from "data-url:../../rsrc/tenYearsSampleVideo.mp4";
 const sampleVideo = "https://roathchamber.org/share/10%20Years%20of%20Roath%20Chamber%20Orchestra.webm";
 
+// @ts-ignore
+import IMG_0392 from "../../rsrc/IMG_0392.jpeg";
+// @ts-ignore
+import IMG_1592 from "../../rsrc/IMG_1592.jpg";
+// @ts-ignore
+import IMG_3432 from "../../rsrc/IMG_3432.jpg";
+// @ts-ignore
+import IMG_5986 from "../../rsrc/IMG_5986.jpeg";
+// @ts-ignore
+import IMG_5997 from "../../rsrc/IMG_5997.jpeg";
+// @ts-ignore
+import IMG_9111 from "../../rsrc/IMG_9111.jpg";
+// @ts-ignore
+import IMG_9908 from "../../rsrc/IMG_9908.jpg";
+
 export const mainHome = () =>
   `
   <div class="t t1" style="height: 60lvh">
@@ -84,6 +99,15 @@ export const mainHome = () =>
       <h2>About Us</h2>
       <p>Roath Chamber Orchestra (formerly St Anne's Orchestra) was founded in September 2013 by a group of musical young professionals who regularly met on a Wednesday evening for few drinks. On realising there was at least 1/8 of an orchestra in the room the ensemble was formed and the first mission was to find additional keen music makers in the beautiful city of Cardiff!
       <p>Since then the orchestra has grown in strength and ambition performing at least four public concerts a year including a Family Concert in the Summer Term. Our repertoire is mainly chamber orchestral works (symphonies and overtures) with members of the orchestra regularly volunteering to perform a concerto with the rest of the ensemble. We have performed works by composers such as Bach, Mozart, Beethoven, Schubert and Tchaikovsky.
+      <div class="gallery">
+        <img src="${IMG_0392}" />
+        <img src="${IMG_1592}" />
+        <img src="${IMG_3432}" />
+        <img src="${IMG_5986}" />
+        <img src="${IMG_5997}" />
+        <img src="${IMG_9111}" />
+        <img src="${IMG_9908}" />
+      </div>
     </section>
   </div>
   <div class="t t5">
