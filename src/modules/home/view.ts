@@ -50,7 +50,7 @@ export const mainHome = () =>
           <div class="poster"></div>
           <div class="info">
             <!-- <p>Join Roath Chamber Orchestra for the first of many concerts to celebrate our 10th anniversary year.</p> -->
-            <p>Sunday, 17 December at 7 PM</p>
+            <p>Sunday, 17 December at 5 PM</p>
             <a href="https://www.facebook.com/events/177429568773354" class="primary">View Event on Facebook</a>
           </div>
         </div>
@@ -84,7 +84,6 @@ export const mainHome = () =>
       <h2>About Us</h2>
       <p>Roath Chamber Orchestra (formerly St Anne's Orchestra) was founded in September 2013 by a group of musical young professionals who regularly met on a Wednesday evening for few drinks. On realising there was at least 1/8 of an orchestra in the room the ensemble was formed and the first mission was to find additional keen music makers in the beautiful city of Cardiff!
       <p>Since then the orchestra has grown in strength and ambition performing at least four public concerts a year including a Family Concert in the Summer Term. Our repertoire is mainly chamber orchestral works (symphonies and overtures) with members of the orchestra regularly volunteering to perform a concerto with the rest of the ensemble. We have performed works by composers such as Bach, Mozart, Beethoven, Schubert and Tchaikovsky.
-      <p>We are particularly looking for regular Viola and Brass players. However, if you would like to be added to our list of deps, please get in touch via email or drop us a Facebook message. @RoathChamber
     </section>
   </div>
   <div class="t t5">
