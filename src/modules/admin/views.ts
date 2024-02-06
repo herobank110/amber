@@ -6,6 +6,7 @@ export const adminPage = () =>
   $("<div>", { class: "adminLoginPage" }).append(
     $("<h2>", { text: "Admin Section" }),
     $("<form>", { action: "/php/adminLogin.php", method: "post" }).append(
+      $("<span>", { text: "Sorry, invalid credentials. Please try again", class: "errorMsg" }),
       $("<input>", { type: "text", name: "username", placeholder: "Username" }),
       $("<input>", {
         type: "password",
