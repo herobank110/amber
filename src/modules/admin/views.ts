@@ -12,6 +12,11 @@ export const adminPage = () =>
         name: "password",
         placeholder: "Password",
       }),
+      $("<input>", {
+        type: "hidden",
+        name: "redirectTo",
+        value: sessionStorage.getItem("adminLoginRedirectTo") || "/",
+      }),
       $("<button>", { type: "submit", text: "Login" }),
       isDevMode()
         ? $("<button>", { text: "Bypass Login [DEV]", class: "devMode" }).on(

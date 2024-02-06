@@ -2,14 +2,23 @@ import $ from "jquery";
 import "./utils.scss";
 
 export const footer = () =>
-  $(`
-  <footer>
-    <div class="footerInner">
-      <a href="https://davidkanekanian.co.uk">Website By David Kanekanian</a><br>
-      &copy; Copyright 2023 Roath Chamber Orchestra<br>
-      <a href="?admin">Switch to admin mode</a>
-    </div>
-  </footer>`);
+  $("<footer>").append(
+    $("<div>", { class: "footerInner" }).append(
+      $("<a>", {
+        href: "https://davidkanekanian.co.uk",
+        text: "Website By David Kanekanian",
+      }),
+      $("<br>"),
+      $("<span>", { html: "&copy; 2023 Roath Chamber Orchestra" }),
+      $("<br>"),
+      $("<a>", { text: "Switch to admin mode", href: "?admin" }).on(
+        "click",
+        () => {
+          sessionStorage.setItem("adminLoginRedirectTo", window.location.href);
+        }
+      )
+    )
+  );
 
 export const facebookLogo = () =>
   $(
@@ -30,5 +39,5 @@ export const closeButton = () =>
       <path d="M1,1L9,9"/>
       <path d="M1,9L9,1"/>
     </svg>
-  `,
+  `
   ).addClass("closeButton");
