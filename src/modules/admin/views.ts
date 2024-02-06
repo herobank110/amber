@@ -17,13 +17,18 @@ export const adminPage = () =>
         name: "redirectTo",
         value: sessionStorage.getItem("adminLoginRedirectTo") || "/",
       }),
-      $("<button>", { type: "submit", text: "Login" }),
+      $("<button>", { type: "submit", text: "Login" })
+        //
+        .on("click", () => {
+          // preempt the admin login passing and just set true in case it worked.
+          localStorage.setItem("admin", "true");
+        }),
       isDevMode()
         ? $("<button>", { text: "Bypass Login [DEV]", class: "devMode" }).on(
             "click",
             (e) => {
               e.preventDefault();
-              window.localStorage.setItem("admin", "true");
+              localStorage.setItem("admin", "true");
               window.location.href = "/";
             }
           )

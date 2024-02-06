@@ -9,11 +9,18 @@ $redirectTo = $_POST["redirectTo"] ?? "";
 $success = $username === "admin" && $password === getenv("AMBER_ADMIN_PW");
 if ($success) {
     beginAdminSession();
-    if ($redirectTo) {
-        header("Location: $redirectTo");
-        return;
-    }
 }
 
+// Redirect mode is the normal use of the website.
+if ($redirectTo) {
+    if ($success)
+        header("Location: $redirectTo");
+    else
+        header("Location: /?adminE");
+    return;
+}
+
+
+// JSON response is just for standalone API testing.
 header("Content-Type: application/json");
 echo json_encode(["success" => $success]);

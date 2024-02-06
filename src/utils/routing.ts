@@ -17,6 +17,7 @@ function entry() {
       showArchive();
       break;
     case "?admin":
+    case "?adminE":
       showAdmin();
       break;
     default:
