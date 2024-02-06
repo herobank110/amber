@@ -22,11 +22,13 @@
       padding: 10px;
       border: none;
       border-radius: 5px;
-      background-color: #000;
-      color: #fff;
+      background: #ea230c;
+      color: #000;
+      font-weight: bold;
       cursor: pointer;
 
       &.devMode {
+        border: none;
         background: #eee;
         color: #aaa;
       }
