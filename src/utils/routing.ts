@@ -5,6 +5,7 @@ import { facebookButton, footer } from "./view";
 import { archivePage } from "../modules/archive/views";
 import { makeNavBar } from "../modules/commonUI/navBar";
 import { addScrollDebugUI } from "../modules/debug/debug";
+import { adminPage } from "../modules/admin/views";
 
 // Importing this file starts it.
 // Changing pages must make a new page request.
@@ -14,6 +15,9 @@ function entry() {
   switch (window.location.search) {
     case "?archive":
       showArchive();
+      break;
+    case "?admin":
+      showAdmin();
       break;
     default:
       showHome();
@@ -26,9 +30,11 @@ function showHome() {
   makeNavBar().prependTo(".t1");
   footer().appendTo(document.body);
   initHomeScrollAnims();
-  $("a.primary").eq(0).replaceWith(
-    facebookButton("https://www.facebook.com/events/177429568773354")
-  );
+  $("a.primary")
+    .eq(0)
+    .replaceWith(
+      facebookButton("https://www.facebook.com/events/177429568773354")
+    );
   jumpToHash();
   addScrollDebugUI();
 }
@@ -46,5 +52,10 @@ function jumpToHash() {
 
 function showArchive() {
   archivePage().appendTo(document.body);
+  footer().appendTo(document.body);
+}
+
+function showAdmin() {
+  adminPage().appendTo(document.body);
   footer().appendTo(document.body);
 }
