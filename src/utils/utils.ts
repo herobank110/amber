@@ -6,3 +6,7 @@ export function queryAncestor(el: Element, selector: string) {
   while (fl && !fl?.matches(selector));
   return fl;
 }
+
+export function isDevMode() {
+  return window.location.hostname === "localhost";
+}

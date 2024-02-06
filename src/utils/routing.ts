@@ -57,5 +57,4 @@ function showArchive() {
 
 function showAdmin() {
   adminPage().appendTo(document.body);
-  footer().appendTo(document.body);
 }
