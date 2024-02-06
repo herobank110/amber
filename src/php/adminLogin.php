@@ -5,7 +5,7 @@ require __DIR__ . "/adminSession.php";
 $username = $_POST["username"];
 $password = $_POST["password"];
 
-$success = $username === "admin" && $password === getenv("AMBER_ADMIN_PASSWORD");
+$success = $username === "admin" && $password === getenv("AMBER_ADMIN_PW");
 if ($success) {
     beginAdminSession();
 }
