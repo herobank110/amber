@@ -6,7 +6,7 @@ $username = $_POST["username"];
 $password = $_POST["password"];
 $redirectTo = $_POST["redirectTo"] ?? "";
 
-$success = $username === "admin" && $password === getenv("AMBER_ADMIN_PW");
+$success = $username === "roathchamber" && $password === getenv("AMBER_ADMIN_PW");
 if ($success) {
     beginAdminSession();
 }
