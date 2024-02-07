@@ -7,11 +7,13 @@ export async function initPageAdminModeCheck() {
     return;
   }
 
-  const data = await fetch("/php/adminIsLoggedIn.php").then((res) =>
-    res.json()
-  );
-  if (isAdminMode() != data.isLoggedIn) {
-    localStorage.setItem("admin", data.isLoggedIn.toString());
+  const { isLoggedIn: serverAdminMode }: { isLoggedIn: boolean } = await fetch(
+    "/php/adminIsLoggedIn.php"
+  ).then((res) => res.json());
+
+  const cachedAdminMode = isAdminMode();
+  if (cachedAdminMode != serverAdminMode) {
+    localStorage.setItem("admin", serverAdminMode.toString());
     // force reload the page to update the admin mode
     window.location.reload();
   }
