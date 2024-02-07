@@ -6,6 +6,7 @@ import { archivePage } from "../modules/archive/view";
 import { makeNavBar } from "../modules/commonUI/navBar";
 import { addScrollDebugUI } from "../modules/debug/debug";
 import { adminPage } from "../modules/admin/views";
+import { initPageAdminModeCheck } from "../modules/admin/adminMode";
 
 // Importing this file starts it.
 // Changing pages must make a new page request.
@@ -24,6 +25,9 @@ function entry() {
       showHome();
       break;
   }
+
+  // check for admin mode - if not, it will disable and reload
+  initPageAdminModeCheck();
 }
 
 function showHome() {
