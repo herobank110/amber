@@ -1,5 +1,12 @@
+import { isDevMode } from "../../utils/utils";
+
 /** Check if the admin mode is active. If not, reload the page. */
 export async function initPageAdminModeCheck() {
+  if (isDevMode()) {
+    // in dev mode, assume the dev has set the admin mode correctly
+    return;
+  }
+
   const data = await fetch("/php/adminIsLoggedIn.php").then((res) =>
     res.json()
   );
