@@ -3,6 +3,7 @@ import database, { Concert } from "./amberDb";
 import { makeNavBar } from "../commonUI/navBar";
 import "./archive.scss";
 import { closeButton, facebookButton, facebookLogo } from "../../utils/view";
+import { isAdminMode } from "../admin/adminMode";
 
 export const archivePage = () =>
   $("<div>", { id: "archivePage" })
@@ -10,11 +11,14 @@ export const archivePage = () =>
     .append(
       makeNavBar(),
       $("<main>").append(
-        $("<h1>", { text: "Concerts Archive" }),
-        $("<button>", { text: "Add Concert", class: "adminBigButton" }),
+        // $("<h1>", { text: "Concerts Archive" }),
+        isAdminMode() ? adminControls() : $(),
         concertsGrid(database.concerts)
       )
     );
+
+const adminControls = () =>
+  $("<button>", { text: "Add Concert", class: "adminBigButton" });
 
 const concertsGrid = (props: Concert[]) =>
   $("<div>", { class: "concertsGrid" }).append(
