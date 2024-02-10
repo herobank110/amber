@@ -9,9 +9,11 @@ export const archivePage = () =>
     //
     .append(
       makeNavBar(),
-      $("<h1>", { text: "Concerts Archive" }),
-
-      concertsGrid(database.concerts)
+      $("<main>").append(
+        $("<h1>", { text: "Concerts Archive" }),
+        $("<button>", { text: "New Item" }),
+        concertsGrid(database.concerts)
+      )
     );
 
 const concertsGrid = (props: Concert[]) =>
@@ -48,9 +50,7 @@ const concertDetails = (props: Concert) =>
         ),
         $("<h3>", { text: props.title }),
         $("<span>", { text: longDate(props.when) }),
-        props.facebook
-          ? facebookButton(props.facebook)
-          : $()
+        props.facebook ? facebookButton(props.facebook) : $()
       )
     )
     .on("click", onClickConcertDetails);
