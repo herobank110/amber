@@ -11,7 +11,7 @@ export const archivePage = () =>
       makeNavBar(),
       $("<main>").append(
         $("<h1>", { text: "Concerts Archive" }),
-        $("<button>", { text: "New Item" }),
+        $("<button>", { text: "Add Concert", class: "adminBigButton" }),
         concertsGrid(database.concerts)
       )
     );

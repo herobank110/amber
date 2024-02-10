@@ -9,3 +9,28 @@
   color: #0866ff !important;
   padding: 0.4em 1em 0.4em 0.5em;
 }
+
+.adminBigButton {
+  padding: 1.25em 2em;
+  $m: 2em;
+  margin: $m;
+  width: calc(100% - ($m * 2));
+  background-color: #e32cff;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 18pt;
+  transition: background-color 0.05s, transform 0.05s, box-shadow 0.05s;
+
+  &:hover {
+    background-color: #d329ee;
+    box-shadow: 1px 1px 0px 1px #a619bc;
+    outline: 1px solid #7a1f7a;
+  }
+
+  &:active {
+    background-color: #ce2be8;
+    box-shadow: none;
+    transform: translate(2px, 2px);
+  }
+}
