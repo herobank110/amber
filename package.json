@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "dev": "parcel --dist-dir=dev src/index.html --open",
-    "dist": "parcel build --dist-dir=dist --public-url=. --no-source-maps src/index.html"
+    "dist": "parcel build --dist-dir=dist --public-url=/dist --no-source-maps src/index.html"
   },
   "browserslist": "cover 99.5%, last 3 versions, not dead",
   "repository": {
