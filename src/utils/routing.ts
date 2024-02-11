@@ -12,22 +12,28 @@ import { initPageAdminModeCheck } from "../modules/admin/adminMode";
 // Changing pages must make a new page request.
 $(() => entry());
 
+const ROUTES = {
+  "/archive": showArchive,
+  "/admin": showAdmin,
+};
+
 function entry() {
-  switch (window.location.search) {
-    case "?archive":
-      showArchive();
-      break;
-    case "?admin":
-    case "?adminE":
-      showAdmin();
-      break;
-    default:
-      showHome();
-      break;
-  }
+  renderRoute();
 
   // check for admin mode - if not, it will disable and reload
   initPageAdminModeCheck();
+}
+
+function renderRoute() {
+  for (const [route, handler] of Object.entries(ROUTES)) {
+    if (new RegExp(route).test(window.location.pathname)) {
+      handler();
+      return;
+    }
+  }
+
+  // If nothing else matches, show the home page
+  showHome();
 }
 
 function showHome() {
