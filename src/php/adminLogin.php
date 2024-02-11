@@ -16,7 +16,7 @@ if ($redirectTo) {
     if ($success)
         header("Location: $redirectTo");
     else
-        header("Location: /?adminE");
+        header("Location: /admin?e=1");
     return;
 }
 

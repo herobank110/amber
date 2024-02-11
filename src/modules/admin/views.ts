@@ -6,7 +6,7 @@ export const adminPage = () =>
   $("<div>", { class: "adminLoginPage" }).append(
     $("<h2>", { text: "Admin Section" }),
     $("<form>", { action: "/php/adminLogin.php", method: "post" }).append(
-      location.search.endsWith("E")
+      hasInvalidCredentials()
         ? $("<span>", {
             text: "Sorry, invalid credentials. Please try again",
             class: "errorMsg",
@@ -41,6 +41,10 @@ export const adminPage = () =>
         : $()
     )
   );
+
+function hasInvalidCredentials() {
+  return new URLSearchParams(location.search).get("e") == "1";
+}
 
 function getAdminLoginRedirectTo() {
   return sessionStorage.getItem("adminLoginRedirectTo") || "/";
