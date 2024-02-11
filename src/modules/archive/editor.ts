@@ -1,3 +1,5 @@
+import $ from "jquery";
+
 export const concertEditorPage = () =>
   $("<div>").append(
     //
