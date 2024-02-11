@@ -37,3 +37,29 @@
     transform: translate(2px, 2px);
   }
 }
+
+.inpTextfield {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 2rem;
+  border: 1px solid #000;
+  border-radius: 10px;
+
+  label {
+    font-size: 14pt;
+    margin-bottom: 0.5rem;
+  }
+
+  input {
+    border: none;
+    border-bottom: 1px solid #aaa;
+    margin-bottom: 0.25rem;
+    padding-bottom: 0.25rem;
+    transition: border-bottom 0.1s;
+
+    &:focus {
+      outline: none;
+      border-bottom: 1px solid #000;
+    }
+  }
+}

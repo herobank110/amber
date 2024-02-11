@@ -41,3 +41,33 @@ export const closeButton = () =>
     </svg>
   `
   ).addClass("closeButton");
+
+type BasicInputProps = {
+  name: string;
+  label: string;
+  type?: string;
+};
+
+export const textField = (props: BasicInputProps) =>
+  $("<div>", { class: "inpTextfield" }).append(
+    $("<label>", { for: `lb-${props.name}`, text: props.label }),
+    $("<input>", {
+      name: props.name,
+      id: `lb-${props.name}`,
+      type: props.type ?? "text",
+    })
+  );
+
+type FileUploadFieldProps = BasicInputProps & {
+  /** MIME types, eg image/jpeg, etc */
+  accept: string[];
+};
+
+export const fileUploadField = (props: FileUploadFieldProps) =>
+  textField({...props, type: "file" })
+    .find("input")
+    .attr("accept", props.accept.join(","))
+    .closest("div");
+
+export const checkboxField = (props: BasicInputProps) =>
+  textField({ name: "poster", label: "Poster", type: "file" });
