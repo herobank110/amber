@@ -70,4 +70,4 @@ export const fileUploadField = (props: FileUploadFieldProps) =>
     .closest("div");
 
 export const checkboxField = (props: BasicInputProps) =>
-  textField({ name: "poster", label: "Poster", type: "file" });
+  textField({ ...props, type: "checkbox" });
