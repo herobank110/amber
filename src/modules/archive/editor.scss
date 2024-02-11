@@ -1,26 +1,26 @@
 @use "../../utils/utils.scss" as *;
 
 #concertEditorPage {
-}
+  h1 {
+    text-align: center;
+  }
 
-#concertEditorPage form {
-  width: min(400px, 80vw);
-  margin: 0 auto;
+  form {
+    width: min(600px, 90vw);
+    margin: 0 auto;
 
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-
-  .actionButtons {
     display: flex;
+    flex-direction: column;
     gap: 1rem;
-    justify-content: end;
 
-    button {
-    @include adminButton();
-    //   border: none;
-    //   font-size: 12pt;
-    //   border-radius: 4px;
+    .actionButtons {
+      display: flex;
+      gap: 1rem;
+      justify-content: end;
+
+      button {
+        @include adminButton();
+      }
     }
   }
 }
