@@ -21,7 +21,7 @@ export const adminPage = () =>
       $("<input>", {
         type: "hidden",
         name: "redirectTo",
-        value: sessionStorage.getItem("adminLoginRedirectTo") || "/",
+        value: getAdminLoginRedirectTo(),
       }),
       $("<button>", { type: "submit", text: "Login" })
         //
@@ -35,9 +35,13 @@ export const adminPage = () =>
             (e) => {
               e.preventDefault();
               localStorage.setItem("admin", "true");
-              window.location.href = "/";
+              window.location.href = getAdminLoginRedirectTo();
             }
           )
         : $()
     )
   );
+
+function getAdminLoginRedirectTo() {
+  return sessionStorage.getItem("adminLoginRedirectTo") || "/";
+}
