@@ -12,11 +12,17 @@ export const adminPage = () =>
             class: "errorMsg",
           })
         : $(),
-      $("<input>", { type: "text", name: "username", placeholder: "Username" }),
+      $("<input>", {
+        type: "text",
+        name: "username",
+        placeholder: "Username",
+        autocomplete: "username",
+      }),
       $("<input>", {
         type: "password",
         name: "password",
         placeholder: "Password",
+        autocomplete: "current-password",
       }),
       $("<input>", {
         type: "hidden",
