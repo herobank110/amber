@@ -7,6 +7,7 @@ export const concertEditorPage = () =>
     $("<h1>", { text: "Concert Editor" }),
     $("<form>", { action: "/php/concertEdit.php", method: "post" }).append(
       $("<input>", { type: "hidden", name: "id", value: getConcertID() }),
+      $("<input>", { type: "hidden", name: "op", value: "create" }),
       textField({ name: "title", label: "Title" }),
       textField({ name: "when", label: "When", type: "datetime-local" }),
       fileUploadField({
@@ -15,9 +16,23 @@ export const concertEditorPage = () =>
         type: "file",
         accept: ["image/jpeg", "image/png", "image/webp"],
       }),
-      textField({ name: "facebook", label: "Facebook Link" }),
-      //   checkboxField({ name: "thumbnail", label: "Thumbnail" })
-      $("<div>").append($("<button>"))
+      textField({ name: "facebook", label: "Facebook Link (optional)" }),
+      $("<div>", { class: "actionButtons" }).append(
+        $("<button>", { text: "Save" }),
+        $("<button>", { text: "Cancel" }).on("click", (e) => {
+          e.preventDefault();
+          if (confirm("Are you sure you want to cancel?")) {
+            window.location.href = onCancelUrl();
+          }
+        }),
+        $("<button>", { text: "Delete" }).on("click", (e) => {
+          if (!confirm("Are you sure you want to delete this concert?")) {
+            e.preventDefault();
+            return;
+          }
+          $(e.target).closest("form").find('input[name="op"]').val("delete");
+        })
+      )
     )
   );
 
@@ -27,4 +42,13 @@ function getConcertID() {
   const match = /\/concert\/(\d+)\/edit/.exec(location.pathname);
   if (match) return match[1];
   throw new Error("Invalid URL for concert editor page");
+}
+
+function isNewConcert() {
+  return getConcertID() == "-1";
+}
+
+function onCancelUrl() {
+  if (isNewConcert()) return "/archive";
+  else return location.pathname.replace(/\/edit/, "");
 }

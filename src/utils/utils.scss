@@ -10,19 +10,14 @@
   padding: 0.4em 1em 0.4em 0.5em;
 }
 
-.adminBigButton {
-  display: block;
-  text-decoration: none!important;
-  text-align: center;
-  padding: 1.25em 0em;
-  $m: 2em;
-  margin: $m;
-  width: calc(100% - ($m * 2));
+@mixin adminButton {
   background-color: #e32cff;
   color: white;
   border: none;
   border-radius: 10px;
-  font-size: 18pt;
+  font-size: 12pt;
+  padding: 0.5rem 1rem;
+  min-width: 5em;
   transition: background-color 0.05s, transform 0.05s, box-shadow 0.05s;
 
   &:hover {
@@ -36,6 +31,18 @@
     box-shadow: none;
     transform: translate(2px, 2px);
   }
+}
+
+.adminBigButton {
+  @include adminButton();
+  display: block;
+  text-decoration: none !important;
+  text-align: center;
+  padding: 1.25em 0em;
+  $m: 2em;
+  margin: $m;
+  width: calc(100% - ($m * 2));
+  font-size: 18pt;
 }
 
 .inpTextfield {
