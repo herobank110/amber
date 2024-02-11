@@ -7,6 +7,7 @@ import { makeNavBar } from "../modules/commonUI/navBar";
 import { addScrollDebugUI } from "../modules/debug/debug";
 import { adminPage } from "../modules/admin/views";
 import { initPageAdminModeCheck } from "../modules/admin/adminMode";
+import { concertEditorPage } from "../modules/archive/editor";
 
 // Importing this file starts it.
 // Changing pages must make a new page request.
@@ -15,6 +16,7 @@ $(() => entry());
 const ROUTES = {
   "/archive": showArchive,
   "/admin": showAdmin,
+  "/concert/new": showConcertEditor,
 };
 
 function entry() {
@@ -68,4 +70,8 @@ function showArchive() {
 
 function showAdmin() {
   adminPage().appendTo(document.body);
+}
+
+function showConcertEditor() {
+  concertEditorPage().appendTo(document.body);
 }

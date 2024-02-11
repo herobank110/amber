@@ -18,7 +18,7 @@ export const archivePage = () =>
     );
 
 const adminControls = () =>
-  $("<button>", { text: "Add Concert", class: "adminBigButton" });
+  $("<a>", { text: "Add Concert", class: "adminBigButton", href:"/concert/new" })
 
 const concertsGrid = (props: Concert[]) =>
   $("<div>", { class: "concertsGrid" }).append(
