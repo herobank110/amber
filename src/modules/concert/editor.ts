@@ -15,6 +15,7 @@ export function concertEditorPage() {
   el.find(".adminControls").remove();
   el.find(".concertDetails").append(fileControls());
   el.find(".title").attr("contenteditable", "true");
+  el.find(".when").replaceWith(whenInput(concert.when));
   return el;
 }
 
@@ -32,3 +33,10 @@ const fileControls = () =>
       href: ``,
     })
   );
+
+const whenInput = (date: string) =>
+  $("<input>", {
+    type: "datetime-local",
+    value: date,
+    class: "when",
+  });
