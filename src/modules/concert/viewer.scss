@@ -3,15 +3,19 @@
   place-items: center;
   text-align: center;
   gap: 1em;
+  width: min(90%, 700px);
+  margin: 0 auto;
 
-  & .closeButton {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 20px;
-    height: 20px;
-    padding: 0.5rem;
-    cursor: pointer;
+
+  & .backButton {
+    justify-self: start;
+    // position: absolute;
+    // top: 0;
+    // right: 0;
+    // width: 20px;
+    // height: 20px;
+    // padding: 0.5rem;
+    // cursor: pointer;
   }
 
   & .posterWrap {
@@ -28,6 +32,11 @@
     aspect-ratio: 3/4;
     max-height: min(65lvh, 120vw);
     border-radius: 8px;
+
+    box-shadow: 
+    1px 0px 0px 1px #0001,
+    3px 1px 8px 0px #0003,
+    ;
   }
 
   & h2 {

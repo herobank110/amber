@@ -16,6 +16,11 @@ export const concertViewerPage = () => {
 
 const concertDetails = (props: Concert) =>
   $("<div>", { class: "concertDetails" }).append(
+    $("<a>", {
+      href: "/archive",
+      text: "🢄 Back to All Concerts",
+      class: "backButton",
+    }),
     $("<div>", { class: "posterWrap" }).append(
       $("<img>", {
         class: "poster",
