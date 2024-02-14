@@ -64,6 +64,9 @@ const concertDetails = (props: Concert) =>
     .on("click", onClickConcertDetails);
 
 function onClickConcertCard(concert: Concert) {
+  location.href = `/concert/${concert.id}`;
+  return;
+
   const el = concertDetails(concert);
   const m = window.innerWidth - document.body.clientWidth;
   $("body")

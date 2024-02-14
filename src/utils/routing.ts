@@ -8,6 +8,7 @@ import { addScrollDebugUI } from "../modules/debug/debug";
 import { adminPage } from "../modules/admin/views";
 import { initPageAdminModeCheck } from "../modules/admin/adminMode";
 import { concertEditorPage } from "../modules/archive/editor";
+import { concertViewerPage } from "../modules/concert/viewer";
 
 // Importing this file starts it.
 // Changing pages must make a new page request.
@@ -17,6 +18,7 @@ const ROUTES = {
   "/archive": showArchive,
   "/admin": showAdmin,
   "/concert/new": showConcertEditor,
+  "/concert/:id": showConcertViewer,
 };
 
 function entry() {
@@ -28,13 +30,15 @@ function entry() {
 
 function renderRoute() {
   for (const [route, handler] of Object.entries(ROUTES)) {
-    if (new RegExp(route).test(window.location.pathname)) {
+    const reouteRegExp = new RegExp(route.replace(/:\w+/, "\\w+"));
+    if (reouteRegExp.test(location.pathname)) {
+      console.log(`Route matched: '${route}' for '${location.pathname}'`);
       handler();
       return;
     }
   }
 
-  // If nothing else matches, show the home page
+  console.log(`Using default home route for ${location.pathname}`);
   showHome();
 }
 
@@ -74,4 +78,8 @@ function showAdmin() {
 
 function showConcertEditor() {
   concertEditorPage().appendTo(document.body);
+}
+
+function showConcertViewer() {
+  concertViewerPage().appendTo(document.body);
 }
