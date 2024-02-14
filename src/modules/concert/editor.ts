@@ -14,6 +14,7 @@ export function concertEditorPage() {
   el.addClass("concertEditorPage");
   el.find(".adminControls").remove();
   el.find(".concertDetails").append(fileControls({ id: concert.id }));
+  el.find(".posterWrap").append(posterControls());
   el.find(".title").attr("contenteditable", "true");
   el.find(".when").replaceWith(whenInput(concert.when));
   return el;
@@ -34,6 +35,16 @@ const fileControls = (props: { id: number }) =>
     }).on("click", (e) => {
       if (!confirm("Are you sure you want to discard changes?"))
         e.preventDefault();
+    })
+  );
+
+const posterControls = () =>
+  $("<div>", { class: "posterControlsWrap" }).append(
+    $("<label>", { text: "⤒ Upload", for: "posterInput" }),
+    $("<input>", { id: "posterInput", type: "file",
+accept: "image/png,image/jpeg"
+}).on("change", (e) => {
+        console.log("File changed", (e.target as HTMLInputElement).files?.[0]);
     })
   );
 
