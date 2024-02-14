@@ -1,9 +1,9 @@
 import $ from "jquery";
-import amberDb, { Concert } from "../archive/amberDb";
+import { Concert } from "../archive/amberDb";
 import { facebookButton } from "../../utils/view";
 import { longDate } from "../../utils/utils";
+import { getConcert } from "./common";
 import "./viewer.scss";
-import { makeNavBar } from "../commonUI/navBar";
 
 export const concertViewerPage = () => {
   const concert = getConcert();
@@ -49,10 +49,3 @@ const concertDetails = (props: Concert) =>
     ),
     props.facebook ? facebookButton(props.facebook) : $()
   );
-
-function getConcert() {
-  const match = /\/concert\/(\d+)/.exec(location.pathname);
-  if (!match) throw new Error("Invalid URL for concert viewer page");
-  const id = +match[1];
-  return amberDb.concerts.find((x) => x.id == id);
-}

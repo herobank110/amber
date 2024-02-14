@@ -7,7 +7,7 @@ import { makeNavBar } from "../modules/commonUI/navBar";
 import { addScrollDebugUI } from "../modules/debug/debug";
 import { adminPage } from "../modules/admin/views";
 import { initPageAdminModeCheck } from "../modules/admin/adminMode";
-import { concertEditorPage } from "../modules/archive/editor";
+import { concertEditorPage } from "../modules/concert/editor";
 import { concertViewerPage } from "../modules/concert/viewer";
 
 // Importing this file starts it.
@@ -78,7 +78,9 @@ function showAdmin() {
 }
 
 function showConcertEditor() {
+  makeNavBar().appendTo(document.body);
   concertEditorPage().appendTo(document.body);
+  footer().appendTo(document.body);
 }
 
 function showConcertViewer() {
