@@ -16,17 +16,17 @@ export const concertViewerPage = () => {
 
 const concertDetails = (props: Concert) =>
   $("<div>", { class: "concertDetails" }).append(
-    $("<div>", { class: "popupInner" }).append(
-      $("<div>", { class: "posterWrap" }).append(
-        $("<img>", {
-          class: "poster",
-          src: props.poster,
-        })
-      ),
+    $("<div>", { class: "posterWrap" }).append(
+      $("<img>", {
+        class: "poster",
+        src: props.poster,
+      })
+    ),
+    $("<div>").append(
       $("<h2>", { text: props.title }),
-      $("<span>", { text: longDate(props.when) }),
-      props.facebook ? facebookButton(props.facebook) : $()
-    )
+      $("<span>", { text: longDate(props.when) })
+    ),
+    props.facebook ? facebookButton(props.facebook) : $()
   );
 
 function getConcert() {
