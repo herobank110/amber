@@ -20,7 +20,7 @@ export const archivePage = () =>
 const adminControls = () =>
   $("<a>", {
     text: "Add Concert",
-    class: "adminButton adminBigButton",
+    class: "adminBigButton",
     href: "/concert/new",
   });
 

@@ -9,14 +9,29 @@ export const concertViewerPage = () => {
   const concert = getConcert();
   if (!concert) throw new Error("Concert not found");
 
-  return $("<div>").append(
+  return $("<main>", { id: "concertDetailsPage" }).append(
     //
     concertDetails(concert)
   );
 };
 
+const adminControls = (props: { id: number }) =>
+  $("<div>", { class: "adminControls" }).append(
+    $("<a>", {
+      text: "Edit",
+      class: "adminButton",
+      href: `/concert/${props.id}/edit`,
+    }),
+    $("<a>", {
+      text: "Delete",
+      class: "adminButton",
+      href: `/php/concertDelete.php?id=${props.id}`,
+    })
+  );
+
 const concertDetails = (props: Concert) =>
   $("<div>", { class: "concertDetails" }).append(
+    adminControls({ id: props.id }),
     $("<a>", {
       href: "/archive",
       text: "🢄 Back to All Concerts",

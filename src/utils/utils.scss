@@ -19,6 +19,7 @@
   padding: 0.5rem 1rem;
   min-width: 5em;
   transition: background-color 0.05s, transform 0.05s, box-shadow 0.05s;
+  text-decoration: none!important;
 
   &:hover {
     background-color: #d329ee;
@@ -31,6 +32,11 @@
     box-shadow: none;
     transform: translate(2px, 2px);
   }
+}
+
+// for extra convenience, a class is also defined
+.adminButton {
+  @include adminButton();
 }
 
 .adminBigButton {

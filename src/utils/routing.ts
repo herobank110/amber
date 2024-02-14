@@ -19,6 +19,7 @@ const ROUTES = {
   "/admin": showAdmin,
   "/concert/new": showConcertEditor,
   "/concert/:id": showConcertViewer,
+  "/concert/:id/edit": showConcertEditor,
 };
 
 function entry() {
@@ -30,7 +31,7 @@ function entry() {
 
 function renderRoute() {
   for (const [route, handler] of Object.entries(ROUTES)) {
-    const reouteRegExp = new RegExp(route.replace(/:\w+/, "\\w+"));
+    const reouteRegExp = new RegExp("^" + route.replace(/:\w+/, "\\w+") + "$");
     if (reouteRegExp.test(location.pathname)) {
       console.log(`Route matched: '${route}' for '${location.pathname}'`);
       handler();
