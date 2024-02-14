@@ -67,6 +67,6 @@ const facebookInput = (props: { val?: string }) =>
       id: "fbInput",
       type: "text",
       value: props.val,
-      placeholder: "Facebook Event Link",
+      placeholder: "Event Link (optional)",
     })
   );
