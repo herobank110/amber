@@ -81,5 +81,7 @@ function showConcertEditor() {
 }
 
 function showConcertViewer() {
+  makeNavBar().appendTo(document.body);
   concertViewerPage().appendTo(document.body);
+  footer().appendTo(document.body);
 }

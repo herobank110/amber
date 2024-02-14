@@ -3,6 +3,7 @@ import amberDb, { Concert } from "../archive/amberDb";
 import { facebookButton } from "../../utils/view";
 import { longDate } from "../../utils/utils";
 import "./viewer.scss";
+import { makeNavBar } from "../commonUI/navBar";
 
 export const concertViewerPage = () => {
   const concert = getConcert();
