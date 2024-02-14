@@ -41,10 +41,12 @@ const fileControls = (props: { id: number }) =>
 const posterControls = () =>
   $("<div>", { class: "posterControlsWrap" }).append(
     $("<label>", { text: "⤒ Upload", for: "posterInput" }),
-    $("<input>", { id: "posterInput", type: "file",
-accept: "image/png,image/jpeg"
-}).on("change", (e) => {
-        console.log("File changed", (e.target as HTMLInputElement).files?.[0]);
+    $("<input>", {
+      id: "posterInput",
+      type: "file",
+      accept: "image/png,image/jpeg",
+    }).on("change", (e) => {
+      console.log("File changed", (e.target as HTMLInputElement).files?.[0]);
     })
   );
 
