@@ -2,8 +2,8 @@ import $ from "jquery";
 import database, { Concert } from "./amberDb";
 import { makeNavBar } from "../commonUI/navBar";
 import "./archive.scss";
-import { closeButton, facebookButton, facebookLogo } from "../../utils/view";
 import { isAdminMode } from "../admin/adminMode";
+import { shortDate } from "../../utils/utils";
 
 export const archivePage = () =>
   $("<div>", { id: "archivePage" })
@@ -45,34 +45,8 @@ const concertCard = (props: Concert) =>
     )
     .on("click", () => onClickConcertCard(props));
 
-const concertDetails = (props: Concert) =>
-  $("<div>", { class: "concertDetails" })
-    .append(
-      $("<div>", { class: "popupInner" }).append(
-        closeButton().on("click", hideDetails),
-        $("<div>", { class: "posterWrap" }).append(
-          $("<img>", {
-            class: "poster",
-            src: props.poster,
-          })
-        ),
-        $("<h3>", { text: props.title }),
-        $("<span>", { text: longDate(props.when) }),
-        props.facebook ? facebookButton(props.facebook) : $()
-      )
-    )
-    .on("click", onClickConcertDetails);
-
 function onClickConcertCard(concert: Concert) {
   location.href = `/concert/${concert.id}`;
-  return;
-
-  const el = concertDetails(concert);
-  const m = window.innerWidth - document.body.clientWidth;
-  $("body")
-    .css("--m", m + "px")
-    .addClass("modal");
-  el.appendTo("body").hide().fadeIn("fast");
 }
 
 function onClickConcertDetails(e: JQuery.ClickEvent) {
@@ -87,23 +61,4 @@ function hideDetails() {
     el.remove();
     $("body").removeClass("modal");
   });
-}
-
-function shortDate(when: string) {
-  return Intl.DateTimeFormat("en-GB", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  }).format(new Date(when));
-}
-
-function longDate(when: string) {
-  return Intl.DateTimeFormat("en-GB", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-    hour: "numeric",
-    minute: "numeric",
-    hour12: true,
-  }).format(new Date(when));
 }
