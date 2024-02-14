@@ -13,13 +13,13 @@ export function concertEditorPage() {
   const el = concertViewerPage();
   el.addClass("concertEditorPage");
   el.find(".adminControls").remove();
-  el.find(".concertDetails").append(fileControls());
+  el.find(".concertDetails").append(fileControls({ id: concert.id }));
   el.find(".title").attr("contenteditable", "true");
   el.find(".when").replaceWith(whenInput(concert.when));
   return el;
 }
 
-const fileControls = () =>
+const fileControls = (props: { id: number }) =>
   // steal the adminControls class for styling
   $("<div>", { class: "adminControls" }).append(
     $("<a>", {
@@ -30,7 +30,10 @@ const fileControls = () =>
     $("<a>", {
       text: "Cancel",
       class: "adminButton",
-      href: ``,
+      href: `/concert/${props.id}`,
+    }).on("click", (e) => {
+      if (!confirm("Are you sure you want to discard changes?"))
+        e.preventDefault();
     })
   );
 
