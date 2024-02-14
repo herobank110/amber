@@ -31,12 +31,12 @@ const adminControls = (props: { id: number }) =>
 
 const concertDetails = (props: Concert) =>
   $("<div>", { class: "concertDetails" }).append(
-    adminControls({ id: props.id }),
     $("<a>", {
       href: "/archive",
       text: "🢄 Back to All Concerts",
       class: "backButton",
     }),
+    adminControls({ id: props.id }),
     $("<div>", { class: "posterWrap" }).append(
       $("<img>", {
         class: "poster",
