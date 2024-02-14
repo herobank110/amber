@@ -2,6 +2,7 @@ import $ from "jquery";
 import { getConcert } from "./common";
 import { concertViewerPage } from "./viewer";
 import "./editor.scss";
+import { facebookLogo } from "../../utils/view";
 
 export function concertEditorPage() {
   const concert = getConcert();
@@ -17,6 +18,8 @@ export function concertEditorPage() {
   el.find(".posterWrap").append(posterControls());
   el.find(".title").attr("contenteditable", "true");
   el.find(".when").replaceWith(whenInput(concert.when));
+  el.find(".fbLink").remove();
+  el.find(".concertDetails").append(facebookInput({ val: concert.facebook }));
   return el;
 }
 
@@ -56,3 +59,14 @@ const whenInput = (date: string) =>
     value: date,
     class: "when",
   });
+
+const facebookInput = (props: { val?: string }) =>
+  $("<div>", { class: "fbLink" }).append(
+    facebookLogo(),
+    $("<input>", {
+      id: "fbInput",
+      type: "text",
+      value: props.val,
+      placeholder: "Facebook Event Link",
+    })
+  );
