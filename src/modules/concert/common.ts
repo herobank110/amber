@@ -17,7 +17,7 @@ function defaultPoster() {
     id: -1,
     title: "Insert Title Here",
     when: now,
-    poster: "https://placehold.it/300x400",
+    poster: "https://placehold.it/600x800",
     thumb: "",
   };
 }

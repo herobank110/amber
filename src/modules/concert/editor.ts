@@ -14,12 +14,12 @@ export function concertEditorPage() {
   const el = concertViewerPage();
   el.addClass("concertEditorPage");
   el.find(".adminControls").remove();
-  el.find(".concertDetails").append(fileControls({ id: concert.id }));
   el.find(".posterWrap").append(posterControls());
   el.find(".title").attr("contenteditable", "true");
   el.find(".when").replaceWith(whenInput(concert.when));
   el.find(".fbLink").remove();
   el.find(".concertDetails").append(facebookInput({ val: concert.facebook }));
+  el.find(".concertDetails").append(fileControls({ id: concert.id }));
   return el;
 }
 
