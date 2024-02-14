@@ -29,6 +29,10 @@ const adminControls = (props: { id: number }) =>
     })
   );
 
+/**
+ * Details about the concert
+ * This is mutated for the editor as well.
+ */
 const concertDetails = (props: Concert) =>
   $("<div>", { class: "concertDetails" }).append(
     $("<a>", {
@@ -44,8 +48,8 @@ const concertDetails = (props: Concert) =>
       })
     ),
     $("<div>").append(
-      $("<h2>", { text: props.title }),
-      $("<span>", { text: longDate(props.when) })
+      $("<h2>", { text: props.title, class: "title" }),
+      $("<span>", { text: longDate(props.when), class: "when" })
     ),
     props.facebook ? facebookButton(props.facebook) : $()
   );
