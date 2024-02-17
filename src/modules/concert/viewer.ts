@@ -1,6 +1,6 @@
 import $ from "jquery";
 import { Concert } from "../archive/amberDb";
-import { facebookButton } from "../../utils/view";
+import { facebookButton, link } from "../../utils/view";
 import { longDate } from "../../utils/utils";
 import { getConcert } from "./common";
 import "./viewer.scss";
@@ -17,7 +17,7 @@ export const concertViewerPage = () => {
 
 const adminControls = (props: { id: number }) =>
   $("<div>", { class: "adminControls" }).append(
-    $("<a>", {
+    link({
       text: "Edit",
       class: "adminButton",
       href: `/concert/${props.id}/edit`,
