@@ -51,7 +51,7 @@ const fileControls = (props: { id: number }) =>
     $("<a>", {
       text: "Cancel",
       class: "adminButton",
-      href: `/concert/${props.id}`,
+      href: props.id == -1 ? "/archive" : `/concert/${props.id}`,
     }).on("click", (e) => {
       if (!confirm("Are you sure you want to discard changes?"))
         e.preventDefault();
