@@ -18,6 +18,9 @@
     .placeholder {
       color: #aaa;
       pointer-events: none;
+      &.hidden {
+        display: none;
+      }
     }
   }
 

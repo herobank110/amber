@@ -26,8 +26,9 @@ export function concertEditorPage() {
 const titleInput = (props: { val: string }) =>
   $("<div>", { class: "title" }).append(
     $("<span>", { text: "Concert Title", class: "placeholder" }),
-    $("<h2>", { contenteditable: true }).on("change", () => {
-      console.log("changed")
+    $("<h2>", { contenteditable: true }).on("input", (e) => {
+      const el = $(e.target);
+      el.siblings(".placeholder").toggleClass("hidden", el.text() != "");
     })
     // $("<input>", {
     //   type: "text",
