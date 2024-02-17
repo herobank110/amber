@@ -1,16 +1,21 @@
 #concertDetailsPage.concertEditorPage {
   .title {
-    border: 2px solid black;
+    border: 1px solid black;
     padding: 0 1rem;
     border-radius: 4px;
     margin-bottom: 0.25rem;
     display: block;
-    text-align: center;
+
+    &:has(.titleH:focus){
+      outline: 1px solid black;
+    }
 
     display: grid;
     place-items: center;
-    & * {
+    * {
       grid-area: 1 / 1;
+    }
+    .titleH {
       width: 100%;
       margin: 0;
       outline: none !important;

@@ -23,20 +23,22 @@ export function concertEditorPage() {
   return el;
 }
 
-const titleInput = (props: { val: string }) =>
-  $("<div>", { class: "title" }).append(
+const titleInput = (props: { val: string }) => {
+  function togglePlaceholder(el: JQuery<HTMLElement>) {
+    el.siblings(".placeholder").toggleClass("hidden", el.text() != "");
+  }
+
+  const el = $("<div>", { class: "title" }).append(
     $("<span>", { text: "Concert Title", class: "placeholder" }),
-    $("<h2>", { contenteditable: true }).on("input", (e) => {
-      const el = $(e.target);
-      el.siblings(".placeholder").toggleClass("hidden", el.text() != "");
-    })
-    // $("<input>", {
-    //   type: "text",
-    //   value: props.val,
-    //   placeholder: "Concert Title",
-    //   // class: "title",
-    // })
+    $("<h2>", { contenteditable: true, text: props.val, class: "titleH" })
+      //
+      .on("input", (e) => togglePlaceholder($(e.target)))
   );
+
+  // initialize state.
+  togglePlaceholder(el.find(".titleH"));
+  return el;
+};
 
 const fileControls = (props: { id: number }) =>
   // steal the adminControls class for styling
