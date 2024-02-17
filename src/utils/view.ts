@@ -11,7 +11,7 @@ export const footer = () =>
       $("<br>"),
       $("<span>", { html: "&copy; 2023 Roath Chamber Orchestra" }),
       $("<br>"),
-      $("<a>", { text: "Switch to admin mode", href: "/admin" }).on(
+      link({ text: "Switch to admin mode", href: "/admin" }).on(
         "click",
         () => {
           sessionStorage.setItem("adminLoginRedirectTo", window.location.href);

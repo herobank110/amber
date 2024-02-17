@@ -38,7 +38,7 @@ const adminControls = (props: { id: number }) =>
  */
 const concertDetails = (props: Concert) =>
   $("<div>", { class: "concertDetails" }).append(
-    $("<a>", {
+    link({
       href: "/archive",
       text: "🢄 Back to All Concerts",
       class: "backButton",
