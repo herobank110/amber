@@ -53,9 +53,7 @@ const fileControls = (props: { id: number }) =>
       class: "adminButton",
       href: props.id == -1 ? "/archive" : `/concert/${props.id}`,
     }).on("click", (e) => {
-      console.log("22222")
       if (!confirm("Are you sure you want to discard changes?")) {
-        e.preventDefault();
         e.stopPropagation();
       }
     })

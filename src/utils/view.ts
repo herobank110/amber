@@ -80,28 +80,36 @@ type LinkProps = {
 
 export const LINK_CHANGED = "amber:linkChanged";
 
-type JQueryBoundEvent = {
-  handler: (e: JQuery.Event) => void;
-};
+type ClickHandler = (e: JQuery.ClickEvent) => void;
 
-export const link = (props: LinkProps) =>
-  $("<a>", props).on("click", (e) => {
-    e.stopPropagation(); // don't call the handlers again in reverse!
-    // @ts-ignore
-    const fn = $._data;
-    const boundEvents: JQueryBoundEvent[] = fn(e.target)?.events?.click ?? [];
-    const handlers = boundEvents.map((x) => x.handler);
-    while (handlers.length > 1) {
-      const top = handlers.pop()!;
-      top(e);
-      if (e.isDefaultPrevented()) {
-        console.log(`Link event was prevented: ${props.href}`);
-        // $(e.target).off("click", top);
-        break;
+export const link = (props: LinkProps) => {
+  let handlers: ClickHandler[] = [];
+
+  const el = $("<a>", props).on("click", (e) => {
+    e.preventDefault();
+    for (const handler of handlers) {
+      handler(e);
+      if (e.isPropagationStopped()) {
+        return;
       }
     }
-
-    e.preventDefault();
     history.pushState({}, "", props.href);
     window.dispatchEvent(new Event(LINK_CHANGED));
   });
+
+  const origOn = el.on;
+  function onOverride() {
+    if (arguments[0] == "click") {
+      handlers.push(arguments[1]);
+      // @ts-ignore
+      return this;
+    } else {
+      // @ts-ignore
+      return origOn.apply(this, arguments);
+    }
+  }
+  // @ts-ignore
+  el.on = onOverride;
+
+  return el;
+};
