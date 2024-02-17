@@ -4,6 +4,7 @@ import { makeNavBar } from "../commonUI/navBar";
 import "./archive.scss";
 import { isAdminMode } from "../admin/adminMode";
 import { shortDate } from "../../utils/utils";
+import { link } from "../../utils/view";
 
 export const archivePage = () =>
   $("<div>", { id: "archivePage" })
@@ -18,7 +19,7 @@ export const archivePage = () =>
     );
 
 const adminControls = () =>
-  $("<a>", {
+  link({
     text: "Add Concert",
     class: "adminBigButton",
     href: "/concert/new",

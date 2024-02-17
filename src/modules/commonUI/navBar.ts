@@ -1,5 +1,6 @@
 import $ from "jquery";
 import "./navBar.scss";
+import { link } from "../../utils/view";
 
 export const makeNavBar = () =>
   $("<nav>").append(
@@ -26,12 +27,12 @@ const deskopNav = () =>
 
 const navItem = (props: NavItemProps) =>
   $("<li>", { class: "navItem" }).append(
-    $("<a>", { href: props.href, text: props.text })
+    link({ href: props.href, text: props.text })
   );
 
 const logoItem = () =>
   //
-  $("<a>", { href: "/", class: "logo" });
+  link({ href: "/", class: "logo" });
 
 const mobileNav = () =>
   $("<div>", { class: "mobile" }).append(

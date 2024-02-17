@@ -26,6 +26,9 @@ const adminControls = (props: { id: number }) =>
       text: "Delete",
       class: "adminButton",
       href: `/php/concertDelete.php?id=${props.id}`,
+    }).on("click", (e) => {
+      if (!confirm("Are you sure you want to delete this concert?"))
+        e.preventDefault();
     })
   );
 

@@ -80,8 +80,27 @@ type LinkProps = {
 
 export const LINK_CHANGED = "amber:linkChanged";
 
+type JQueryBoundEvent = {
+  handler: (e: JQuery.Event) => void;
+};
+
 export const link = (props: LinkProps) =>
   $("<a>", props).on("click", (e) => {
+    e.stopPropagation(); // don't call the handlers again in reverse!
+    // @ts-ignore
+    const fn = $._data;
+    const boundEvents: JQueryBoundEvent[] = fn(e.target)?.events?.click ?? [];
+    const handlers = boundEvents.map((x) => x.handler);
+    while (handlers.length > 1) {
+      const top = handlers.pop()!;
+      top(e);
+      if (e.isDefaultPrevented()) {
+        console.log(`Link event was prevented: ${props.href}`);
+        // $(e.target).off("click", top);
+        break;
+      }
+    }
+
     e.preventDefault();
     history.pushState({}, "", props.href);
     window.dispatchEvent(new Event(LINK_CHANGED));

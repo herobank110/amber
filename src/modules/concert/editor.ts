@@ -2,7 +2,7 @@ import $ from "jquery";
 import { getConcert } from "./common";
 import { concertViewerPage } from "./viewer";
 import "./editor.scss";
-import { facebookLogo } from "../../utils/view";
+import { facebookLogo, link } from "../../utils/view";
 
 export function concertEditorPage() {
   const concert = getConcert();
@@ -43,18 +43,21 @@ const titleInput = (props: { val: string }) => {
 const fileControls = (props: { id: number }) =>
   // steal the adminControls class for styling
   $("<div>", { class: "adminControls" }).append(
-    $("<a>", {
+    link({
       text: "Save",
       class: "adminButton",
       href: ``,
     }),
-    $("<a>", {
+    link({
       text: "Cancel",
       class: "adminButton",
       href: props.id == -1 ? "/archive" : `/concert/${props.id}`,
     }).on("click", (e) => {
-      if (!confirm("Are you sure you want to discard changes?"))
+      console.log("22222")
+      if (!confirm("Are you sure you want to discard changes?")) {
         e.preventDefault();
+        e.stopPropagation();
+      }
     })
   );
 
