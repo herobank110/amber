@@ -36,6 +36,8 @@ function bindLinkClickedRerouting() {
 }
 
 function renderRoute() {
+  document.body.innerHTML = "";
+
   for (const [route, handler] of Object.entries(ROUTES)) {
     const reouteRegExp = new RegExp("^" + route.replace(/:\w+/, "\\w+") + "$");
     if (reouteRegExp.test(location.pathname)) {
