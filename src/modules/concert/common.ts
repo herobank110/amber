@@ -1,5 +1,6 @@
 import amberDb, { Concert } from "../archive/amberDb";
-// import placeholderPoster from "../../rsrc/posterPlaceholder.png";
+// @ts-ignore
+import placeholderPoster from "../../rsrc/placeholderConcert.png";
 
 export function getConcert(): Concert {
   if (location.pathname === "/concert/new") return defaultPoster();
@@ -17,7 +18,7 @@ function defaultPoster() {
     id: -1,
     title: "",
     when: now,
-    poster: "https://placehold.it/600x800",
+    poster: placeholderPoster,
     thumb: "",
   };
 }
