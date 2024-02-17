@@ -37,8 +37,11 @@ function bindLinkClickedRerouting() {
 }
 
 function renderRoute() {
+  // reset state if re-using SPA
+  window.scrollTo(0, 0);
   document.body.innerHTML = "";
 
+  // find handler
   for (const [route, handler] of Object.entries(ROUTES)) {
     const reouteRegExp = new RegExp("^" + route.replace(/:\w+/, "\\w+") + "$");
     if (reouteRegExp.test(location.pathname)) {
@@ -48,6 +51,7 @@ function renderRoute() {
     }
   }
 
+  // default handler
   console.log(`Using default home route for ${location.pathname}`);
   showHome();
 }
