@@ -22,6 +22,8 @@
   $r: 8px;
   border-radius: $r;
   cursor: pointer;
+  text-decoration: none !important;
+  color: black !important;
 
   & .media {
     aspect-ratio: 4/3;
@@ -61,4 +63,3 @@
     background: #eee;
   }
 }
-

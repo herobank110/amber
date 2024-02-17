@@ -33,18 +33,16 @@ const concertsGrid = (props: Concert[]) =>
   );
 
 const concertCard = (props: Concert) =>
-  $("<div>", { class: "concertCard" })
-    .append(
-      $("<div>", {
-        class: "media",
-        css: { backgroundImage: `url('${props.thumb}')` },
-      }),
-      $("<div>", { class: "info" }).append(
-        $("<p>", { class: "when", text: shortDate(props.when) }),
-        $("<h3>", { class: "title", text: props.title })
-      )
+  link({ href: `/concert/${props.id}`, class: "concertCard" }).append(
+    $("<div>", {
+      class: "media",
+      css: { backgroundImage: `url('${props.thumb}')` },
+    }),
+    $("<div>", { class: "info" }).append(
+      $("<p>", { class: "when", text: shortDate(props.when) }),
+      $("<h3>", { class: "title", text: props.title })
     )
-    .on("click", () => onClickConcertCard(props));
+  );
 
 function onClickConcertCard(concert: Concert) {
   location.href = `/concert/${concert.id}`;
