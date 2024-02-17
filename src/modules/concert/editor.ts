@@ -15,13 +15,27 @@ export function concertEditorPage() {
   el.addClass("concertEditorPage");
   el.find(".adminControls").remove();
   el.find(".posterWrap").append(posterControls());
-  el.find(".title").attr("contenteditable", "true");
+  el.find(".title").replaceWith(titleInput({ val: concert.title }));
   el.find(".when").replaceWith(whenInput(concert.when));
   el.find(".fbLink").remove();
   el.find(".concertDetails").append(facebookInput({ val: concert.facebook }));
   el.find(".concertDetails").append(fileControls({ id: concert.id }));
   return el;
 }
+
+const titleInput = (props: { val: string }) =>
+  $("<div>", { class: "title" }).append(
+    $("<span>", { text: "Concert Title", class: "placeholder" }),
+    $("<h2>", { contenteditable: true }).on("change", () => {
+      console.log("changed")
+    })
+    // $("<input>", {
+    //   type: "text",
+    //   value: props.val,
+    //   placeholder: "Concert Title",
+    //   // class: "title",
+    // })
+  );
 
 const fileControls = (props: { id: number }) =>
   // steal the adminControls class for styling

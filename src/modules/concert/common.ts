@@ -15,7 +15,7 @@ function defaultPoster() {
   console.log("defaultPoster: now", now);
   return {
     id: -1,
-    title: "Concert Title",
+    title: "",
     when: now,
     poster: "https://placehold.it/600x800",
     thumb: "",
