@@ -33,6 +33,7 @@ function entry() {
 
 function bindLinkClickedRerouting() {
   window.addEventListener(LINK_CHANGED, renderRoute);
+  window.addEventListener("popstate", renderRoute);
 }
 
 function renderRoute() {
