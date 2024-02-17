@@ -1,7 +1,7 @@
 import $ from "jquery";
 import { mainHome } from "../modules/home/view";
 import { initHomeScrollAnims } from "../modules/home/scrollAnims";
-import { facebookButton, footer } from "./view";
+import { LINK_CHANGED, facebookButton, footer } from "./view";
 import { archivePage } from "../modules/archive/view";
 import { makeNavBar } from "../modules/commonUI/navBar";
 import { addScrollDebugUI } from "../modules/debug/debug";
@@ -27,6 +27,12 @@ function entry() {
 
   // check for admin mode - if not, it will disable and reload
   initPageAdminModeCheck();
+
+  bindLinkClickedRerouting();
+}
+
+function bindLinkClickedRerouting() {
+  window.addEventListener(LINK_CHANGED, renderRoute);
 }
 
 function renderRoute() {

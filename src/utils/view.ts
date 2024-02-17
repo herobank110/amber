@@ -64,10 +64,25 @@ type FileUploadFieldProps = BasicInputProps & {
 };
 
 export const fileUploadField = (props: FileUploadFieldProps) =>
-  textField({...props, type: "file" })
+  textField({ ...props, type: "file" })
     .find("input")
     .attr("accept", props.accept.join(","))
     .closest("div");
 
 export const checkboxField = (props: BasicInputProps) =>
   textField({ ...props, type: "checkbox" });
+
+type LinkProps = {
+  href: string;
+  text?: string;
+  class?: string;
+};
+
+export const LINK_CHANGED = "amber:linkChanged";
+
+export const link = (props: LinkProps) =>
+  $("<a>", props).on("click", (e) => {
+    e.preventDefault();
+    history.pushState({}, "", props.href);
+    window.dispatchEvent(new Event(LINK_CHANGED));
+  });
