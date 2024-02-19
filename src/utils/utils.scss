@@ -8,6 +8,13 @@
   width: fit-content;
   color: #0866ff !important;
   padding: 0.4em 1em 0.4em 0.5em;
+  background: white;
+  outline: 1px solid transparent;
+  transition: outline .1s, background .1s;
+  &:hover {
+    background: #f1f1fa;
+    outline: 1px solid #0866ff;
+  }
 }
 
 @mixin adminButton {

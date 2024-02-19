@@ -14,7 +14,10 @@
   & .backButton {
     justify-self: start;
     color: #cc3232 !important;
-    text-decoration: none !important;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   & .posterWrap {

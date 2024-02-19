@@ -46,6 +46,7 @@
     place-items: center;
     border-radius: 8px;
     background: #aaaa;
+    cursor: pointer;
 
     & div {
       padding: 1em;
@@ -59,6 +60,8 @@
     }
 
     & label {
+      user-select: none;
+      cursor: inherit;
       background: #fffc;
       border: none;
       border-radius: 4px;
