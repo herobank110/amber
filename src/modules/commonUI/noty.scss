@@ -1,0 +1,9 @@
+.noty_bar {
+  margin-bottom: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  &.noty_type__info {
+    background: #8ac2e7;
+    border: 1px solid #67a9d4;
+  }
+}

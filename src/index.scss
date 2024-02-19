@@ -1,6 +1,7 @@
 @use "./modules/debug/debug.scss";
 @use "./modules/home/home.scss";
 @use "./modules/home/scrollAnims.scss";
+@use "~noty/lib/noty.css";
 
 body {
   margin: 0;
