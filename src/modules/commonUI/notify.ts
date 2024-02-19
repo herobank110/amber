@@ -6,7 +6,7 @@ type Type = "error" | "success" | "info";
 export function notify(message: string, type: Type = "info") {
   new Noty({
     text: message,
-    type: "info",
+    type: "success",
     // timeout: 2000,
   }).show();
 }

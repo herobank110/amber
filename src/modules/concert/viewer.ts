@@ -24,7 +24,7 @@ const adminControls = (props: { id: number }) =>
     }),
     $("<a>", {
       text: "Delete",
-      class: "adminButton",
+      class: "adminButton outlined",
       href: `/php/concertDelete.php?id=${props.id}`,
     }).on("click", (e) => {
       if (!confirm("Are you sure you want to delete this concert?"))

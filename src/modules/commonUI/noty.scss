@@ -2,8 +2,19 @@
   margin-bottom: 0.5rem;
   padding: 0.5rem 1rem;
   border-radius: 4px;
+
+  @mixin col($c) {
+    background: $c;
+    border: 1px solid darken($c, 10%);
+  }
+
   &.noty_type__info {
-    background: #8ac2e7;
-    border: 1px solid #67a9d4;
+    @include col(#8ac2e7);
+  }
+  &.noty_type__error {
+    @include col(#e78a8a);
+  }
+  &.noty_type__success {
+    @include col(#92e78a);
   }
 }

@@ -32,6 +32,20 @@
     box-shadow: none;
     transform: translate(2px, 2px);
   }
+
+  &.outlined {
+    background-color: white;
+    color: #e32cff;
+    border: 1px solid #e32cff;
+    box-shadow: none;
+
+    &:hover {
+      background-color: #fafafa;
+      // color: white;
+      // box-shadow: 1px 1px 0px 1px #a619bc;
+      // outline: 1px solid #7a1f7a;
+    }
+  }
 }
 
 // for extra convenience, a class is also defined
