@@ -3,6 +3,7 @@ import { getConcert } from "./common";
 import { concertViewerPage } from "./viewer";
 import "./editor.scss";
 import { facebookLogo, link } from "../../utils/view";
+import { Concert } from "../archive/amberDb";
 
 export function concertEditorPage() {
   const concert = getConcert();
@@ -47,6 +48,10 @@ const fileControls = (props: { id: number }) =>
       text: "Save",
       class: "adminButton",
       href: ``,
+    }).on("click", (e) => {
+      const concert = readGuiValues();
+      console.log("fileControls: Save clicked", concert);
+      e.stopPropagation();
     }),
     link({
       text: "Cancel",
@@ -88,3 +93,15 @@ const facebookInput = (props: { val?: string }) =>
       placeholder: "Event Link (optional)",
     })
   );
+
+/** @returns current gui values to send to server for saving */
+function readGuiValues(): Concert {
+  const title = $(".titleH").text();
+  const when = $(".when").val() as string;
+  const fb = $("#fbInput").val() as string;
+  const poster = ($(".poster")[0] as HTMLImageElement).src;
+  const thumb = poster; // TODO: generate a thumbnail
+  const retVal: Concert = { id: getConcert().id, title, when, poster, thumb };
+  if (fb) retVal.facebook = fb;
+  return retVal;
+}
