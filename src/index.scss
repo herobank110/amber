@@ -2,6 +2,7 @@
 @use "./modules/home/home.scss";
 @use "./modules/home/scrollAnims.scss";
 @use "~noty/lib/noty.css";
+@use "./modules/commonUI/noty.scss" as notyCustom;
 
 body {
   margin: 0;

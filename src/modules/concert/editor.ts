@@ -1,10 +1,12 @@
 import $ from "jquery";
+import Noty from "noty";
 import { getConcert } from "./common";
 import { concertViewerPage } from "./viewer";
 import "./editor.scss";
 import { facebookLogo, link } from "../../utils/view";
 import { Concert } from "../archive/amberDb";
 import { notify } from "../commonUI/notify";
+import { saveConcert } from "../amberDb/amberDb";
 
 export function concertEditorPage() {
   const concert = getConcert();
@@ -52,7 +54,13 @@ const fileControls = (props: { id: number }) =>
     }).on("click", (e) => {
       const concert = readGuiValues();
       console.log("fileControls: Save clicked", concert);
-      notify("Sex");
+      const savingNoty = new Noty({
+        text: "Saving...",
+        type: "info",
+        layout: "center",
+      });
+      savingNoty.show();
+saveConcert(concert);
       e.stopPropagation();
     }),
     link({
