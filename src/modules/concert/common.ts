@@ -1,14 +1,16 @@
-import amberDb, { Concert } from "../archive/amberDb";
 // @ts-ignore
 import placeholderPoster from "../../rsrc/placeholderConcert.png";
+import { Concert, getConcerts } from "../amberDb/amberDb";
 
-export function getConcert(): Concert {
+export async function getConcert(): Promise<Concert> {
   if (location.pathname === "/concert/new") return defaultPoster();
 
   const match = /\/concert\/(\d+)/.exec(location.pathname);
   if (!match) throw new Error("Invalid URL for concert viewer page");
   const id = +match[1];
-  return amberDb.concerts.find((x) => x.id == id)!;
+
+  const concerts = await getConcerts();
+  return concerts.find((x) => x.id == id)!;
 }
 
 function defaultPoster() {

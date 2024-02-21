@@ -1,19 +1,19 @@
 import $ from "jquery";
-import { Concert } from "../archive/amberDb";
 import { facebookButton, link } from "../../utils/view";
 import { longDate } from "../../utils/utils";
 import { getConcert } from "./common";
 import "./viewer.scss";
+import { Concert } from "../amberDb/amberDb";
 
-export const concertViewerPage = () => {
-  const concert = getConcert();
+export async function concertViewerPage() {
+  const concert = await getConcert();
   if (!concert) throw new Error("Concert not found");
 
   return $("<main>", { id: "concertDetailsPage" }).append(
     //
     concertDetails(concert)
   );
-};
+}
 
 const adminControls = (props: { id: number }) =>
   $("<div>", { class: "adminControls" }).append(
