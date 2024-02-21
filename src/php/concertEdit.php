@@ -9,13 +9,13 @@ function readParams() {
         'when' => filter_input(INPUT_POST, 'when'),
         'poster' => filter_input(INPUT_POST, 'poster', FILTER_VALIDATE_URL),
         'thumb' => filter_input(INPUT_POST, 'thumb', FILTER_VALIDATE_URL),
-        'facebook' => filter_input(INPUT_POST, 'facebook', FILTER_VALIDATE_URL),
+        'facebook' => filter_input(INPUT_POST, 'facebook', FILTER_VALIDATE_URL, FILTER_NULL_ON_FAILURE),
     ];
 }
 
 function validateParams($params) {
     if(!$params['id'] || !$params['title'] || !strtotime($params['when']) ||
-       !$params['poster'] || !$params['thumb'] || !$params['facebook']
+       !$params['poster'] || !$params['thumb']
     ) {
         return [false, "One or more invalid or missing parameter(s)"];
     }
