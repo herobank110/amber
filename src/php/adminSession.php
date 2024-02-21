@@ -1,6 +1,6 @@
 <?php
 
-function isLoggedAsAsAdmin()
+function isLoggedInAsAdmin()
 {
     ensure_session_started();
     return (bool) ($_SESSION["isLoggedInAsAdmin"] ?? false);
