@@ -74,7 +74,8 @@ function main() {
         return;
     }
 
-    [$statement, $errorMessage] = $params['id'] == -1 ?  insertConcertStatement($params) : updateConcertStatement($params);
+    $isNew = $params['id'] == -1;
+    [$statement, $errorMessage] = $isNew ?  insertConcertStatement($params) : updateConcertStatement($params);
     if ($statement === null) {
         http_response_code(500);
         echo "Failed to create statement: $errorMessage";
@@ -86,6 +87,11 @@ function main() {
         http_response_code(500);
         echo "Failed to execute statement: $errorMessage";
         return;
+    }
+
+    if ($isNew) {
+        header('Content-Type: application/json');
+        echo json_encode(['id' => $statement->insert_id]);
     }
 }
 
