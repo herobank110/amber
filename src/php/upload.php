@@ -1,5 +1,6 @@
 <?php
 require __DIR__ . "/../../vendor/autoload.php";
+require __DIR__ . "/paths.php";
 
 use Gupalo\UidGenerator\UidGenerator;
 
@@ -11,7 +12,7 @@ if (!isset($_FILES[$_FILE_KEY])) {
     return;
 }
 
-$storage = new \Upload\Storage\FileSystem("/var/samba/amber/upload");
+$storage = new \Upload\Storage\FileSystem("$SMB_ROOT/upload");
 $file = new \Upload\File($_FILE_KEY, $storage);
 $file->setName($file->getName() . "." . UidGenerator::generate(6));
 $file->addValidations([
