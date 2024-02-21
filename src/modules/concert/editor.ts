@@ -105,7 +105,7 @@ function onClickSave() {
   });
   savingNoty.show();
   saveConcert(concert)
-    .then(() => {
+    .then((newId) => {
       savingNoty.close();
       new Noty({
         text: "Saved successfully",
@@ -113,6 +113,7 @@ function onClickSave() {
         layout: "center",
         timeout: 3000,
       }).show();
+      window.history.pushState({}, "", `/concert/${newId}`);
     })
     .catch((e) => {
       console.error("Failed to save", e);
