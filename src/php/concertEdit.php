@@ -24,8 +24,12 @@ function insertConcert() {
         return [false, "Failed to prepare statement"];
     if(!$statement->bind_param("sssss", $p_title, $p_when, $p_poster, $p_thumb, $p_facebook))
         return [false, "Failed to bind parameters: $statement->error"];
-    if(!$statement->execute())
-        return [false, "Failed to execute statement: $statement->error"];
+    try {
+        if (!$statement->execute())
+            return [false, "Failed to execute statement: " . $statement->error];
+    } catch (mysqli_sql_exception $e) {
+        return [false, "Failed to execute statement: " . $e->getMessage()];
+    }
     return true;
 }
 
