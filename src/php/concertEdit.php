@@ -59,6 +59,12 @@ function executeStatement($statement) {
 }
 
 function main() {
+    if (!isLoggedInAsAdmin()) {
+        http_response_code(403);
+        echo "Admin only";
+        return;
+    }
+
     $params = readParams();
     [$valid, $errorMessage] = validateParams($params);
     if (!$valid) {
