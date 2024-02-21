@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/adminSession.php';
 require_once __DIR__ . '/db.php';
 
 function readParams() {
