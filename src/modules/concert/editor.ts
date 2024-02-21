@@ -5,7 +5,6 @@ import { concertViewerPage } from "./viewer";
 import "./editor.scss";
 import { facebookLogo, link } from "../../utils/view";
 import { Concert } from "../archive/amberDb";
-import { notify } from "../commonUI/notify";
 import { saveConcert } from "../amberDb/amberDb";
 
 export function concertEditorPage() {
@@ -52,15 +51,7 @@ const fileControls = (props: { id: number }) =>
       class: "adminButton",
       href: ``,
     }).on("click", (e) => {
-      const concert = readGuiValues();
-      console.log("fileControls: Save clicked", concert);
-      const savingNoty = new Noty({
-        text: "Saving...",
-        type: "info",
-        layout: "center",
-      });
-      savingNoty.show();
-saveConcert(concert);
+      onClickSave();
       e.stopPropagation();
     }),
     link({
@@ -103,6 +94,40 @@ const facebookInput = (props: { val?: string }) =>
       placeholder: "Event Link (optional)",
     })
   );
+
+function onClickSave() {
+  console.log("fileControls: Save clicked");
+  const concert = readGuiValues();
+  const savingNoty = new Noty({
+    text: "Saving...",
+    type: "info",
+    layout: "center",
+  });
+  savingNoty.show();
+  saveConcert(concert)
+    .then(() => {
+      savingNoty.close();
+      new Noty({
+        text: "Saved successfully",
+        type: "success",
+        layout: "center",
+        timeout: 3000,
+      }).show();
+    })
+    .catch((e) => {
+      console.error("Failed to save", e);
+      new Noty({
+        text: "Failed to save, please try again later",
+        type: "error",
+        layout: "center",
+        timeout: 3000,
+      }).show();
+    })
+    .finally(() => {
+      console.log("fileControls: Save finally complete");
+      savingNoty.close();
+    });
+}
 
 /** @returns current gui values to send to server for saving */
 function readGuiValues(): Concert {
