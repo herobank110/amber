@@ -16,7 +16,8 @@ if (!$p_id || !$p_title || !$p_when || !$p_poster || !$p_thumb || !$p_facebook) 
 
 function insertConcert() {
     $statement = getOrCreateDb()->prepare(<<<SQL
-        INSERT INTO concerts (`title`, `when`, `poster`, `thumb`, `facebook`)
+        INSERT INTO `concerts`
+        (`title`, `when`, `poster`, `thumb`, `facebook`)
         VALUES (?, ?, ?, ?, ?)
         SQL);
     $statement->bind_param("sssss", $p_title, $p_when, $p_poster, $p_thumb, $p_facebook);
@@ -25,7 +26,7 @@ function insertConcert() {
 
 function updateConcert() {
     $statement = getOrCreateDb()->prepare(<<<SQL
-        UPDATE concerts
+        UPDATE `concerts`
         SET `title` = ?, `when` = ?, `poster` = ?, `thumb` = ?, `facebook` = ?
         WHERE `id` = ?
         SQL);
