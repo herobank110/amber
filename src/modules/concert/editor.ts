@@ -7,6 +7,7 @@ import { facebookLogo, link } from "../../utils/view";
 import { Concert } from "../archive/amberDb";
 import { saveConcert } from "../amberDb/amberDb";
 import { uploadFile } from "../../utils/upload";
+import { resizeImage } from "../../utils/utils";
 
 export function concertEditorPage() {
   const concert = getConcert();
@@ -74,7 +75,6 @@ const posterControls = () =>
       type: "file",
       accept: "image/png,image/jpeg",
     }).on("change", (e) => {
-      console.log("FUCK")
       const file = (e.target as HTMLInputElement).files?.[0]
       console.debug("posterControls: File changed: ", file);
       if (file) {
@@ -146,7 +146,7 @@ function readGuiValues(): Concert {
   const when = $(".when").val() as string;
   const fb = $("#fbInput").val() as string;
   const poster = ($(".poster")[0] as HTMLImageElement).src;
-  const thumb = poster; // TODO: generate a thumbnail
+  const thumb = resizeImage(poster, 160, 120);
   const retVal: Concert = { id: getConcert().id, title, when, poster, thumb };
   if (fb) retVal.facebook = fb;
   return retVal;
