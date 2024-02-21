@@ -20,8 +20,13 @@ function insertConcert() {
         (`title`, `when`, `poster`, `thumb`, `facebook`)
         VALUES (?, ?, ?, ?, ?)
         SQL);
-    $statement->bind_param("sssss", $p_title, $p_when, $p_poster, $p_thumb, $p_facebook);
-    return $statement->execute();
+    if ($statement === false)
+        return [false, "Failed to prepare statement"];
+    if(!$statement->bind_param("sssss", $p_title, $p_when, $p_poster, $p_thumb, $p_facebook))
+        return [false, "Failed to bind parameters: $statement->error"];
+    if(!$statement->execute())
+        return [false, "Failed to execute statement: $statement->error"];
+    return true;
 }
 
 function updateConcert() {
@@ -30,13 +35,18 @@ function updateConcert() {
         SET `title` = ?, `when` = ?, `poster` = ?, `thumb` = ?, `facebook` = ?
         WHERE `id` = ?
         SQL);
-    $statement->bind_param("sssssi", $p_title, $p_when, $p_poster, $p_thumb, $p_facebook, $p_id);
-    return $statement->execute();
+    if (!$statement)
+        return [false, "Failed to prepare statement"];
+    if(!$statement->bind_param("sssssi", $p_title, $p_when, $p_poster, $p_thumb, $p_facebook, $p_id))
+        return [false, "Failed to bind parameters: $statement->error"];
+    if(!$statement->execute())
+        return [false, "Failed to execute statement: $statement->error"];
+    return true;
 }
 
-$success = $p_id == -1 ?  insertConcert() : updateConcert();
+[$success, $errorMessage] = $p_id == -1 ?  insertConcert() : updateConcert();
 if (!$success) {
     http_response_code(500);
-    echo "Failed to update database";
+    echo "Failed to update database: $errorMessage";
     return;
 }
