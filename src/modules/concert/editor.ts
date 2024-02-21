@@ -6,6 +6,7 @@ import "./editor.scss";
 import { facebookLogo, link } from "../../utils/view";
 import { Concert } from "../archive/amberDb";
 import { saveConcert } from "../amberDb/amberDb";
+import { uploadFile } from "../../utils/upload";
 
 export function concertEditorPage() {
   const concert = getConcert();
@@ -73,7 +74,16 @@ const posterControls = () =>
       type: "file",
       accept: "image/png,image/jpeg",
     }).on("change", (e) => {
-      console.log("File changed", (e.target as HTMLInputElement).files?.[0]);
+      console.log("FUCK")
+      const file = (e.target as HTMLInputElement).files?.[0]
+      console.debug("posterControls: File changed: ", file);
+      if (file) {
+        uploadFile(file).then((url) => {
+          if (!url) return;  // Noty displayed already
+          console.log("posterControls: File uploaded: ", url);
+          $(".poster").attr("src", url);
+        })
+      }
     })
   );
 
