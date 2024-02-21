@@ -46,21 +46,3 @@ const concertCard = (props: Concert) =>
       $("<h3>", { class: "title", text: props.title })
     )
   );
-
-function onClickConcertCard(concert: Concert) {
-  location.href = `/concert/${concert.id}`;
-}
-
-function onClickConcertDetails(e: JQuery.ClickEvent) {
-  if (e.target == e.currentTarget)
-    // event was not in the outer part of the popup
-    hideDetails();
-}
-
-function hideDetails() {
-  const el = $(".concertDetails");
-  el.fadeOut("fast", "", () => {
-    el.remove();
-    $("body").removeClass("modal");
-  });
-}
