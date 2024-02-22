@@ -9,6 +9,7 @@ import { adminPage } from "../modules/admin/views";
 import { initPageAdminModeCheck } from "../modules/admin/adminMode";
 import { concertEditorPage } from "../modules/concert/editor";
 import { concertViewerPage } from "../modules/concert/viewer";
+import { cataloguePage } from "../modules/catalogue/catalogue";
 
 // Importing this file starts it.
 // Changing pages must make a new page request.
@@ -16,6 +17,7 @@ $(() => entry());
 
 const ROUTES = {
   "/archive": showArchive,
+  "/catalogue": showCatalogue,
   "/admin": showAdmin,
   "/concert/new": showConcertEditor,
   "/concert/:id": showConcertViewer,
@@ -83,6 +85,12 @@ function jumpToHash() {
 
 function showArchive() {
   archivePage().appendTo(document.body);
+  footer().appendTo(document.body);
+}
+
+function showCatalogue() {
+  makeNavBar().appendTo(document.body);
+  cataloguePage().appendTo(document.body);
   footer().appendTo(document.body);
 }
 
