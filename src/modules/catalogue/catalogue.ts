@@ -1,29 +1,58 @@
 import $ from "jquery";
 import "./catalogue.scss";
+import { link } from "../../utils/view";
+import { Concert, getConcerts } from "../amberDb/amberDb";
+
+type Piece = {
+  id: number;
+  name: string;
+  composer: string;
+  concerts: Concert[];
+};
 
 const pieces = [
   {
     id: 1,
     name: "Symphony No. 5 in C minor, Op. 67",
     composer: "Beethoven, Ludwig van",
-    year: 1808,
+    concerts: [
+      {
+        id: 1,
+        title: "Spring 2044",
+      },
+    ],
   },
   {
     id: 2,
     name: "Egmont Overture, Op. 84",
     composer: "Beethoven, Ludwig van",
-    year: 1810,
+    concerts: [
+      {
+        id: 3,
+        title: "Spring 2077",
+      },
+      {
+        id: 5,
+        title: "Christmas 1653",
+      },
+    ],
   },
   {
     id: 3,
     name: "Flute Concerto No. 2 in D major, K. 314/285d",
     composer: "Mozart, Wolfgang Amadeus",
-    year: 1778,
+    concerts: [
+    {
+      id: 8,
+      title: "The Orchestra's Day Out at the Zoo",
+    }],
   },
 ];
 
 export function cataloguePage() {
-  // sort the pieces by composer, then by name
+  getConcerts().then((concerts) => {
+    $("#cataloguePage .pieceList").replaceWith(pieceList(pieces as Piece[]));
+  });
 
   pieces.sort((a, b) => {
     if (a.composer < b.composer) return -1;
@@ -35,11 +64,22 @@ export function cataloguePage() {
 
   return $("<main>", { id: "cataloguePage" }).append(
     $("<h1>", { text: "Catalogue" }),
+    pieceList([])
+  );
+}
+
+const pieceList = (pieces: Piece[]) =>
+  $("<div>", { class: "pieceList" }).append(
     ...pieces.map((piece) =>
-      $("<div>", { class: "piece" }).append(
-        $("<span>", { text: piece.name }),
-        $("<span>", { text: piece.composer })
+      $("<details>", { class: "piece" }).append(
+        $("<summary>", { text: piece.composer + " - " + piece.name }),
+        $("<span>", { text: "Played in:" }),
+        ...piece.concerts.map((concert) =>
+          link({
+            href: `/concert/${concert.id}`,
+            text: concert.title,
+          })
+        )
       )
     )
   );
-}
