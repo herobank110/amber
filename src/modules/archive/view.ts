@@ -1,22 +1,25 @@
 import $ from "jquery";
-import database, { Concert } from "./amberDb";
 import { makeNavBar } from "../commonUI/navBar";
 import "./archive.scss";
 import { isAdminMode } from "../admin/adminMode";
 import { shortDate } from "../../utils/utils";
 import { link } from "../../utils/view";
+import { Concert, getConcerts } from "../amberDb/amberDb";
 
-export const archivePage = () =>
-  $("<div>", { id: "archivePage" })
-    //
-    .append(
-      makeNavBar(),
-      $("<main>").append(
-        // $("<h1>", { text: "Concerts Archive" }),
-        isAdminMode() ? adminControls() : $(),
-        concertsGrid(database.concerts)
-      )
-    );
+export const archivePage = () => {
+  getConcerts().then((concerts) => {
+    $(".concertsGrid").replaceWith(concertsGrid(concerts));
+  });
+  return $("<div>", { id: "archivePage" }).append(
+    makeNavBar(),
+    $("<main>").append(
+      // $("<h1>", { text: "Concerts Archive" }),
+      isAdminMode() ? adminControls() : $(),
+      concertsGrid([])
+    )
+  );
+};
+$("<div>", { id: "archivePage" });
 
 const adminControls = () =>
   link({
@@ -43,21 +46,3 @@ const concertCard = (props: Concert) =>
       $("<h3>", { class: "title", text: props.title })
     )
   );
-
-function onClickConcertCard(concert: Concert) {
-  location.href = `/concert/${concert.id}`;
-}
-
-function onClickConcertDetails(e: JQuery.ClickEvent) {
-  if (e.target == e.currentTarget)
-    // event was not in the outer part of the popup
-    hideDetails();
-}
-
-function hideDetails() {
-  const el = $(".concertDetails");
-  el.fadeOut("fast", "", () => {
-    el.remove();
-    $("body").removeClass("modal");
-  });
-}

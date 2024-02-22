@@ -4,18 +4,21 @@ import { getConcert } from "./common";
 import { concertViewerPage } from "./viewer";
 import "./editor.scss";
 import { facebookLogo, link } from "../../utils/view";
-import { Concert } from "../archive/amberDb";
-import { saveConcert } from "../amberDb/amberDb";
+import { Concert, saveConcert } from "../amberDb/amberDb";
 import { uploadFile } from "../../utils/upload";
+import { resizeImage } from "../../utils/utils";
 
-export function concertEditorPage() {
-  const concert = getConcert();
+export async function concertEditorPage() {
+  const concert = await getConcert();
   if (!concert) throw new Error("Concert not found");
 
   console.log(`Editing concert ${concert.id}`);
 
   // Start with the viewer page and modify it to the things we want.
-  const el = concertViewerPage();
+  const el = await concertViewerPage();
+  el.append(
+    $("<input>", { type: "hidden", class: "idInput", value: concert.id })
+  );
   el.addClass("concertEditorPage");
   el.find(".adminControls").remove();
   el.find(".posterWrap").append(posterControls());
@@ -74,15 +77,14 @@ const posterControls = () =>
       type: "file",
       accept: "image/png,image/jpeg",
     }).on("change", (e) => {
-      console.log("FUCK")
-      const file = (e.target as HTMLInputElement).files?.[0]
+      const file = (e.target as HTMLInputElement).files?.[0];
       console.debug("posterControls: File changed: ", file);
       if (file) {
         uploadFile(file).then((url) => {
-          if (!url) return;  // Noty displayed already
+          if (!url) return; // Noty displayed already
           console.log("posterControls: File uploaded: ", url);
           $(".poster").attr("src", url);
-        })
+        });
       }
     })
   );
@@ -142,12 +144,13 @@ function onClickSave() {
 
 /** @returns current gui values to send to server for saving */
 function readGuiValues(): Concert {
+  const id = +$(".idInput").val()!;
   const title = $(".titleH").text();
   const when = $(".when").val() as string;
   const fb = $("#fbInput").val() as string;
   const poster = ($(".poster")[0] as HTMLImageElement).src;
-  const thumb = poster; // TODO: generate a thumbnail
-  const retVal: Concert = { id: getConcert().id, title, when, poster, thumb };
+  const thumb = resizeImage(poster, 160, 120);
+  const retVal: Concert = { id, title, when, poster, thumb };
   if (fb) retVal.facebook = fb;
   return retVal;
 }

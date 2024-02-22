@@ -98,14 +98,14 @@ function showAdmin() {
   adminPage().appendTo(document.body);
 }
 
-function showConcertEditor() {
+async function showConcertEditor() {
   makeNavBar().appendTo(document.body);
-  concertEditorPage().appendTo(document.body);
+  (await concertEditorPage()).appendTo(document.body);
   footer().appendTo(document.body);
 }
 
-function showConcertViewer() {
+async function showConcertViewer() {
   makeNavBar().appendTo(document.body);
-  concertViewerPage().appendTo(document.body);
+  (await concertViewerPage()).appendTo(document.body);
   footer().appendTo(document.body);
 }
