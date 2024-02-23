@@ -4,7 +4,7 @@ import { getConcert } from "./common";
 import { concertViewerPage } from "./viewer";
 import "./editor.scss";
 import { facebookLogo, link } from "../../utils/view";
-import { Concert, saveConcert } from "../amberDb/amberDb";
+import { Concert, getConcerts, saveConcert } from "../amberDb/amberDb";
 import { uploadFile } from "../../utils/upload";
 import { resizeImage, setLocation } from "../../utils/utils";
 
@@ -117,8 +117,11 @@ function onClickSave() {
   });
   savingNoty.show();
   saveConcert(concert)
-    .then((newId) => {
+    .then(async (newId) => {
+      console.debug(`fileControls: Save complete : ${newId}`);
       savingNoty.close();
+      console.debug(`fileControls: reloading concerts cache`);
+      await getConcerts(false);
       new Noty({
         text: "Saved successfully",
         type: "success",
