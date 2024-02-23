@@ -49,3 +49,8 @@ export function resizeImage(src: string, x: number, y: number) {
   // returns a full url string, for easier parsing and validation later.
   return 'https://roathchamber.org/php/resize.php?' + params.toString();
 }
+
+export function setLocation(url: string) {
+  history.pushState({}, "", url);
+  window.dispatchEvent(new Event("popstate"));
+}

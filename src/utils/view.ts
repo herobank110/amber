@@ -1,5 +1,6 @@
 import $ from "jquery";
 import "./utils.scss";
+import { setLocation } from "./utils";
 
 export const footer = () =>
   $("<footer>").append(
@@ -78,8 +79,6 @@ type LinkProps = {
   class?: string;
 };
 
-export const LINK_CHANGED = "amber:linkChanged";
-
 type ClickHandler = (e: JQuery.ClickEvent) => void;
 
 export const link = (props: LinkProps) => {
@@ -93,8 +92,7 @@ export const link = (props: LinkProps) => {
         return;
       }
     }
-    history.pushState({}, "", props.href);
-    window.dispatchEvent(new Event(LINK_CHANGED));
+    setLocation(props.href);
   });
 
   const origOn = el.on;
