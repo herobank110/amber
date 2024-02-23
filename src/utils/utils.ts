@@ -46,5 +46,6 @@ export function resizeImage(src: string, x: number, y: number) {
   params.set('src', src);
   params.set('x', x.toString());
   params.set('y', y.toString());
-  return '/php/resize.php?' + params.toString();
+  // returns a full url string, for easier parsing and validation later.
+  return 'https://roathchamber.org/php/resize.php?' + params.toString();
 }
