@@ -16,7 +16,3 @@ create table `concerts` (
   `poster` varchar(200) not null,
   `facebook` varchar(100) not null
 ) engine=InnoDB;
-
-
--- adjust thumb column to the right size
-ALTER TABLE `concerts` MODIFY `thumb` varchar(200) not null;
