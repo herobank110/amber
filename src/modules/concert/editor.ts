@@ -42,7 +42,13 @@ const titleInput = (props: { val: string }) => {
     $("<span>", { text: "Concert Title", class: "placeholder" }),
     $("<h2>", { contenteditable: true, text: props.val, class: "titleH" })
       //
-      .on("input", (e) => togglePlaceholder($(e.target)))
+      .on("input", (e) => {
+        const el = $(e.target);
+        // Ensure if html is pasted, it is converted to just raw text.
+        // This is a downside of using contenteditable.
+        el.html(el.text());
+        togglePlaceholder(el);
+      })
   );
 
   // initialize state.
@@ -151,10 +157,7 @@ function onClickSave() {
 /** @returns current gui values to send to server for saving */
 function readGuiValues(): Concert {
   const id = +$(".idInput").val()!;
-  // need to use textContent instead of jquery text() function
-  // because randomly there are 2 h2 elements that get nested and
-  // jquery concatenates them. probably something to do with contenteditable
-  const title = $(".titleH")[0]?.textContent as string;
+  const title = $(".titleH").text();
   const when = $(".when").val() as string;
   const fb = $("#fbInput").val() as string;
   const poster = ($(".poster")[0] as HTMLImageElement).src;
