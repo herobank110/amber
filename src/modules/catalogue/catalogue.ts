@@ -42,10 +42,11 @@ const pieces = [
     name: "Flute Concerto No. 2 in D major, K. 314/285d",
     composer: "Mozart, Wolfgang Amadeus",
     concerts: [
-    {
-      id: 8,
-      title: "The Orchestra's Day Out at the Zoo",
-    }],
+      {
+        id: 8,
+        title: "The Orchestra's Day Out at the Zoo",
+      },
+    ],
   },
 ];
 
@@ -55,11 +56,9 @@ export function cataloguePage() {
   });
 
   pieces.sort((a, b) => {
-    if (a.composer < b.composer) return -1;
-    if (a.composer > b.composer) return 1;
-    if (a.name < b.name) return -1;
-    if (a.name > b.name) return 1;
-    return 0;
+    let retVal = a.composer.localeCompare(b.composer);
+    if (retVal == 0) retVal = a.name.localeCompare(b.name);
+    return retVal;
   });
 
   return $("<main>", { id: "cataloguePage" }).append(
@@ -73,7 +72,7 @@ const pieceList = (pieces: Piece[]) =>
     ...pieces.map((piece) =>
       $("<details>", { class: "piece" }).append(
         $("<summary>", { text: piece.composer + " - " + piece.name }),
-        $("<span>", { text: "Played in:" }),
+        $("<span>", { html: "Played in:&nbsp;" }),
         ...piece.concerts.map((concert) =>
           link({
             href: `/concert/${concert.id}`,
