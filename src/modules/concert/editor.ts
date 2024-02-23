@@ -88,7 +88,7 @@ const posterControls = () =>
         onFileChanged(file);
       })
       .on("dragover", (e) => e.preventDefault())
-      .append($("<span>", { text: "Upload Poster" })),
+      .append($("<span>", { text: "Click or Drop File" })),
     $("<input>", {
       id: "posterInput",
       type: "file",
