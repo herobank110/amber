@@ -1,6 +1,7 @@
 import $ from "jquery";
 import "./utils.scss";
 import { setLocation } from "./utils";
+import { logInAsAdmin } from "../modules/admin/adminMode";
 
 export const footer = () =>
   $("<footer>").append(
@@ -12,12 +13,9 @@ export const footer = () =>
       $("<br>"),
       $("<span>", { html: "&copy; 2023-24 Roath Chamber Orchestra" }),
       $("<br>"),
-      link({ text: "Switch to admin mode", href: "/admin" }).on(
-        "click",
-        () => {
-          sessionStorage.setItem("adminLoginRedirectTo", window.location.href);
-        }
-      )
+      $("<a>", { text: "Switch to admin mode", href: "" })
+        //
+        .on("click", () => logInAsAdmin())
     )
   );
 

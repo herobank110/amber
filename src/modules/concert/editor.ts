@@ -7,8 +7,12 @@ import { facebookLogo, link } from "../../utils/view";
 import { Concert, getConcerts, saveConcert } from "../amberDb/amberDb";
 import { uploadFile } from "../../utils/upload";
 import { resizeImage, setLocation } from "../../utils/utils";
+import { requireAdminMode } from "../admin/adminMode";
 
 export async function concertEditorPage() {
+  setTimeout(() => {
+  requireAdminMode();
+  })
   const concert = await getConcert();
   if (!concert) throw new Error("Concert not found");
 
