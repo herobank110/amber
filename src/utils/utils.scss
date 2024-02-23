@@ -10,7 +10,7 @@
   padding: 0.4em 1em 0.4em 0.5em;
   background: white;
   outline: 1px solid transparent;
-  transition: outline .1s, background .1s;
+  transition: outline 0.1s, background 0.1s;
   &:hover {
     background: #f1f1fa;
     outline: 1px solid #0866ff;
@@ -26,7 +26,8 @@
   padding: 0.5rem 1rem;
   min-width: 5em;
   transition: background-color 0.05s, transform 0.05s, box-shadow 0.05s;
-  text-decoration: none!important;
+  text-decoration: none !important;
+  cursor: pointer;
 
   &:hover {
     background-color: #d329ee;
