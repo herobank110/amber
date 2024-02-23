@@ -151,7 +151,10 @@ function onClickSave() {
 /** @returns current gui values to send to server for saving */
 function readGuiValues(): Concert {
   const id = +$(".idInput").val()!;
-  const title = $(".titleH").text();
+  // need to use textContent instead of jquery text() function
+  // because randomly there are 2 h2 elements that get nested and
+  // jquery concatenates them. probably something to do with contenteditable
+  const title = $(".titleH")[0]?.textContent as string;
   const when = $(".when").val() as string;
   const fb = $("#fbInput").val() as string;
   const poster = ($(".poster")[0] as HTMLImageElement).src;
