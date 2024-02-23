@@ -2,7 +2,7 @@
 require __DIR__ . "/../../vendor/autoload.php";
 require __DIR__ . "/paths.php";
 
-$src = filter_input(INPUT_GET, "src");
+$src = urldecode(filter_input(INPUT_GET, "src"));
 $x = filter_input(INPUT_GET, "x", FILTER_VALIDATE_INT);
 $y = filter_input(INPUT_GET, "y", FILTER_VALIDATE_INT);
 
