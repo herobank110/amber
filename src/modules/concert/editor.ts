@@ -82,8 +82,10 @@ const posterControls = () =>
   $("<div>", { class: "posterControlsWrap" }).append(
     $("<label>", { for: "posterInput" })
       .on("drop", (e) => {
+        console.log("posterControls: Poster drop event");
         e.preventDefault();
-        console.log("posterControls: File dropped: ", e);
+        const file = e.originalEvent?.dataTransfer?.files?.item(0) ?? undefined;
+        onFileChanged(file);
       })
       .on("dragover", (e) => e.preventDefault())
       .append($("<span>", { text: "Upload Poster" })),
@@ -92,15 +94,9 @@ const posterControls = () =>
       type: "file",
       accept: "image/png,image/jpeg",
     }).on("change", (e) => {
+      console.log("posterControls: File input changed");
       const file = (e.target as HTMLInputElement).files?.[0];
-      console.debug("posterControls: File changed: ", file);
-      if (file) {
-        uploadFile(file).then((url) => {
-          if (!url) return; // Noty displayed already
-          console.log("posterControls: File uploaded: ", url);
-          $(".poster").attr("src", url);
-        });
-      }
+      onFileChanged(file);
     })
   );
 
@@ -121,6 +117,18 @@ const facebookInput = (props: { val?: string }) =>
       placeholder: "Event Link (optional)",
     })
   );
+
+function onFileChanged(file: File | undefined) {
+  console.debug(`onFileChanged(file=${file})`);
+  if (!file) {
+    return;
+  }
+  uploadFile(file).then((url) => {
+    if (!url) return; // Noty displayed already
+    console.log("posterControls: File uploaded: ", url);
+    $(".poster").attr("src", url);
+  });
+}
 
 function onClickSave() {
   console.log("fileControls: Save clicked");
