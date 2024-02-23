@@ -6,13 +6,24 @@ import { getConcert } from "./common";
 import "./viewer.scss";
 import { Concert, deleteConcert } from "../amberDb/amberDb";
 
-export async function concertViewerPage() {
-  const concert = await getConcert();
-  if (!concert) throw new Error("Concert not found");
+export function concertViewerPage() {
+  getConcert().then((concert) => {
+    if (!concert) {
+      new Noty({
+        text: "Requested concert not found",
+        type: "error",
+        timeout: 3000,
+        layout: "center",
+      }).show();
+      setLocation("/archive");
+      return;
+    }
+    $(".concertDetails").replaceWith(concertDetails(concert));
+  });
 
   return $("<main>", { id: "concertDetailsPage" }).append(
     //
-    concertDetails(concert)
+    $("<div>", { class: "concertDetails" })
   );
 }
 
@@ -37,7 +48,9 @@ const adminControls = (props: { id: number }) =>
         const success = await deleteConcert(props.id);
         processingNoty.close();
         new Noty({
-          text: success ? "Concert deleted successfully" : "Failed to delete concert",
+          text: success
+            ? "Concert deleted successfully"
+            : "Failed to delete concert",
           type: success ? "success" : "error",
           timeout: 3000,
           layout: "center",
