@@ -10,7 +10,7 @@ export const footer = () =>
         text: "Website By David Kanekanian",
       }),
       $("<br>"),
-      $("<span>", { html: "&copy; 2023 Roath Chamber Orchestra" }),
+      $("<span>", { html: "&copy; 2023-24 Roath Chamber Orchestra" }),
       $("<br>"),
       link({ text: "Switch to admin mode", href: "/admin" }).on(
         "click",
