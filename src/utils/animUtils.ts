@@ -1,4 +1,4 @@
-// import "../lib/scroll-timeline";
+import "../lib/scroll-timeline";
 import { queryAncestor } from "./utils";
 
 export function animate(
