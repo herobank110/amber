@@ -46,7 +46,7 @@ function renderRoute() {
   for (const [route, handler] of Object.entries(ROUTES)) {
     const reouteRegExp = new RegExp("^" + route.replace(/:\w+/, "\\w+") + "$");
     if (reouteRegExp.test(location.pathname)) {
-      console.log(`Route matched: '${route}' for '${location.pathname}'`);
+      console.debug(`renderRoute: Found match: '${route}' for '${location.pathname}'`);
       handler();
       return;
     }
