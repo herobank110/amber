@@ -297,6 +297,8 @@ export async function getConcerts(cached = true): Promise<Concert[]> {
   return JSON.parse(sessionStorage.getItem(CACHE_KEY)!) as Concert[];
 }
 
+const CONCERT_API_URL = "/php/concertEdit.php";
+
 /** a combination of update or insert. */
 export function saveConcert(concert: Concert): Promise<ID> {
   console.debug(`saveConcert(${JSON.stringify(concert)})`);
@@ -308,12 +310,13 @@ export function saveConcert(concert: Concert): Promise<ID> {
     });
   }
 
-  const url = "/php/concertEdit.php";
-  const formData = objectToFormData(concert);
-  // Set the operation explicitly.
-  formData.set("op", concert.id == -1 ? "insert" : "update");
+  const formData = objectToFormData({
+    ...concert,
+    // Set the operation explicitly.
+    op: concert.id == -1 ? "insert" : "update",
+  });
   return new Promise((resolve, reject) => {
-    fetch(url, {
+    fetch(CONCERT_API_URL, {
       method: "POST",
       body: formData,
     })
@@ -327,6 +330,25 @@ export function saveConcert(concert: Concert): Promise<ID> {
       // Reject so we can show an error message to the user.
       .catch(reject);
   });
+}
+
+export async function deleteConcert(id: ID) {
+  console.debug(`deleteConcert(id=${id})`);
+  const formData = objectToFormData({ id, op: "delete" });
+
+  if (isDevMode()) {
+    console.log("deleteConcert: (dev mode) auto resolve");
+    return true;
+  }
+
+  try {
+    await fetch(CONCERT_API_URL, { method: "POST", body: formData });
+  } catch (e) {
+    console.error("Failed to delete concert", e);
+    return false;
+  }
+
+  return true;
 }
 
 function objectToFormData(obj: Record<string, { toString(): string }>) {
