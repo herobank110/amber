@@ -80,9 +80,13 @@ const fileControls = (props: { id: number }) =>
 
 const posterControls = () =>
   $("<div>", { class: "posterControlsWrap" }).append(
-    $("<label>", { for: "posterInput" }).append(
-      $("<span>", { text: "Upload Poster" })
-    ),
+    $("<label>", { for: "posterInput" })
+      .on("drop", (e) => {
+        e.preventDefault();
+        console.log("posterControls: File dropped: ", e);
+      })
+      .on("dragover", (e) => e.preventDefault())
+      .append($("<span>", { text: "Upload Poster" })),
     $("<input>", {
       id: "posterInput",
       type: "file",
