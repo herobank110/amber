@@ -1,9 +1,10 @@
 import $ from "jquery";
+import Noty from "noty";
 import { facebookButton, link } from "../../utils/view";
-import { longDate } from "../../utils/utils";
+import { longDate, setLocation } from "../../utils/utils";
 import { getConcert } from "./common";
 import "./viewer.scss";
-import { Concert } from "../amberDb/amberDb";
+import { Concert, deleteConcert } from "../amberDb/amberDb";
 
 export async function concertViewerPage() {
   const concert = await getConcert();
@@ -25,10 +26,24 @@ const adminControls = (props: { id: number }) =>
     $("<a>", {
       text: "Delete",
       class: "adminButton outlined",
-      href: `/php/concertDelete.php?id=${props.id}`,
-    }).on("click", (e) => {
-      if (!confirm("Are you sure you want to delete this concert?"))
-        e.preventDefault();
+    }).on("click", async () => {
+      if (confirm("Are you sure you want to delete this concert?")) {
+        const processingNoty = new Noty({
+          text: "Processing request...",
+          type: "info",
+          layout: "center",
+        });
+        processingNoty.show();
+        const success = await deleteConcert(props.id);
+        processingNoty.close();
+        new Noty({
+          text: success ? "Concert deleted successfully" : "Failed to delete concert",
+          type: success ? "success" : "error",
+          timeout: 3000,
+          layout: "center",
+        }).show();
+        setLocation("/archive");
+      }
     })
   );
 
