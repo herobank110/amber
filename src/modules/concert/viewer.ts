@@ -5,6 +5,7 @@ import { longDate, setLocation } from "../../utils/utils";
 import { getConcert } from "./common";
 import "./viewer.scss";
 import { Concert, deleteConcert } from "../amberDb/amberDb";
+import { isAdminMode } from "../admin/adminMode";
 
 export function concertViewerPage() {
   getConcert().then((concert) => {
@@ -71,7 +72,7 @@ const concertDetails = (props: Concert) =>
       text: "🢄 Back to All Concerts",
       class: "backButton",
     }),
-    adminControls({ id: props.id }),
+    (isAdminMode() ? adminControls({ id: props.id }) : $()),
     $("<div>", { class: "posterWrap" }).append(
       $("<img>", {
         class: "poster",
