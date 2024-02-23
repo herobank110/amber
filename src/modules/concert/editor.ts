@@ -80,7 +80,9 @@ const fileControls = (props: { id: number }) =>
 
 const posterControls = () =>
   $("<div>", { class: "posterControlsWrap" }).append(
-    $("<label>", { text: "Click to Upload", for: "posterInput" }),
+    $("<label>", { for: "posterInput" }).append(
+      $("<span>", { text: "Upload Poster" })
+    ),
     $("<input>", {
       id: "posterInput",
       type: "file",
