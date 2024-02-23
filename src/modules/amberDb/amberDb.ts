@@ -334,7 +334,7 @@ export function saveConcert(concert: Concert): Promise<ID> {
 
 export async function deleteConcert(id: ID) {
   console.debug(`deleteConcert(id=${id})`);
-  const formData = objectToFormData({ id, op: "delete" });
+  const formData = objectToFormData({ id, op: "autoDeletion" });
 
   if (isDevMode()) {
     console.log("deleteConcert: (dev mode) auto resolve");
