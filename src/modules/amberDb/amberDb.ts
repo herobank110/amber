@@ -280,7 +280,7 @@ const CACHE_KEY = "amberDb.concerts";
 export async function getConcerts(cached = true): Promise<Concert[]> {
   console.debug(`getConcerts(cached=${cached})`);
 
-  if (!cached || localStorage.getItem(CACHE_KEY) === null) {
+  if (!cached || sessionStorage.getItem(CACHE_KEY) === null) {
     console.debug("getConcerts: fetching data");
     let data;
     if (isDevMode()) {
@@ -291,10 +291,10 @@ export async function getConcerts(cached = true): Promise<Concert[]> {
         response.json()
       );
     }
-    localStorage.setItem(CACHE_KEY, JSON.stringify(data));
+    sessionStorage.setItem(CACHE_KEY, JSON.stringify(data));
   }
 
-  return JSON.parse(localStorage.getItem(CACHE_KEY)!) as Concert[];
+  return JSON.parse(sessionStorage.getItem(CACHE_KEY)!) as Concert[];
 }
 
 export function saveConcert(concert: Concert): Promise<ID> {
