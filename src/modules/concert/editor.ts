@@ -9,28 +9,27 @@ import { uploadFile } from "../../utils/upload";
 import { resizeImage, setLocation } from "../../utils/utils";
 import { requireAdminMode } from "../admin/adminMode";
 
-export async function concertEditorPage() {
-  setTimeout(() => {
-  requireAdminMode();
-  })
-  const concert = await getConcert();
-  if (!concert) throw new Error("Concert not found");
-
-  console.log(`Editing concert ${concert.id}`);
+export function concertEditorPage() {
+  console.debug("concertEditorPage()");
+  setTimeout(() => requireAdminMode());
 
   // Start with the viewer page and modify it to the things we want.
-  const el = await concertViewerPage();
-  el.append(
-    $("<input>", { type: "hidden", class: "idInput", value: concert.id })
-  );
-  el.addClass("concertEditorPage");
-  el.find(".adminControls").remove();
-  el.find(".posterWrap").append(posterControls());
-  el.find(".title").replaceWith(titleInput({ val: concert.title }));
-  el.find(".when").replaceWith(whenInput(concert.when));
-  el.find(".fbLink").remove();
-  el.find(".concertDetails").append(facebookInput({ val: concert.facebook }));
-  el.find(".concertDetails").append(fileControls({ id: concert.id }));
+  const el = concertViewerPage(async () => {
+    const concert = await getConcert();
+    if (!concert) throw new Error("Concert not found");
+    console.debug(`concertEditorPage: ConcertID: ${concert.id}`);
+    el.append(
+      $("<input>", { type: "hidden", class: "idInput", value: concert.id })
+    );
+    el.addClass("concertEditorPage");
+    el.find(".adminControls").remove();
+    el.find(".posterWrap").append(posterControls());
+    el.find(".title").replaceWith(titleInput({ val: concert.title }));
+    el.find(".when").replaceWith(whenInput(concert.when));
+    el.find(".fbLink").remove();
+    el.find(".concertDetails").append(facebookInput({ val: concert.facebook }));
+    el.find(".concertDetails").append(fileControls({ id: concert.id }));
+  });
   return el;
 }
 

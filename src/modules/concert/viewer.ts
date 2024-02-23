@@ -7,7 +7,7 @@ import "./viewer.scss";
 import { Concert, deleteConcert } from "../amberDb/amberDb";
 import { isAdminMode } from "../admin/adminMode";
 
-export function concertViewerPage() {
+export function concertViewerPage(onDone = () => {}) {
   getConcert().then((concert) => {
     if (!concert) {
       new Noty({
@@ -20,6 +20,7 @@ export function concertViewerPage() {
       return;
     }
     $(".concertDetails").replaceWith(concertDetails(concert));
+    onDone();
   });
 
   return $("<main>", { id: "concertDetailsPage" }).append(
@@ -72,7 +73,7 @@ const concertDetails = (props: Concert) =>
       text: "🢄 Back to All Concerts",
       class: "backButton",
     }),
-    (isAdminMode() ? adminControls({ id: props.id }) : $()),
+    isAdminMode() ? adminControls({ id: props.id }) : $(),
     $("<div>", { class: "posterWrap" }).append(
       $("<img>", {
         class: "poster",
