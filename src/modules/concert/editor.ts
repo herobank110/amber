@@ -22,7 +22,7 @@ export function concertEditorPage() {
       $("<input>", { type: "hidden", class: "idInput", value: concert.id })
     );
     el.addClass("concertEditorPage");
-    el.find(".adminControls").remove();
+    el.find(".adminControls").replaceWith(fileControls({ id: concert.id }));
     el.find(".posterWrap").append(posterControls());
     el.find(".title").replaceWith(titleInput({ val: concert.title }));
     el.find(".when").replaceWith(whenInput(concert.when));
@@ -69,7 +69,7 @@ const fileControls = (props: { id: number }) =>
     }),
     link({
       text: "Cancel",
-      class: "adminButton",
+      class: "adminButton outlined",
       href: props.id == -1 ? "/archive" : `/concert/${props.id}`,
     }).on("click", (e) => {
       if (!confirm("Are you sure you want to discard changes?")) {
