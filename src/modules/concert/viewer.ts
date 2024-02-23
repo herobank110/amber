@@ -4,7 +4,7 @@ import { facebookButton, link } from "../../utils/view";
 import { longDate, setLocation } from "../../utils/utils";
 import { getConcert } from "./common";
 import "./viewer.scss";
-import { Concert, deleteConcert } from "../amberDb/amberDb";
+import { Concert, deleteConcert, getConcerts } from "../amberDb/amberDb";
 import { isAdminMode } from "../admin/adminMode";
 
 export function concertViewerPage(onDone = () => {}) {
@@ -39,27 +39,7 @@ const adminControls = (props: { id: number }) =>
     $("<a>", {
       text: "Delete",
       class: "adminButton outlined",
-    }).on("click", async () => {
-      if (confirm("Are you sure you want to delete this concert?")) {
-        const processingNoty = new Noty({
-          text: "Processing request...",
-          type: "info",
-          layout: "center",
-        });
-        processingNoty.show();
-        const success = await deleteConcert(props.id);
-        processingNoty.close();
-        new Noty({
-          text: success
-            ? "Concert deleted successfully"
-            : "Failed to delete concert",
-          type: success ? "success" : "error",
-          timeout: 3000,
-          layout: "center",
-        }).show();
-        setLocation("/archive");
-      }
-    })
+    }).on("click", () => onClickDelete(props.id))
   );
 
 /**
@@ -86,3 +66,29 @@ const concertDetails = (props: Concert) =>
     ),
     props.facebook ? facebookButton(props.facebook) : $()
   );
+
+async function onClickDelete(id: number) {
+  if (confirm("Are you sure you want to delete this concert?")) {
+    const processingNoty = new Noty({
+      text: "Processing request...",
+      type: "info",
+      layout: "center",
+    });
+    processingNoty.show();
+    const success = await deleteConcert(id);
+    processingNoty.close();
+    if (success) {
+      console.debug(`adminControls: reloading concerts cache`);
+      await getConcerts(false);
+    }
+    new Noty({
+      text: success
+        ? "Concert deleted successfully"
+        : "Failed to delete concert",
+      type: success ? "success" : "error",
+      timeout: 3000,
+      layout: "center",
+    }).show();
+    setLocation("/archive");
+  }
+}
