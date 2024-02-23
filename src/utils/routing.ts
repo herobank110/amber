@@ -40,7 +40,7 @@ function bindLinkClickedRerouting() {
 function renderRoute() {
   // reset state if re-using SPA
   window.scrollTo(0, 0);
-  document.body.innerHTML = "";
+  $("body>:not(.noty_layout)").remove();
 
   // find handler
   for (const [route, handler] of Object.entries(ROUTES)) {

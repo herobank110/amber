@@ -6,7 +6,7 @@ import "./editor.scss";
 import { facebookLogo, link } from "../../utils/view";
 import { Concert, saveConcert } from "../amberDb/amberDb";
 import { uploadFile } from "../../utils/upload";
-import { resizeImage } from "../../utils/utils";
+import { resizeImage, setLocation } from "../../utils/utils";
 
 export async function concertEditorPage() {
   const concert = await getConcert();
@@ -125,7 +125,7 @@ function onClickSave() {
         layout: "center",
         timeout: 3000,
       }).show();
-      window.history.pushState({}, "", `/concert/${newId}`);
+      setLocation(`/concert/${newId}`);
     })
     .catch((e) => {
       console.error("Failed to save", e);
