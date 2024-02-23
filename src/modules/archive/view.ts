@@ -1,5 +1,4 @@
 import $ from "jquery";
-import { makeNavBar } from "../commonUI/navBar";
 import "./archive.scss";
 import { isAdminMode } from "../admin/adminMode";
 import { shortDate } from "../../utils/utils";
@@ -11,7 +10,6 @@ export const archivePage = () => {
     $(".concertsGrid").replaceWith(concertsGrid(concerts));
   });
   return $("<div>", { id: "archivePage" }).append(
-    makeNavBar(),
     $("<main>").append(
       // $("<h1>", { text: "Concerts Archive" }),
       isAdminMode() ? adminControls() : $(),

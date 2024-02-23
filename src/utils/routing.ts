@@ -16,12 +16,12 @@ import { cataloguePage } from "../modules/catalogue/catalogue";
 $(() => entry());
 
 const ROUTES = {
-  "/archive": showArchive,
-  "/catalogue": showCatalogue,
-  "/admin": showAdmin,
-  "/concert/new": showConcertEditor,
-  "/concert/:id": showConcertViewer,
-  "/concert/:id/edit": showConcertEditor,
+  "/archive": renderPage(archivePage),
+  "/catalogue": renderPage(cataloguePage),
+  "/admin": renderPage(adminPage, { navAndFooter: false }),
+  "/concert/new": renderPage(concertEditorPage),
+  "/concert/:id": renderPage(concertViewerPage),
+  "/concert/:id/edit": renderPage(concertEditorPage),
 };
 
 function entry() {
@@ -46,7 +46,9 @@ function renderRoute() {
   for (const [route, handler] of Object.entries(ROUTES)) {
     const reouteRegExp = new RegExp("^" + route.replace(/:\w+/, "\\w+") + "$");
     if (reouteRegExp.test(location.pathname)) {
-      console.debug(`renderRoute: Found match: '${route}' for '${location.pathname}'`);
+      console.debug(
+        `renderRoute: Found match: '${route}' for '${location.pathname}'`
+      );
       handler();
       return;
     }
@@ -82,29 +84,10 @@ function jumpToHash() {
   }
 }
 
-function showArchive() {
-  archivePage().appendTo(document.body);
-  footer().appendTo(document.body);
-}
-
-function showCatalogue() {
-  makeNavBar().appendTo(document.body);
-  cataloguePage().appendTo(document.body);
-  footer().appendTo(document.body);
-}
-
-function showAdmin() {
-  adminPage().appendTo(document.body);
-}
-
-async function showConcertEditor() {
-  makeNavBar().appendTo(document.body);
-  (await concertEditorPage()).appendTo(document.body);
-  footer().appendTo(document.body);
-}
-
-async function showConcertViewer() {
-  makeNavBar().appendTo(document.body);
-  (await concertViewerPage()).appendTo(document.body);
-  footer().appendTo(document.body);
+function renderPage(renderFn: () => JQuery, options = { navAndFooter: true }) {
+  return () => {
+    if (options.navAndFooter) makeNavBar().appendTo(document.body);
+    renderFn().appendTo(document.body);
+    if (options.navAndFooter) footer().appendTo(document.body);
+  };
 }
