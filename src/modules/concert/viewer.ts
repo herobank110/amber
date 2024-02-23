@@ -16,7 +16,7 @@ export function concertViewerPage(onDone = () => {}) {
         timeout: 3000,
         layout: "center",
       }).show();
-      setLocation("/archive");
+      setLocation("/concerts");
       return;
     }
     $(".concertDetails").replaceWith(concertDetails(concert));
@@ -49,7 +49,7 @@ const adminControls = (props: { id: number }) =>
 const concertDetails = (props: Concert) =>
   $("<div>", { class: "concertDetails" }).append(
     link({
-      href: "/archive",
+      href: "/concerts",
       text: "🢄 Back to All Concerts",
       class: "backButton",
     }),
@@ -89,6 +89,6 @@ async function onClickDelete(id: number) {
       timeout: 3000,
       layout: "center",
     }).show();
-    setLocation("/archive");
+    setLocation("/concerts");
   }
 }

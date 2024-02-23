@@ -20,7 +20,7 @@ const deskopNav = () =>
     navItem({ text: "Ten Years", href: "/#tenYears" }),
     navItem({ text: "About Us", href: "/#about" }),
     logoItem(),
-    navItem({ text: "Archive", href: "/archive" }),
+    navItem({ text: "Concerts", href: "/concerts" }),
     navItem({ text: "Contact Us", href: "/#contact" }),
     $("<span>")
   );
@@ -55,7 +55,7 @@ const sideBar = () =>
         navItem({ text: "Upcoming", href: "/#upcoming" }),
         navItem({ text: "Ten Years", href: "/#tenYears" }),
         navItem({ text: "About Us", href: "/#about" }),
-        navItem({ text: "Archive", href: "/archive" }),
+        navItem({ text: "Concerts", href: "/concerts" }),
         navItem({ text: "Contact Us", href: "/#contact" })
       )
     )

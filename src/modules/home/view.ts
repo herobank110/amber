@@ -122,7 +122,7 @@ export const mainHome = () =>
         <div class="postersOverlay"></div>
         <div class="details">
           <h2>Past Events</h2>
-          <a href="/archive" class="primary">Go To Concerts Archive</a>
+          <a href="/concerts" class="primary">Go To Concerts Archive</a>
         </div>
       </div>
     </section>

@@ -1,11 +1,11 @@
 import $ from "jquery";
-import "./archive.scss";
+import "./concerts.scss";
 import { isAdminMode } from "../admin/adminMode";
 import { shortDate } from "../../utils/utils";
 import { link } from "../../utils/view";
 import { Concert, getConcerts } from "../amberDb/amberDb";
 
-export const archivePage = () => {
+export const concertsPage = () => {
   getConcerts().then((concerts) => {
     $(".concertsGrid").replaceWith(concertsGrid(concerts));
   });

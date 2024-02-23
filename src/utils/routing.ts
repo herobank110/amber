@@ -2,7 +2,7 @@ import $ from "jquery";
 import { mainHome } from "../modules/home/view";
 import { initHomeScrollAnims } from "../modules/home/scrollAnims";
 import { facebookButton, footer } from "./view";
-import { archivePage } from "../modules/archive/view";
+import { concertsPage } from "../modules/concerts/view";
 import { makeNavBar } from "../modules/commonUI/navBar";
 import { addScrollDebugUI } from "../modules/debug/debug";
 import { adminPage } from "../modules/admin/views";
@@ -16,9 +16,9 @@ import { cataloguePage } from "../modules/catalogue/catalogue";
 $(() => entry());
 
 const ROUTES = {
-  "/archive": renderPage(archivePage),
-  "/catalogue": renderPage(cataloguePage),
   "/admin": renderPage(adminPage, { navAndFooter: false }),
+  "/catalogue": renderPage(cataloguePage),
+  "/concerts": renderPage(concertsPage),
   "/concert/new": renderPage(concertEditorPage),
   "/concert/:id": renderPage(concertViewerPage),
   "/concert/:id/edit": renderPage(concertEditorPage),
