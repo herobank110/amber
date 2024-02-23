@@ -15,7 +15,8 @@ function readParams() {
 }
 
 function validateParams($params) {
-    if (// For delete query, only ID is required.
+    if (!$params['op'] ||
+        // For delete query, only ID is required.
         ($params['op'] == 'delete' && !$params['id']) ||
         // Otherwise, all fields are required (even for update).
         (!$params['id'] || !$params['title'] || !strtotime($params['when']) ||
@@ -26,11 +27,11 @@ function validateParams($params) {
 }
 
 function createStatement($params) {
-    if ($params['op'] === 'insert') {
+    if ($params['op'] == 'insert') {
         return insertConcertStatement($params);
-    } else if ($params['op'] === 'update') {
+    } else if ($params['op'] == 'update') {
         return updateConcertStatement($params);
-    } else if ($params['op'] === 'delete') {
+    } else if ($params['op'] == 'delete') {
         return deleteConcertStatement($params);
     } else {
         return [null, "Invalid operation"];
@@ -115,12 +116,14 @@ function main() {
         return;
     }
 
+    header('Content-Type: application/json');
     if ($params['op'] == 'insert') {
         // return the id of the newly inserted row
-        header('Content-Type: application/json');
         echo json_encode(['id' => $statement->insert_id]);
+    } else {
+        // For other operations, no info.
+        echo json_encode([]);
     }
-    // For other operations, don't return anything (just status 200).
 }
 
 main();

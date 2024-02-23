@@ -297,6 +297,7 @@ export async function getConcerts(cached = true): Promise<Concert[]> {
   return JSON.parse(sessionStorage.getItem(CACHE_KEY)!) as Concert[];
 }
 
+/** a combination of update or insert. */
 export function saveConcert(concert: Concert): Promise<ID> {
   console.debug(`saveConcert(${JSON.stringify(concert)})`);
 
@@ -309,6 +310,8 @@ export function saveConcert(concert: Concert): Promise<ID> {
 
   const url = "/php/concertEdit.php";
   const formData = objectToFormData(concert);
+  // Set the operation explicitly.
+  formData.set("op", concert.id == -1 ? "insert" : "update");
   return new Promise((resolve, reject) => {
     fetch(url, {
       method: "POST",
@@ -317,8 +320,11 @@ export function saveConcert(concert: Concert): Promise<ID> {
       .then((response) => response.json())
       .then((data) => {
         console.log("saveConcert: resolved", data);
-        resolve(data.id);
+        // Get the inserted ID if it was an insert, otherwise just
+        // return the same ID to simplify app logic.
+        resolve(concert.id == -1 ? data.id : concert.id);
       })
+      // Reject so we can show an error message to the user.
       .catch(reject);
   });
 }
