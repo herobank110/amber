@@ -4,6 +4,7 @@ require_once __DIR__ . '/db.php';
 
 function readParams() {
     return [
+        'op' => filter_input(INPUT_POST, 'op'),
         'id' => filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT),
         'title' => filter_input(INPUT_POST, 'title'),
         'when' => filter_input(INPUT_POST, 'when'),
@@ -14,12 +15,26 @@ function readParams() {
 }
 
 function validateParams($params) {
-    if(!$params['id'] || !$params['title'] || !strtotime($params['when']) ||
-       !$params['poster'] || !$params['thumb']
-    ) {
+    if (// For delete query, only ID is required.
+        ($params['op'] == 'delete' && !$params['id']) ||
+        // Otherwise, all fields are required (even for update).
+        (!$params['id'] || !$params['title'] || !strtotime($params['when']) ||
+        !$params['poster'] || !$params['thumb'])
+    )
         return [false, "One or more invalid or missing parameter(s)"];
-    }
     return [true, ""];
+}
+
+function createStatement($params) {
+    if ($params['op'] === 'insert') {
+        return insertConcertStatement($params);
+    } else if ($params['op'] === 'update') {
+        return updateConcertStatement($params);
+    } else if ($params['op'] === 'delete') {
+        return deleteConcertStatement($params);
+    } else {
+        return [null, "Invalid operation"];
+    }
 }
 
 function insertConcertStatement($params) {
@@ -44,6 +59,18 @@ function updateConcertStatement($params) {
     if (!$statement)
         return [null, "Failed to prepare statement"];
     if(!$statement->bind_param("sssssi", $params['title'], $params['when'], $params['poster'], $params['thumb'], $params['facebook'], $params['id']))
+        return [null, "Failed to bind parameters: $statement->error"];
+    return [$statement, ""];
+}
+
+function deleteConcertStatement($params) {
+    $statement = getOrCreateDb()->prepare(<<<SQL
+        DELETE FROM `concerts`
+        WHERE `id` = ?
+        SQL);
+    if ($statement === false)
+        return [null, "Failed to prepare statement"];
+    if(!$statement->bind_param("i", $params['id']))
         return [null, "Failed to bind parameters: $statement->error"];
     return [$statement, ""];
 }
@@ -74,8 +101,7 @@ function main() {
         return;
     }
 
-    $isNew = $params['id'] == -1;
-    [$statement, $errorMessage] = $isNew ?  insertConcertStatement($params) : updateConcertStatement($params);
+    [$statement, $errorMessage] = createStatement($params);
     if ($statement === null) {
         http_response_code(500);
         echo "Failed to create statement: $errorMessage";
@@ -89,10 +115,12 @@ function main() {
         return;
     }
 
-    if ($isNew) {
+    if ($params['op'] == 'insert') {
+        // return the id of the newly inserted row
         header('Content-Type: application/json');
         echo json_encode(['id' => $statement->insert_id]);
     }
+    // For other operations, don't return anything (just status 200).
 }
 
 main();
