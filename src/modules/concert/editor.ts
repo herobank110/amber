@@ -289,7 +289,10 @@ function modifyProgramme(props: {
     console.debug(`modifyProgramme(${JSON.stringify(props)})`);
     const items = readProgrammeGuiValues();
     if (!items)
-      throw new Error("All programme modifications require one or more items");
+      // empty list, nothing to do.
+      // this can happen if the blur was called but
+      // the inputs are all empty with no rows.
+      return;
     if (props.op == "remove") {
       items.splice(props.index, 1);
     } else if (props.op == "up") {
