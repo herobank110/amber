@@ -47,4 +47,17 @@
     display: flex;
     gap: 1rem;
   }
+
+  .programme {
+    h3 {
+      margin: 0;
+    }
+    ol {
+      margin-top: 0.25rem;
+      text-align: start;
+      li {
+        list-style: lower-roman;
+      }
+    }
+  }
 }

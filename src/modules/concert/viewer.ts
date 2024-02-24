@@ -64,7 +64,24 @@ const concertDetails = (props: Concert) =>
       $("<h2>", { text: props.title, class: "title" }),
       $("<span>", { text: longDate(props.when), class: "when" })
     ),
+    programme(),
     props.facebook ? facebookButton(props.facebook) : $()
+  );
+
+const programme = () =>
+  $("<div>", { class: "programme" }).append(
+    $("<h3>", { text: "Programme" }),
+    $("<ol>").append(
+      $("<li>", {
+        text: "Beethoven: Creatures of Prometheus Overture, Op. 43",
+      }),
+      $("<li>", {
+        html: "Mozart: Concerto for Flute and Harp in C major, K. 299/297c<br>Solos: Nicole Esposito, flute; and Rita Costanzi, harp",
+      }),
+      $("<li>", {
+        text: "Schubert: Symphony No. 8 in B minor, D. 759, 'Unfinished'",
+      })
+    )
   );
 
 async function onClickDelete(id: number) {

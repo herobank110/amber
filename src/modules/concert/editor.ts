@@ -27,7 +27,7 @@ export function concertEditorPage() {
     el.find(".title").replaceWith(titleInput({ val: concert.title }));
     el.find(".when").replaceWith(whenInput(concert.when));
     el.find(".fbLink").remove();
-    el.find(".concertDetails").append(facebookInput({ val: concert.facebook }));
+    el.find(".programme").after(facebookInput({ val: concert.facebook }));
     el.find(".concertDetails").append(fileControls({ id: concert.id }));
   });
   return el;
