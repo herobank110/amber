@@ -68,6 +68,11 @@
     display: none;
   }
 
+  .programme {
+    // not sure why this is required
+    margin-bottom: -1em;
+  }
+
   .programmeItems {
     li {
       margin-bottom: 1.5em;
