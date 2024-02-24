@@ -98,3 +98,25 @@
     }
   }
 }
+
+.iconButton {
+  background: none;
+  border: none;
+  $s: 28pt;
+  width: $s;
+  height: $s;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  color: #000;
+  transition: color 0.1s, background 0.1s, outline 0.1s;
+  border-radius: 50%;
+  outline: 1px solid transparent;
+  &:hover, &:focus {
+    color: #333;
+    background: #f1f1fa;
+  }
+  &:active {
+    outline: 1px solid #777;
+  }
+}

@@ -138,8 +138,8 @@ const programmeItemsInput = (props: { items: ProgrammeItem[] }) =>
     props.items.map((x) => $("<li>", { text: x.title })),
     $("<li>").append(
       $("<div>").append(
-        $("<div>").append(iconButton({ icon: "remove" })),
-        $("<div>").append(iconButton({ icon: "move_down" }))
+        iconButton({ icon: "remove" }),
+        iconButton({ icon: "move_down" })
       ),
       $("<input>", { placeholder: "Composer" }),
       $("<input>", { placeholder: "Title" }),
