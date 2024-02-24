@@ -115,11 +115,15 @@
   transition: color 0.1s, background 0.1s, outline 0.1s;
   border-radius: 50%;
   outline: 1px solid transparent;
-  &:hover, &:focus {
+  &:hover:not(:disabled), &:focus:not(:disabled) {
     color: #333;
     background: #f1f1fa;
   }
-  &:active {
+  &:active:not(:disabled) {
     outline: 1px solid #777;
+  }
+  &:disabled {
+    color: #aaa;
+    cursor: not-allowed;
   }
 }

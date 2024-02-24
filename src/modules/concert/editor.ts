@@ -154,11 +154,17 @@ const programmeItemInput = (props: {
   $("<li>").append(
     $("<div>", { class: "actions" }).append(
       // show remove button for all but the last 'new' one.
-      props.index != props.total ? iconButton({ icon: "remove" }) : $(),
+      iconButton({ icon: "remove" })
+        //
+        .prop("disabled", props.index == props.total),
       // show move up for all but the top one and last 'new' one
-      props.index >= 1 && props.index != props.total ? iconButton({ icon: "move_up" }) : $(),
+      iconButton({ icon: "move_up" })
+        //
+        .prop("disabled", props.index < 1 || props.index == props.total),
       // show move down for all but the bottom one (except the end 'new' one)
-      props.index < props.total - 1 ? iconButton({ icon: "move_down" }) : $()
+      iconButton({ icon: "move_down" })
+        //
+        .prop("disabled", props.index >= props.total - 1)
     ),
     $("<div>", { class: "inputs" }).append(
       $("<input>", { placeholder: "Composer", value: props.item.composer }),
