@@ -155,44 +155,30 @@ const programmeItemInput = (props: {
     $("<div>", { class: "actions" }).append(
       // show remove button for all but the last 'new' one.
       iconButton({ icon: "remove" })
-        .prop("disabled", props.index == props.total)
-        .on("click", (e) => {
-          const values = readProgrammeGuiValues();
-          console.log(values);
-          if (!values) return;
-          values.splice(props.index, 1);
-          $(".programmeItems").replaceWith(
-            programmeItemsInput({ items: values })
-          );
-        }),
+        .on("click", modifyProgramme({ index: props.index, op: "remove" }))
+        .prop("disabled", props.index == props.total),
       // show move up for all but the top one and last 'new' one
       iconButton({ icon: "move_up" })
-        //
+        .on("click", modifyProgramme({ index: props.index, op: "up" }))
         .prop("disabled", props.index < 1 || props.index == props.total),
       // show move down for all but the bottom one (except the end 'new' one)
       iconButton({ icon: "move_down" })
-        //
+        .on("click", modifyProgramme({ index: props.index, op: "down" }))
         .prop("disabled", props.index >= props.total - 1)
     ),
     $("<div>", { class: "inputs" }).append(
       $("<input>", { placeholder: "Composer", value: props.item.composer })
         //
-        .on("blur", (e) => {
-          if ($(e.target).val() && props.index == props.total) {
-            // If the last one is edited, add a new blank one.
-            const values = readProgrammeGuiValues();
-            if (!values) return;
-            values.push({ composer: "", title: "" });
-            $(".programmeItems").replaceWith(
-              programmeItemsInput({ items: values })
-            );
-          }
-        }),
-      $("<input>", { placeholder: "Title", value: props.item.title }),
+        .on("blur", modifyProgramme({ index: props.index, op: "blur" })),
+      $("<input>", { placeholder: "Title", value: props.item.title })
+        //
+        .on("blur", modifyProgramme({ index: props.index, op: "blur" })),
       $("<input>", {
         placeholder: "Performance Notes (optional)",
         value: props.item.performanceNotes,
       })
+        //
+        .on("blur", modifyProgramme({ index: props.index, op: "blur" }))
     )
   );
 
@@ -285,38 +271,50 @@ function readProgrammeGuiValues(): ProgrammeItem[] | undefined {
         title: inputs[1].value,
       } as ProgrammeItem;
       if (inputs[2].value) retVal.performanceNotes = inputs[2].value;
-      if (retVal.composer || retVal.title) return retVal;
+      if (Object.values(retVal).some((x) => x)) return retVal;
     })
     .filter((x): x is ProgrammeItem => !!x);
   return items.length ? items : undefined;
 }
 
-/** helper function for modifications to programme items rows */
+/**
+ * helper function for modifications to programme items rows
+ * higher order function to simplify binding to event handlers.
+ */
 function modifyProgramme(props: {
   index: number;
   op: "remove" | "up" | "down" | "blur";
 }) {
-  const items = readProgrammeGuiValues();
-  if (!items)
-    throw new Error("All programme modifications require one or more items");
-  if (props.op == "remove") {
-    items.splice(props.index, 1);
-  } else if (props.op == "up") {
-    const item = items[props.index];
-    items[props.index] = items[props.index - 1];
-    items[props.index - 1] = item;
-  } else if (props.op == "down") {
-    const item = items[props.index];
-    items[props.index] = items[props.index + 1];
-    items[props.index + 1] = item;
-  } else if (props.op == "blur") {
-    if (
-      props.index == items.length - 1 &&
-      Object.values(items[props.index]).some((x) => x)
-    ) {
-      // If the last one is edited and has text, add a new blank one.
-      items.push({ composer: "", title: "" });
+  return () => {
+    console.debug(`modifyProgramme(${JSON.stringify(props)})`);
+    const items = readProgrammeGuiValues();
+    if (!items)
+      throw new Error("All programme modifications require one or more items");
+    if (props.op == "remove") {
+      items.splice(props.index, 1);
+    } else if (props.op == "up") {
+      const item = items[props.index];
+      items[props.index] = items[props.index - 1];
+      items[props.index - 1] = item;
+    } else if (props.op == "down") {
+      const item = items[props.index];
+      items[props.index] = items[props.index + 1];
+      items[props.index + 1] = item;
+    } else if (props.op == "blur") {
+const totalLis = $(".programmeItems li").length;
+      console.debug(props.index, items.length, totalLis)
+      if (
+        props.index == totalLis - 1  &&
+        Object.values(items[props.index]).some((x) => x)
+      ) {
+        // If the last one is edited and has text, add a new blank one.
+        // items.push({ composer: "", title: "" });
+        console.debug("modifyProgramme: added new blank item");
+      } else {
+        // don't need to re-render if nothing changed.
+        return;
+      }
     }
-  }
-  $(".programmeItems").replaceWith(programmeItemsInput({ items }));
+    $(".programmeItems").replaceWith(programmeItemsInput({ items }));
+  };
 }
