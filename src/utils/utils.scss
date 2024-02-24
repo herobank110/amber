@@ -102,11 +102,14 @@
 .iconButton {
   background: none;
   border: none;
-  $s: 28pt;
+  $s: 24pt;
   width: $s;
   height: $s;
   display: grid;
   place-items: center;
+  span {
+  font-size: 16pt;
+  }
   cursor: pointer;
   color: #000;
   transition: color 0.1s, background 0.1s, outline 0.1s;

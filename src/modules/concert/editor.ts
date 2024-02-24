@@ -137,13 +137,15 @@ const programmeItemsInput = (props: { items: ProgrammeItem[] }) =>
   $("<ol>", { class: "programmeItems" }).append(
     props.items.map((x) => $("<li>", { text: x.title })),
     $("<li>").append(
-      $("<div>").append(
+      $("<div>", { class: "actions" }).append(
         iconButton({ icon: "remove" }),
         iconButton({ icon: "move_down" })
       ),
-      $("<input>", { placeholder: "Composer" }),
-      $("<input>", { placeholder: "Title" }),
-      $("<input>", { placeholder: "Performance Notes (optional)" })
+      $("<div>", { class: "inputs" }).append(
+        $("<input>", { placeholder: "Composer" }),
+        $("<input>", { placeholder: "Title" }),
+        $("<input>", { placeholder: "Performance Notes (optional)" })
+      )
     )
   );
 

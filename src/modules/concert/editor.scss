@@ -67,4 +67,25 @@
   #posterInput {
     display: none;
   }
+
+  .programmeItems {
+    li {
+      position: relative;
+      .actions {
+        position: absolute;
+        top: -5px;
+        left: -50px;
+      }
+
+      .inputs {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+        input {
+          font-size: 12pt;
+          width: min(77vw, 600px);
+        }
+      }
+    }
+  }
 }
