@@ -4,8 +4,8 @@ export type ProgrammeItem = {
   composer: string;
   title: string;
   /** ie soloists */
-  performanceNotes: string;
-}
+  performanceNotes?: string;
+};
 
 export type Concert = {
   id: number;
@@ -27,6 +27,22 @@ const mockDb = {
       when: "2014-04-26T19:30",
       thumb: "/share/concerts/April 2014_thumb.jpeg",
       poster: "/share/concerts/April 2014.jpeg",
+      programme: [
+        {
+          composer: "Beethoven",
+          title: "Overture to The Creatures of Prometheus, Op. 43",
+        },
+        {
+          composer: "Mozart",
+          title: "Concerto for Flute and Harp in C major, K. 299/297c",
+          performanceNotes:
+            "Solos: Nicole Esposito, flute; and Rita Costanzi, harp",
+        },
+        {
+          composer: "Schubert",
+          title: "Symphony No. 8 in B minor, D. 759, 'Unfinished'",
+        },
+      ],
     },
     {
       id: 2,

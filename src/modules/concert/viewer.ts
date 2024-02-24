@@ -4,7 +4,12 @@ import { facebookButton, link } from "../../utils/view";
 import { longDate, setLocation } from "../../utils/utils";
 import { getConcert } from "./common";
 import "./viewer.scss";
-import { Concert, deleteConcert, getConcerts } from "../amberDb/amberDb";
+import {
+  Concert,
+  ProgrammeItem,
+  deleteConcert,
+  getConcerts,
+} from "../amberDb/amberDb";
 import { isAdminMode } from "../admin/adminMode";
 
 export function concertViewerPage(onDone = () => {}) {
@@ -19,6 +24,7 @@ export function concertViewerPage(onDone = () => {}) {
       setLocation("/concerts");
       return;
     }
+    console.debug("concertViewerPage: Concert:",  concert);
     $(".concertDetails").replaceWith(concertDetails(concert));
     onDone();
   });
@@ -64,25 +70,29 @@ const concertDetails = (props: Concert) =>
       $("<h2>", { text: props.title, class: "title" }),
       $("<span>", { text: longDate(props.when), class: "when" })
     ),
-    programme(),
+    programmeWrap().append(
+      props.programme ? programme({ items: props.programme }) : $()
+    ),
     props.facebook ? facebookButton(props.facebook) : $()
   );
 
-const programme = () =>
-  $("<div>", { class: "programme" }).append(
-    $("<h3>", { text: "Programme" }),
-    $("<ol>").append(
-      $("<li>", {
-        text: "Beethoven: Creatures of Prometheus Overture, Op. 43",
-      }),
-      $("<li>", {
-        html: "Mozart: Concerto for Flute and Harp in C major, K. 299/297c<br>Solos: Nicole Esposito, flute; and Rita Costanzi, harp",
-      }),
-      $("<li>", {
-        text: "Schubert: Symphony No. 8 in B minor, D. 759, 'Unfinished'",
-      })
+const programmeWrap = () => $("<div>", { class: "programme" });
+
+const programme = (props: { items: ProgrammeItem[] }) => [
+  $("<h3>", { text: "Programme" }),
+  $("<ol>").append(
+    props.items.map((item) =>
+      $("<li>").append(
+        $("<span>", { text: item.composer }),
+        $("<span>", { html: ":&nbsp;" }),
+        $("<span>", { text: item.title }),
+        item.performanceNotes
+          ? [$("<br>"), $("<span>", { text: item.performanceNotes })]
+          : $()
+      )
     )
-  );
+  ),
+];
 
 async function onClickDelete(id: number) {
   if (confirm("Are you sure you want to delete this concert?")) {
