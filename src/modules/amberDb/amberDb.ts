@@ -46,7 +46,7 @@ const mockDb = {
     },
     {
       id: 2,
-      title: "Spring Concert",
+      title: "Spring Concert loremipsumdolorsitametconsecteturadipiscingelit",
       when: "2017-04-02T19:30",
       thumb: "/share/concerts/April 2017_thumb.PNG",
       poster: "/share/concerts/April 2017.PNG",
