@@ -175,7 +175,19 @@ const programmeItemInput = (props: {
         .prop("disabled", props.index >= props.total - 1)
     ),
     $("<div>", { class: "inputs" }).append(
-      $("<input>", { placeholder: "Composer", value: props.item.composer }),
+      $("<input>", { placeholder: "Composer", value: props.item.composer })
+        //
+        .on("blur", (e) => {
+          if ($(e.target).val() && props.index == props.total) {
+            // If the last one is edited, add a new blank one.
+            const values = readProgrammeGuiValues();
+            if (!values) return;
+            values.push({ composer: "", title: "" });
+            $(".programmeItems").replaceWith(
+              programmeItemsInput({ items: values })
+            );
+          }
+        }),
       $("<input>", { placeholder: "Title", value: props.item.title }),
       $("<input>", {
         placeholder: "Performance Notes (optional)",
@@ -259,7 +271,7 @@ function readGuiValues(): Concert {
   return retVal;
 }
 
-/** 
+/**
  * @returns undefined if empty list, array always has at least
  * 1 item. may contain incomplete fields.
  */
@@ -277,4 +289,34 @@ function readProgrammeGuiValues(): ProgrammeItem[] | undefined {
     })
     .filter((x): x is ProgrammeItem => !!x);
   return items.length ? items : undefined;
+}
+
+/** helper function for modifications to programme items rows */
+function modifyProgramme(props: {
+  index: number;
+  op: "remove" | "up" | "down" | "blur";
+}) {
+  const items = readProgrammeGuiValues();
+  if (!items)
+    throw new Error("All programme modifications require one or more items");
+  if (props.op == "remove") {
+    items.splice(props.index, 1);
+  } else if (props.op == "up") {
+    const item = items[props.index];
+    items[props.index] = items[props.index - 1];
+    items[props.index - 1] = item;
+  } else if (props.op == "down") {
+    const item = items[props.index];
+    items[props.index] = items[props.index + 1];
+    items[props.index + 1] = item;
+  } else if (props.op == "blur") {
+    if (
+      props.index == items.length - 1 &&
+      Object.values(items[props.index]).some((x) => x)
+    ) {
+      // If the last one is edited and has text, add a new blank one.
+      items.push({ composer: "", title: "" });
+    }
+  }
+  $(".programmeItems").replaceWith(programmeItemsInput({ items }));
 }
