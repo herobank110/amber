@@ -338,6 +338,13 @@ const CONCERT_API_URL = "/php/concertEdit.php";
 export function saveConcert(concert: Concert): Promise<ID> {
   console.debug(`saveConcert(${JSON.stringify(concert)})`);
 
+  const formData = objectToFormData({
+    ...concert,
+    // Set the operation explicitly.
+    op: concert.id == -1 ? "insert" : "update",
+  });
+
+  // After the form data so we can validate that function works
   if (isDevMode()) {
     return new Promise((resolve, reject) => {
       console.log("saveConcert: (dev mode) auto resolve");
@@ -345,11 +352,6 @@ export function saveConcert(concert: Concert): Promise<ID> {
     });
   }
 
-  const formData = objectToFormData({
-    ...concert,
-    // Set the operation explicitly.
-    op: concert.id == -1 ? "insert" : "update",
-  });
   return new Promise((resolve, reject) => {
     fetch(CONCERT_API_URL, {
       method: "POST",
@@ -391,6 +393,7 @@ function objectToFormData(
 ) {
   const formData = new FormData();
   for (const [key, value] of Object.entries(obj)) {
+    if (value === undefined) continue;
     const strValue =
       typeof value == "object"
         ? JSON.stringify(value)
