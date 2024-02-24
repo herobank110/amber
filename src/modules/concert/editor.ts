@@ -301,15 +301,12 @@ function modifyProgramme(props: {
       items[props.index] = items[props.index + 1];
       items[props.index + 1] = item;
     } else if (props.op == "blur") {
-const totalLis = $(".programmeItems li").length;
-      console.debug(props.index, items.length, totalLis)
-      if (
-        props.index == totalLis - 1  &&
-        Object.values(items[props.index]).some((x) => x)
-      ) {
-        // If the last one is edited and has text, add a new blank one.
-        // items.push({ composer: "", title: "" });
-        console.debug("modifyProgramme: added new blank item");
+      const numLis = $(".programmeItems li").length;
+      console.debug(
+        `modifyProgramme: index: ${props.index}, # of items: ${items.length}, # of <li>: ${numLis}`
+      );
+      if (props.index == numLis - 1 && numLis == items.length) {
+        console.debug("modifyProgramme: re-rendering list to add blank row");
       } else {
         // don't need to re-render if nothing changed.
         return;
