@@ -83,11 +83,12 @@ const programme = (props: { items: ProgrammeItem[] }) => [
   $("<ol>").append(
     props.items.map((item) =>
       $("<li>").append(
-        $("<span>", { text: item.composer }),
-        $("<span>", { html: ":&nbsp;" }),
+        $("<strong>", { text: item.composer }).append(
+          $("<span>", { html: ":&nbsp;" }),
+        ),
         $("<span>", { text: item.title }),
         item.performanceNotes
-          ? [$("<br>"), $("<span>", { text: item.performanceNotes })]
+          ? [$("<br>"), $("<em>", { text: item.performanceNotes })]
           : $()
       )
     )
