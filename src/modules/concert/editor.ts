@@ -22,6 +22,7 @@ export function concertEditorPage() {
       $("<input>", { type: "hidden", class: "idInput", value: concert.id })
     );
     el.addClass("concertEditorPage");
+    el.find(".backButton").remove();
     el.find(".adminControls").replaceWith(fileControls({ id: concert.id }));
     el.find(".posterWrap").append(posterControls());
     el.find(".title").replaceWith(titleInput({ val: concert.title }));
