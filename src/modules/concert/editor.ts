@@ -135,17 +135,38 @@ const whenInput = (date: string) =>
 
 const programmeItemsInput = (props: { items: ProgrammeItem[] }) =>
   $("<ol>", { class: "programmeItems" }).append(
-    props.items.map((x) => $("<li>", { text: x.title })),
-    $("<li>").append(
-      $("<div>", { class: "actions" }).append(
-        iconButton({ icon: "remove" }),
-        iconButton({ icon: "move_down" })
-      ),
-      $("<div>", { class: "inputs" }).append(
-        $("<input>", { placeholder: "Composer" }),
-        $("<input>", { placeholder: "Title" }),
-        $("<input>", { placeholder: "Performance Notes (optional)" })
-      )
+    props.items.map((item, index) =>
+      programmeItemInput({ item, index, total: props.items.length })
+    ),
+    // Add a blank one to the end for adding new items.
+    programmeItemInput({
+      item: { composer: "", title: "" },
+      index: props.items.length,
+      total: props.items.length,
+    })
+  );
+
+const programmeItemInput = (props: {
+  item: ProgrammeItem;
+  index: number;
+  total: number;
+}) =>
+  $("<li>").append(
+    $("<div>", { class: "actions" }).append(
+      // show remove button for all but the last 'new' one.
+      props.index != props.total ? iconButton({ icon: "remove" }) : $(),
+      // show move up for all but the top one and last 'new' one
+      props.index >= 1 && props.index != props.total ? iconButton({ icon: "move_up" }) : $(),
+      // show move down for all but the bottom one (except the end 'new' one)
+      props.index < props.total - 1 ? iconButton({ icon: "move_down" }) : $()
+    ),
+    $("<div>", { class: "inputs" }).append(
+      $("<input>", { placeholder: "Composer", value: props.item.composer }),
+      $("<input>", { placeholder: "Title", value: props.item.title }),
+      $("<input>", {
+        placeholder: "Performance Notes (optional)",
+        value: props.item.performanceNotes,
+      })
     )
   );
 
