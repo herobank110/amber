@@ -386,10 +386,17 @@ export async function deleteConcert(id: ID) {
   return true;
 }
 
-function objectToFormData(obj: Record<string, { toString(): string }>) {
+function objectToFormData(
+  obj: Record<string, Object | { toString(): string }>
+) {
   const formData = new FormData();
   for (const [key, value] of Object.entries(obj)) {
-    formData.append(key, value.toString());
+    const strValue =
+      typeof value == "object"
+        ? JSON.stringify(value)
+        : (value as any).toString();
+
+    formData.append(key, strValue);
   }
   return formData;
 }

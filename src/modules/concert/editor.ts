@@ -251,8 +251,8 @@ function readGuiValues(): Concert {
   const fb = $("#fbInput").val() as string;
   const poster = ($(".poster")[0] as HTMLImageElement).src;
   const thumb = resizeImage(poster, 160, 120);
-  // TODO: add programme
-  const retVal: Concert = { id, title, when, poster, thumb };
+  const programme = readProgrammeGuiValues();
+  const retVal: Concert = { id, title, when, poster, thumb, programme };
   if (fb) retVal.facebook = fb;
   return retVal;
 }
