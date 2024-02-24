@@ -156,7 +156,10 @@ const programmeItemInput = (props: {
       // show remove button for all but the last 'new' one.
       iconButton({ icon: "remove" })
         //
-        .prop("disabled", props.index == props.total),
+        .prop("disabled", props.index == props.total)
+        .on("click", (e) => {
+          console.log(readProgrammeGuiValues());
+        }),
       // show move up for all but the top one and last 'new' one
       iconButton({ icon: "move_up" })
         //
@@ -248,4 +251,19 @@ function readGuiValues(): Concert {
   const retVal: Concert = { id, title, when, poster, thumb };
   if (fb) retVal.facebook = fb;
   return retVal;
+}
+
+function readProgrammeGuiValues(): ProgrammeItem[] {
+  return $(".programmeItems li")
+    .toArray()
+    .map((li) => {
+      const inputs = $(li).find("input");
+      const retVal = {
+        composer: inputs[0].value,
+        title: inputs[1].value,
+      } as ProgrammeItem;
+      if (inputs[2].value) retVal.performanceNotes = inputs[2].value;
+      if (retVal.composer || retVal.title) return retVal;
+    })
+    .filter((x): x is ProgrammeItem => !!x);
 }
