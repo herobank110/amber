@@ -49,6 +49,10 @@
     gap: 1rem;
   }
 
+  .programme:empty {
+    display: none;
+  }
+
   .programme {
     h3 {
       margin: 0 0 0.25rem;
