@@ -49,10 +49,20 @@ const titleInput = (props: { val: string }) => {
         // This is a downside of using contenteditable. But for normal
         // typing, it will mess up the cursor position so only do it if
         // the html has been changed.
-        if (el.html() != el.text()) {
+        const a = el.html().replace(/&nbsp;/g, '\u00a0');
+        const b = el.text();
+        if (a != b) {
+          console.debug(`titleInput: mismatching html detected: '${a}' != '${b}'`)
           el.html(el.text());
         }
         togglePlaceholder(el);
+      })
+      .on("blur", (e) => {
+        // Get rid of the non-breaking spaces - sometimes they may be
+        // inserted by mobile browsers if you press space twice.
+        console.debug("titleInput: onblur()");
+        const el = $(e.target);
+        el.html(el.text().replace(/\u00a0/g, " "));
       })
   );
 
