@@ -35,6 +35,11 @@ function entry() {
 
 function bindLinkClickedRerouting() {
   window.addEventListener("popstate", renderRoute);
+  window.addEventListener("unload", () => {
+    // If we leave the page, clear the session storage
+    // Ie .if we manually refresh the page, reload the db.
+    sessionStorage.clear();
+  });
 }
 
 function renderRoute() {
