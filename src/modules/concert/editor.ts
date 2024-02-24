@@ -155,10 +155,15 @@ const programmeItemInput = (props: {
     $("<div>", { class: "actions" }).append(
       // show remove button for all but the last 'new' one.
       iconButton({ icon: "remove" })
-        //
-        .prop("disabled", props.index == props.total)
+        // .prop("disabled", props.index == props.total)
         .on("click", (e) => {
-          console.log(readProgrammeGuiValues());
+          const values = readProgrammeGuiValues();
+          console.log(values);
+          if (!values) return;
+          values.splice(props.index, 1);
+          $(".programmeItems").replaceWith(
+            programmeItemsInput({ items: values })
+          );
         }),
       // show move up for all but the top one and last 'new' one
       iconButton({ icon: "move_up" })
@@ -248,13 +253,14 @@ function readGuiValues(): Concert {
   const fb = $("#fbInput").val() as string;
   const poster = ($(".poster")[0] as HTMLImageElement).src;
   const thumb = resizeImage(poster, 160, 120);
+  // TODO: add programme
   const retVal: Concert = { id, title, when, poster, thumb };
   if (fb) retVal.facebook = fb;
   return retVal;
 }
 
-function readProgrammeGuiValues(): ProgrammeItem[] {
-  return $(".programmeItems li")
+function readProgrammeGuiValues(): ProgrammeItem[] | undefined {
+  const items = $(".programmeItems li")
     .toArray()
     .map((li) => {
       const inputs = $(li).find("input");
@@ -266,4 +272,5 @@ function readProgrammeGuiValues(): ProgrammeItem[] {
       if (retVal.composer || retVal.title) return retVal;
     })
     .filter((x): x is ProgrammeItem => !!x);
+  return items.length ? items : undefined;
 }
