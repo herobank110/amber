@@ -46,8 +46,12 @@ const titleInput = (props: { val: string }) => {
       .on("input", (e) => {
         const el = $(e.target);
         // Ensure if html is pasted, it is converted to just raw text.
-        // This is a downside of using contenteditable.
-        el.html(el.text());
+        // This is a downside of using contenteditable. But for normal
+        // typing, it will mess up the cursor position so only do it if
+        // the html has been changed.
+        if (el.html() != el.text()) {
+          el.html(el.text());
+        }
         togglePlaceholder(el);
       })
   );
