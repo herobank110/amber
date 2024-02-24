@@ -11,6 +11,7 @@ function readParams() {
         'poster' => filter_input(INPUT_POST, 'poster', FILTER_VALIDATE_URL),
         'thumb' => filter_input(INPUT_POST, 'thumb', FILTER_VALIDATE_URL),
         'facebook' => filter_input(INPUT_POST, 'facebook', FILTER_VALIDATE_URL, FILTER_NULL_ON_FAILURE),
+        'programme' => filter_input(INPUT_POST, 'programme', FILTER_DEFAULT, FILTER_NULL_ON_FAILURE),
     ];
 }
 
@@ -41,12 +42,15 @@ function createStatement($params) {
 function insertConcertStatement($params) {
     $statement = getOrCreateDb()->prepare(<<<SQL
         INSERT INTO `concerts`
-        (`title`, `when`, `poster`, `thumb`, `facebook`)
-        VALUES (?, ?, ?, ?, ?)
+        (`title`, `when`, `poster`, `thumb`, `facebook`, `programme`)
+        VALUES (?, ?, ?, ?, ?, ?)
         SQL);
     if ($statement === false)
         return [null, "Failed to prepare statement"];
-    if(!$statement->bind_param("sssss", $params['title'], $params['when'], $params['poster'], $params['thumb'], $params['facebook']))
+    if(!$statement->bind_param(
+        "ssssss", $params['title'], $params['when'], $params['poster'],
+        $params['thumb'], $params['facebook'], $params['programme'])
+    )
         return [null, "Failed to bind parameters: $statement->error"];
     return [$statement, ""];
 }
@@ -55,11 +59,15 @@ function updateConcertStatement($params) {
     $statement = getOrCreateDb()->prepare(<<<SQL
         UPDATE `concerts`
         SET `title` = ?, `when` = ?, `poster` = ?, `thumb` = ?, `facebook` = ?
+            `programme` = ?
         WHERE `id` = ?
         SQL);
     if (!$statement)
         return [null, "Failed to prepare statement"];
-    if(!$statement->bind_param("sssssi", $params['title'], $params['when'], $params['poster'], $params['thumb'], $params['facebook'], $params['id']))
+    if(!$statement->bind_param(
+        "ssssssi", $params['title'], $params['when'], $params['poster'],
+        $params['thumb'], $params['facebook'], $params['programme'], $params['id'])
+    )
         return [null, "Failed to bind parameters: $statement->error"];
     return [$statement, ""];
 }
