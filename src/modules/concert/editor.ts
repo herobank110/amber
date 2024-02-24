@@ -155,7 +155,7 @@ const programmeItemInput = (props: {
     $("<div>", { class: "actions" }).append(
       // show remove button for all but the last 'new' one.
       iconButton({ icon: "remove" })
-        // .prop("disabled", props.index == props.total)
+        .prop("disabled", props.index == props.total)
         .on("click", (e) => {
           const values = readProgrammeGuiValues();
           console.log(values);
@@ -259,6 +259,10 @@ function readGuiValues(): Concert {
   return retVal;
 }
 
+/** 
+ * @returns undefined if empty list, array always has at least
+ * 1 item. may contain incomplete fields.
+ */
 function readProgrammeGuiValues(): ProgrammeItem[] | undefined {
   const items = $(".programmeItems li")
     .toArray()
