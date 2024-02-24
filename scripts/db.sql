@@ -14,5 +14,6 @@ create table `concerts` (
   `when` datetime not null,
   `thumb` varchar(200) not null,
   `poster` varchar(200) not null,
-  `facebook` varchar(100) not null
+  `facebook` varchar(100) not null,
+  `programme` text
 ) engine=InnoDB;
