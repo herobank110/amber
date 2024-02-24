@@ -59,6 +59,17 @@ const mockDb = {
       thumb: "/share/concerts/April 2022_thumb.PNG",
       poster: "/share/concerts/April 2022.PNG",
       facebook: "https://www.facebook.com/events/1080501699194922/",
+      programme: [
+        {
+          composer: "Beethoven",
+          title: "Symphony No. 6 in F major, Op. 68, 'Pastoral'",
+        },
+        {
+          composer: "Mozart",
+          title: "Piano Concerto No. 21 in C major, K. 467",
+          performanceNotes: "Solo: Ingrid Fliter, piano",
+        },
+      ],
     },
     {
       id: 4,
