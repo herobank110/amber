@@ -41,6 +41,11 @@ export const closeButton = () =>
   `
   ).addClass("closeButton");
 
+export const iconButton = (props: { icon: string }) =>
+  $("<button>", { class: "iconButton" }).append(
+    $("<span>", { class: "material-symbols-outlined", text: props.icon })
+  );
+
 type BasicInputProps = {
   name: string;
   label: string;

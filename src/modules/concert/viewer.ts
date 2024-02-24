@@ -24,7 +24,7 @@ export function concertViewerPage(onDone = () => {}) {
       setLocation("/concerts");
       return;
     }
-    console.debug("concertViewerPage: Concert:",  concert);
+    console.debug("concertViewerPage: Concert:", concert);
     $(".concertDetails").replaceWith(concertDetails(concert));
     onDone();
   });
@@ -70,30 +70,29 @@ const concertDetails = (props: Concert) =>
       $("<h2>", { text: props.title, class: "title" }),
       $("<span>", { text: longDate(props.when), class: "when" })
     ),
-    programmeWrap().append(
-      props.programme ? programme({ items: props.programme }) : $()
-    ),
+    programme({ items: props.programme }),
     props.facebook ? facebookButton(props.facebook) : $()
   );
 
-const programmeWrap = () => $("<div>", { class: "programme" });
-
-const programme = (props: { items: ProgrammeItem[] }) => [
-  $("<h3>", { text: "Programme" }),
-  $("<ol>").append(
-    props.items.map((item) =>
-      $("<li>").append(
-        $("<strong>", { text: item.composer }).append(
-          $("<span>", { html: ":&nbsp;" }),
-        ),
-        $("<span>", { text: item.title }),
-        item.performanceNotes
-          ? [$("<br>"), $("<em>", { text: item.performanceNotes })]
-          : $()
+const programme = (props: { items?: ProgrammeItem[] }) =>
+  $("<div>", { class: "programme" })
+    .toggleClass("empty", !props.items)
+    .append(
+      $("<h3>", { text: "Programme" }),
+      $("<ol>", { class: "programmeItems" }).append(
+        (props.items ?? []).map((item) =>
+          $("<li>").append(
+            $("<strong>", { text: item.composer }).append(
+              $("<span>", { html: ":&nbsp;" })
+            ),
+            $("<span>", { text: item.title }),
+            item.performanceNotes
+              ? [$("<br>"), $("<em>", { text: item.performanceNotes })]
+              : $()
+          )
+        )
       )
-    )
-  ),
-];
+    );
 
 async function onClickDelete(id: number) {
   if (confirm("Are you sure you want to delete this concert?")) {

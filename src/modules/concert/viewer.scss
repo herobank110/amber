@@ -49,11 +49,11 @@
     gap: 1rem;
   }
 
-  .programme:empty {
-    display: none;
-  }
-
   .programme {
+    &.empty {
+      display: none;
+    }
+
     h3 {
       margin: 0 0 0.25rem;
     }

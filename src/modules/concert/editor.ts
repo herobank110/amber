@@ -3,8 +3,13 @@ import Noty from "noty";
 import { getConcert } from "./common";
 import { concertViewerPage } from "./viewer";
 import "./editor.scss";
-import { facebookLogo, link } from "../../utils/view";
-import { Concert, getConcerts, saveConcert } from "../amberDb/amberDb";
+import { facebookLogo, iconButton, link } from "../../utils/view";
+import {
+  Concert,
+  ProgrammeItem,
+  getConcerts,
+  saveConcert,
+} from "../amberDb/amberDb";
 import { uploadFile } from "../../utils/upload";
 import { resizeImage, setLocation } from "../../utils/utils";
 import { requireAdminMode } from "../admin/adminMode";
@@ -28,6 +33,10 @@ export function concertEditorPage() {
     el.find(".title").replaceWith(titleInput({ val: concert.title }));
     el.find(".when").replaceWith(whenInput(concert.when));
     el.find(".fbLink").remove();
+    el.find(".programme").removeClass("empty");
+    el.find(".programmeItems").replaceWith(
+      programmeItemsInput({ items: concert.programme ?? [] })
+    );
     el.find(".programme").after(facebookInput({ val: concert.facebook }));
     el.find(".concertDetails").append(fileControls({ id: concert.id }));
   });
@@ -49,10 +58,12 @@ const titleInput = (props: { val: string }) => {
         // This is a downside of using contenteditable. But for normal
         // typing, it will mess up the cursor position so only do it if
         // the html has been changed.
-        const a = el.html().replace(/&nbsp;/g, '\u00a0');
+        const a = el.html().replace(/&nbsp;/g, "\u00a0");
         const b = el.text();
         if (a != b) {
-          console.debug(`titleInput: mismatching html detected: '${a}' != '${b}'`)
+          console.debug(
+            `titleInput: mismatching html detected: '${a}' != '${b}'`
+          );
           el.html(el.text());
         }
         togglePlaceholder(el);
@@ -121,6 +132,20 @@ const whenInput = (date: string) =>
     value: date,
     class: "when",
   });
+
+const programmeItemsInput = (props: { items: ProgrammeItem[] }) =>
+  $("<ol>", { class: "programmeItems" }).append(
+    props.items.map((x) => $("<li>", { text: x.title })),
+    $("<li>").append(
+      $("<div>").append(
+        $("<div>").append(iconButton({ icon: "remove" })),
+        $("<div>").append(iconButton({ icon: "move_down" }))
+      ),
+      $("<input>", { placeholder: "Composer" }),
+      $("<input>", { placeholder: "Title" }),
+      $("<input>", { placeholder: "Performance Notes (optional)" })
+    )
+  );
 
 const facebookInput = (props: { val?: string }) =>
   $("<div>", { class: "fbLink" }).append(
