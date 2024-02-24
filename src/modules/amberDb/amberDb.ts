@@ -1,5 +1,12 @@
 import { isDevMode } from "../../utils/utils";
 
+export type ProgrammeItem = {
+  composer: string;
+  title: string;
+  /** ie soloists */
+  performanceNotes: string;
+}
+
 export type Concert = {
   id: number;
   title: string;
@@ -7,6 +14,7 @@ export type Concert = {
   thumb: string;
   poster: string;
   facebook?: string;
+  programme?: ProgrammeItem[];
 };
 
 type ID = number;
