@@ -8,6 +8,8 @@ $result = $statement->get_result();
 while ($row = $result->fetch_assoc()) {
     if (!$row['programme'])
         unset($row['programme']);
+    else
+        $row['programme'] = json_decode($row['programme']);
     $json[] = $row;
 }
 header("Content-Type: application/json");
