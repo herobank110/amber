@@ -388,6 +388,58 @@ export async function deleteConcert(id: ID) {
   return true;
 }
 
+export type Catalogue = {
+  composers: CatalogueComposer[];
+};
+
+type CatalogueComposer = {
+  name: string;
+  works: CatalogueWork[];
+};
+
+type CatalogueWork = {
+  title: string;
+  performances: CataloguePerformance[];
+};
+
+type CataloguePerformance = {
+  notes: string;
+  concert: Concert;
+};
+
+export async function getCatalogue() {
+  console.debug("getCatalogue()");
+
+  const retVal: Catalogue = { composers: [] };
+  const concerts = await getConcerts();
+  for (const concert of concerts) {
+    if (!concert.programme) continue;
+    for (const programmeItem of concert.programme) {
+      const composerName = programmeItem.composer;
+      const workTitle = programmeItem.title;
+      const performanceNotes = programmeItem.performanceNotes || "";
+
+      const composer = retVal.composers.find(
+        (c) => c.name == composerName
+      ) || //
+      { name: composerName, works: [] };
+
+      let work = composer.works.find((w) => w.title == workTitle);
+      if (!work) {
+        work = { title: workTitle, performances: [] };
+        composer.works.push(work);
+      }
+
+      work.performances.push({ notes: performanceNotes, concert });
+
+      if (!retVal.composers.includes(composer)) {
+        retVal.composers.push(composer);
+      }
+    }
+  }
+  return retVal;
+}
+
 function objectToFormData(
   obj: Record<string, Object | { toString(): string }>
 ) {

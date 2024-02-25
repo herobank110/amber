@@ -1,7 +1,12 @@
 import $ from "jquery";
 import "./catalogue.scss";
 import { link } from "../../utils/view";
-import { Concert, getConcerts } from "../amberDb/amberDb";
+import {
+  Catalogue,
+  Concert,
+  getCatalogue,
+  getConcerts,
+} from "../amberDb/amberDb";
 
 type Piece = {
   id: number;
@@ -51,8 +56,9 @@ const pieces = [
 ];
 
 export function cataloguePage() {
-  getConcerts().then((concerts) => {
-    $("#cataloguePage .pieceList").replaceWith(pieceList(pieces as Piece[]));
+  getCatalogue().then((catalogue) => {
+    console.debug("cataloguePage(): displaying results:", catalogue);
+    $("#cataloguePage .catalogueList").replaceWith(catalogueList(catalogue));
   });
 
   pieces.sort((a, b) => {
@@ -63,21 +69,37 @@ export function cataloguePage() {
 
   return $("<main>", { id: "cataloguePage" }).append(
     $("<h1>", { text: "Catalogue" }),
-    pieceList([])
+    catalogueList({ composers: [] })
   );
 }
 
-const pieceList = (pieces: Piece[]) =>
-  $("<div>", { class: "pieceList" }).append(
-    ...pieces.map((piece) =>
-      $("<details>", { class: "piece" }).append(
-        $("<summary>", { text: piece.composer + " - " + piece.name }),
-        $("<span>", { html: "Played in:&nbsp;" }),
-        ...piece.concerts.map((concert) =>
-          link({
-            href: `/concert/${concert.id}`,
-            text: concert.title,
-          })
+const catalogueList = (props: Catalogue) =>
+  $("<div>", { class: "catalogueList" }).append(
+    $("<ul>").append(
+      ...props.composers.map((composer) =>
+        $("<li>", { text: composer.name }).append(
+          $("<ul>").append(
+            ...composer.works.map((work) =>
+              $("<li>", { text: work.title }).append(
+                $("<ul>").append(
+                  ...work.performances.map((performance) =>
+                    $("<li>").append(
+                      link({
+                        href: `/concert/${performance.concert.id}`,
+                        text: performance.concert.title,
+                      }),
+                      performance.notes
+                        ? [
+                            $("<span>", { html: "&nbsp;-&nbsp;" }),
+                            $("<em>", { text: performance.notes }),
+                          ]
+                        : []
+                    )
+                  )
+                )
+              )
+            )
+          )
         )
       )
     )
