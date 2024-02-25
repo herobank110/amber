@@ -58,7 +58,7 @@ function insertConcertStatement($params) {
 function updateConcertStatement($params) {
     $statement = getOrCreateDb()->prepare(<<<SQL
         UPDATE `concerts`
-        SET `title` = ?, `when` = ?, `poster` = ?, `thumb` = ?, `facebook` = ?
+        SET `title` = ?, `when` = ?, `poster` = ?, `thumb` = ?, `facebook` = ?,
             `programme` = ?
         WHERE `id` = ?
         SQL);
