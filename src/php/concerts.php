@@ -6,6 +6,8 @@ $statement = $db->prepare("SELECT * from `concerts`");
 $statement->execute();
 $result = $statement->get_result();
 while ($row = $result->fetch_assoc()) {
+    if (!$row['programme'])
+        unset($row['programme']);
     $json[] = $row;
 }
 header("Content-Type: application/json");
