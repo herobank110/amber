@@ -444,6 +444,16 @@ export async function getCatalogue() {
       }
     }
   }
+
+  // Sort all the levels of the catalogue
+  retVal.composers.sort((a, b) => a.name.localeCompare(b.name));
+  retVal.composers.forEach((composer) => {
+    composer.works.sort((a, b) => a.title.localeCompare(b.title));
+    composer.works.forEach((work) => {
+      work.performances.sort((a, b) => a.concert.when.localeCompare(b.concert.when));
+    });
+  });
+
   return retVal;
 }
 
