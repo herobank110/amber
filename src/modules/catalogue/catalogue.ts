@@ -93,7 +93,7 @@ const catalogueList = (props: Catalogue) =>
                       }),
                       performance.notes
                         ? [
-                            $("<span>", { html: "&nbsp;-&nbsp;" }),
+                            $("<span>", { html: "&nbsp;" }),
                             $("<em>", { text: performance.notes }),
                           ]
                         : []
