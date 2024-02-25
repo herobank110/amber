@@ -1,4 +1,13 @@
 #cataloguePage {
-    padding-top: 100px;
-    min-height: 70lvh;
+  padding-top: 100px;
+  min-height: 70lvh;
+
+  width: min(95vw, 600px);
+  margin: 0 auto;
+
+  @media screen and (max-width: 600px) {
+    .catalogueList ul {
+      padding-left: 3ch;
+    }
+  }
 }
