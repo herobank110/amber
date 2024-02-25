@@ -309,7 +309,26 @@ function modifyProgramme(props: {
         `modifyProgramme: index: ${props.index}, # of items: ${items.length}, # of <li>: ${numLis}`
       );
       if (props.index == numLis - 1 && numLis == items.length) {
-        console.debug("modifyProgramme: re-rendering list to add blank row");
+        console.debug("modifyProgramme: adding new empty item to bottom");
+        // This timeout is for the tabindex to change to the next element 
+        // after the blur event, if it is going to be set to anything!
+        setTimeout(() => {
+          const focusedEl = document.activeElement;
+          let j: number | undefined;
+          if (focusedEl instanceof HTMLElement) {
+            j = $(focusedEl).parent().find("input").index(focusedEl);
+            j = j == -1 ? undefined : j;
+          }
+          $(".programmeItems").replaceWith(programmeItemsInput({ items }));
+          // Restore the focus to the new item.
+          if (j != undefined)
+            $(".programmeItems li")
+              .eq(props.index)
+              .find("input")
+              .eq(j)
+              .trigger("focus");
+        }, 0);
+        return;
       } else {
         // don't need to re-render if nothing changed.
         return;
