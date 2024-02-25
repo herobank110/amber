@@ -11,6 +11,13 @@ export function isDevMode() {
   return window.location.hostname === "localhost";
 }
 
+export function ultraShortDate(when: string) {
+  return Intl.DateTimeFormat("en-GB", {
+    year: "numeric",
+    // month: "short",
+  }).format(new Date(when));
+}
+
 export function shortDate(when: string) {
   return Intl.DateTimeFormat("en-GB", {
     year: "numeric",
