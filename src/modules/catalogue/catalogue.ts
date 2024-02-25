@@ -7,6 +7,7 @@ import {
   getCatalogue,
   getConcerts,
 } from "../amberDb/amberDb";
+import { shortDate } from "../../utils/utils";
 
 type Piece = {
   id: number;
@@ -86,8 +87,12 @@ const catalogueList = (props: Catalogue) =>
                     $("<li>").append(
                       link({
                         href: `/concert/${performance.concert.id}`,
-                        text: performance.concert.title,
-                      }),
+                        
+                      }).append(
+                        $('<span>', {text: shortDate(performance.concert.when)}),
+                        $('<span>', {html: "&nbsp;-&nbsp;"}),
+                        $('<span>', { text: performance.concert.title }),
+                      ),
                       performance.notes
                         ? [
                             $("<span>", { html: "&nbsp;-&nbsp;" }),
