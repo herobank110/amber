@@ -1,10 +1,25 @@
 #cataloguePage {
   padding-top: 100px;
   min-height: 70lvh;
-
   width: min(95vw, 600px);
   margin: 0 auto;
 
+  .catalogueList > ul > li {
+    margin-bottom: 1em;
+    font-weight: bolder;
+    font-size: 14pt;
+    & > ul > li {
+      font-weight: normal;
+      font-size: 12pt;
+      margin-bottom: 0.25em;
+      & > ul > li {
+        a {
+          color: #222 !important;
+        }
+        margin: 0.25em 0 0.5em;
+      }
+    }
+  }
   @media screen and (max-width: 600px) {
     .catalogueList ul {
       padding-left: 3ch;
