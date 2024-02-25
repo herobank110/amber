@@ -136,10 +136,16 @@ const mockDb = {
     {
       id: 12,
       title: "Seas & Storms",
-      when: "2016-07-03T15:00",
+      when: "1716-07-03T15:00",
       thumb: "/share/concerts/July 2016_thumb.jpeg",
       poster: "/share/concerts/July 2016.jpeg",
       facebook: "https://www.facebook.com/events/602111969965403/",
+      programme: [
+        {
+          composer: "Beethoven",
+          title: "Overture to The Creatures of Prometheus, Op. 43",
+        },
+      ],
     },
     {
       id: 13,
@@ -419,10 +425,11 @@ export async function getCatalogue() {
       const workTitle = programmeItem.title;
       const performanceNotes = programmeItem.performanceNotes || "";
 
-      const composer = retVal.composers.find(
-        (c) => c.name == composerName
-      ) || //
-      { name: composerName, works: [] };
+      const composer = retVal.composers.find((c) => c.name == composerName) || {
+        //
+        name: composerName,
+        works: [],
+      };
 
       let work = composer.works.find((w) => w.title == workTitle);
       if (!work) {
