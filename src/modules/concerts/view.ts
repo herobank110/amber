@@ -11,7 +11,10 @@ export const concertsPage = () => {
   });
   return $("<div>", { id: "archivePage" }).append(
     $("<main>").append(
-      // $("<h1>", { text: "Concerts Archive" }),
+      $("<div>", { class: "headingWithLink" }).append(
+        $("<h1>", { text: "Concerts" }),
+        link({ href: "/catalogue", text: "View Catalogue" })
+      ),
       isAdminMode() ? adminControls() : $(),
       concertsGrid([])
     )

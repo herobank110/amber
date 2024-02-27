@@ -1,5 +1,11 @@
 #archivePage main {
-  margin-top: 120px;
+  padding-top: 100px;
+
+  .headingWithLink {
+    width: min(95vw, 600px);
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 .concertsGrid {

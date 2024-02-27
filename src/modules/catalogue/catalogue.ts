@@ -69,7 +69,10 @@ export function cataloguePage() {
   });
 
   return $("<main>", { id: "cataloguePage" }).append(
-    $("<h1>", { text: "Catalogue" }),
+    $("<div>", { class: "headingWithLink" }).append(
+      $("<h1>", { text: "Catalogue" }),
+      link({ href: "/concerts", text: "View Concerts" })
+    ),
     catalogueList({ composers: [] })
   );
 }

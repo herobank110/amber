@@ -108,14 +108,15 @@
   display: grid;
   place-items: center;
   span {
-  font-size: 16pt;
+    font-size: 16pt;
   }
   cursor: pointer;
   color: #000;
   transition: color 0.1s, background 0.1s, outline 0.1s;
   border-radius: 50%;
   outline: 1px solid transparent;
-  &:hover:not(:disabled), &:focus:not(:disabled) {
+  &:hover:not(:disabled),
+  &:focus:not(:disabled) {
     color: #333;
     background: #f1f1fa;
   }
@@ -125,5 +126,26 @@
   &:disabled {
     color: #aaa;
     cursor: not-allowed;
+  }
+}
+
+.headingWithLink {
+  display: flex;
+  align-items: end;
+  gap: 1ch;
+  margin: 1.5em 0 1.25em;
+
+  h1 {
+    margin: 0;
+  }
+
+  a {
+    color: #777;
+    text-decoration: none;
+    font-size: 1.25em;
+    font-weight: bold;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
