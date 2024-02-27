@@ -5,7 +5,7 @@ import {
   notYetScheduled,
 } from "../modules/home/view";
 import { initHomeScrollAnims } from "../modules/home/scrollAnims";
-import { facebookButton, footer } from "./view";
+import { facebookButton, footer, link } from "./view";
 import { concertsPage } from "../modules/concerts/view";
 import { makeNavBar } from "../modules/commonUI/navBar";
 import { addScrollDebugUI } from "../modules/debug/debug";
@@ -80,6 +80,15 @@ function showHome() {
   document.body.innerHTML = mainHome();
   makeNavBar().prependTo(".t1");
   footer().appendTo(document.body);
+  console.log(
+    $(":contains('Go To Concerts Archive')")
+      .filter(".primary")
+      .replaceWith(
+        link({ href: "/concerts", text: "Go To Concerts Archive" }).addClass(
+          "primary"
+        )
+      )
+  );
   getUpcomingConcert().then((c) => {
     console.debug("showHome: upcomingConcert:", c);
     $(".upcoming").replaceWith(
