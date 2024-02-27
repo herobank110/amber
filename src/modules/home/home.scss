@@ -91,7 +91,8 @@ h2 {
   width: calc(100% - 4ch);
   // top: 20lvh;
   // margin-top
-  margin-bottom: 3em;
+  // margin-bottom: 3em;
+  min-height: 40vmin;
 
   & h2 {
     margin-bottom: 0.5em;
