@@ -1,8 +1,10 @@
+import $ from "jquery";
 // @ts-ignore
 import logo from "data-url:../../rsrc/rco_logo4.png";
 // @ts-ignore
 // import sampleVideo from "data-url:../../rsrc/tenYearsSampleVideo.mp4";
-const sampleVideo = "https://roathchamber.org/share/10%20Years%20of%20Roath%20Chamber%20Orchestra.webm";
+const sampleVideo =
+  "https://roathchamber.org/share/10%20Years%20of%20Roath%20Chamber%20Orchestra.webm";
 
 // @ts-ignore
 import IMG_0392 from "../../rsrc/IMG_0392.jpeg";
@@ -18,6 +20,9 @@ import IMG_5997 from "../../rsrc/IMG_5997.jpeg";
 import IMG_9111 from "../../rsrc/IMG_9111.jpg";
 // @ts-ignore
 import IMG_9908 from "../../rsrc/IMG_9908.jpg";
+import { Concert } from "../amberDb/amberDb";
+import { longDate, resizeImage } from "../../utils/utils";
+import { facebookButton } from "../../utils/view";
 
 export const mainHome = () =>
   `
@@ -186,3 +191,31 @@ export const mainHome = () =>
         <a href="mailto:roathchamber@gmail.com">roathchamber@gmail.com</a>
     </section>
   </div>`;
+
+export const upcomingSection = (props: { concert: Concert }) =>
+  $("<div>", { class: "upcoming" }).append(
+    $("<h2>", { text: "Upcoming Concert" }),
+    $("<div>", { class: "row" }).append(
+      $("<div>", {
+        class: "poster",
+        css: {
+          backgroundImage: `url('${resizeImage(
+            props.concert.poster,
+            600,
+            400
+          )}')`,
+        },
+      }),
+      $("<div>", { class: "info" }).append(
+        $('<h3>', {text: props.concert.title}),
+        $("<span>", { text: longDate(props.concert.when) }),
+        props.concert.facebook ? facebookButton(props.concert.facebook) : []
+      )
+    )
+  );
+
+export const notYetScheduled = () =>
+  $("<div>", { class: "upcoming" }).append(
+    $("<h2>", { text: "Upcoming Concert" }),
+    $("<p>", { text: "Check back soon for details of our next concert." })
+  );

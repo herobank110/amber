@@ -45,7 +45,7 @@ export function resizeImage(src: string, x: number, y: number) {
   if (!src || x < 0 || y < 0)
     throw new Error(`invalid argument(s): ${src}, ${x}, ${y}`);
 
-  if (isDevMode()) {
+  if (isDevMode() && !(new URL(src)).hostname.includes("roathchamber")) {
     return "https://roathchamber.org/share/resize/00316-335561172.6e7667.300x200.png";
   }
 

@@ -1,5 +1,9 @@
 import $ from "jquery";
-import { mainHome } from "../modules/home/view";
+import {
+  mainHome,
+  upcomingSection,
+  notYetScheduled,
+} from "../modules/home/view";
 import { initHomeScrollAnims } from "../modules/home/scrollAnims";
 import { facebookButton, footer } from "./view";
 import { concertsPage } from "../modules/concerts/view";
@@ -10,6 +14,8 @@ import { initPageAdminModeCheck } from "../modules/admin/adminMode";
 import { concertEditorPage } from "../modules/concert/editor";
 import { concertViewerPage } from "../modules/concert/viewer";
 import { cataloguePage } from "../modules/catalogue/catalogue";
+import { getConcert } from "../modules/concert/common";
+import { getConcerts } from "../modules/amberDb/amberDb";
 
 // Importing this file starts it.
 // Changing pages must make a new page request.
@@ -64,16 +70,23 @@ function renderRoute() {
   showHome();
 }
 
+async function getUpcomingConcert() {
+  return (await getConcerts())
+    .sort((a, b) => a.when.localeCompare(b.when))
+    .find((c) => new Date(c.when) > new Date());
+}
+
 function showHome() {
   document.body.innerHTML = mainHome();
   makeNavBar().prependTo(".t1");
   footer().appendTo(document.body);
-  initHomeScrollAnims();
-  $("a.primary")
-    .eq(0)
-    .replaceWith(
-      facebookButton("https://www.facebook.com/events/177429568773354")
+  getUpcomingConcert().then((c) => {
+    console.debug("showHome: upcomingConcert:", c);
+    $(".upcoming").replaceWith(
+      c ? upcomingSection({ concert: c }) : notYetScheduled()
     );
+  });
+  initHomeScrollAnims();
   jumpToHash();
   addScrollDebugUI();
 }
