@@ -104,7 +104,7 @@ const mockDb = {
     },
     {
       id: 8,
-      title: "Christmas",
+      title: "Celebrate! 10 Years of Roath Chamber Orchestra",
       when: "2077-12-18T17:00",
       thumb: "/share/concerts/Dec 2022_thumb.JPG",
       poster: "https://roathchamber.org/share/upload/Dec%202022.a041bd.jpg",
