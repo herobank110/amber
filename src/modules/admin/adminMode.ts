@@ -33,7 +33,7 @@ export function isAdminMode() {
 
 /** login then redirect back to the current page */
 export function logInAsAdmin() {
-  sessionStorage.setItem("adminLoginRedirectTo", window.location.href);
+  localStorage.setItem("adminLoginRedirectTo", window.location.href);
   setLocation("/admin");
 }
 

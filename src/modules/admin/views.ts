@@ -53,5 +53,5 @@ function hasInvalidCredentials() {
 }
 
 function getAdminLoginRedirectTo() {
-  return sessionStorage.getItem("adminLoginRedirectTo") || "/";
+  return localStorage.getItem("adminLoginRedirectTo") || "/";
 }
