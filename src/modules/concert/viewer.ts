@@ -1,6 +1,6 @@
 import $ from "jquery";
 import Noty from "noty";
-import { facebookButton, link } from "../../utils/view";
+import { facebookButton, icon, iconButton, link } from "../../utils/view";
 import { longDate, setLocation } from "../../utils/utils";
 import { getConcert } from "./common";
 import "./viewer.scss";
@@ -56,9 +56,11 @@ const concertDetails = (props: Concert) =>
   $("<div>", { class: "concertDetails" }).append(
     link({
       href: "/concerts",
-      text: "🢄 Back to All Concerts",
       class: "backButton",
-    }),
+    }).append(
+      icon({ icon: "arrow_back" }),
+      $("<span>", { text: "Back to All Concerts" })
+    ),
     isAdminMode() ? adminControls({ id: props.id }) : $(),
     $("<div>", { class: "posterWrap" }).append(
       $("<img>", {

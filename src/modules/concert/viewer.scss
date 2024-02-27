@@ -15,7 +15,10 @@
     justify-self: start;
     color: #cc3232 !important;
     text-decoration: none;
-    &:hover {
+    display: flex;
+    align-items: center;
+    gap: 0.5ch;
+    &:hover > :not(.material-symbols-outlined) {
       text-decoration: underline;
     }
   }
