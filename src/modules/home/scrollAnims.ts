@@ -24,18 +24,18 @@ export function initHomeScrollAnims() {
   // )
   animate(
     "#logo",
-    { width: ["100vmin", "100px"] },
+    { width: ["40lvh", "100px"] },
     { timeRange: "exit 0% 50%", fill: "both", easing: "linear" }
   );
   animate(
     ".logoWrap",
-    { height: ["80lvh", "100px"] },
+    { height: ["40lvh", "100px"] },
     { timeRange: "exit 10% 100%", fill: "both", easing: "linear" }
   );
   animate(
     ".upcomingCover",
     [
-      { visibility: "visible", opacity: 1 },
+      { visibility: "visible", opacity: 0.3 },
       { visibility: "hidden", opacity: 0 },
     ],
     { timeRange: "exit 40% 100%", fill: "both", easing: "linear" }

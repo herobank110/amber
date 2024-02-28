@@ -26,7 +26,7 @@ import { facebookButton } from "../../utils/view";
 
 export const mainHome = () =>
   `
-  <div class="t t1" style="height: 60lvh">
+  <div class="t t1" style="height: 30lvh">
     <section>
       <div class="upcomingCover"></div>
       <div class="logoWrap">
@@ -58,7 +58,7 @@ export const mainHome = () =>
       </div>
     </section>
   </div>
-  <div class="t t2" style="height: 40lvh">
+  <div class="t t2" style="height: 25lvh">
     <div></div>
   </div>
   <div class="t t3">
