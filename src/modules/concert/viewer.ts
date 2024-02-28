@@ -31,7 +31,7 @@ export function concertViewerPage(onDone = () => {}) {
 
   return $("<main>", { id: "concertDetailsPage" }).append(
     //
-    $("<div>", { class: "concertDetails" })
+    $("<div>", { class: "concertDetails", text: 'Loading...' })
   );
 }
 
