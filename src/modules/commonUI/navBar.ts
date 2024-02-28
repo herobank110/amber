@@ -37,9 +37,8 @@ const logoItem = () =>
 
 const mobileNav = () =>
   $("<div>", { class: "mobile" }).append(
-    $("<div>", { class: "hamburger" }).append(
-      icon({ icon: "menu" })
-    )
+    $("<div>", { class: "hamburger" })
+      .append(icon({ icon: "menu" }))
       //
       .on("click", () => toggleSideBar()),
     logoItem(),
@@ -51,6 +50,7 @@ const sideBar = () =>
     $("<div>", { class: "inner" }).append(
       $("<div>", { class: "close" }).append(
         $("<div>", { class: "img" })
+          .append(icon({ icon: "close" }))
           //
           .on("click", () => toggleSideBar())
       ),
