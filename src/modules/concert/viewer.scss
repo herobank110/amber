@@ -4,9 +4,9 @@
 }
 
 @mixin iconLink() {
-    display: flex;
-    align-items: center;
-    gap: 0.5ch;
+  display: flex;
+  align-items: center;
+  gap: 0.5ch;
   text-decoration: none;
   &:hover > :not(.material-symbols-outlined) {
     text-decoration: underline;
@@ -79,6 +79,11 @@
     width: 100%;
     max-width: 500px;
     padding: 1em 0;
+
+    // if its only the next with no prev, move it to the right
+    &:has(.nextConcert:nth-child(1)) {
+      justify-content: end;
+    }
 
     a {
       color: #cc3232 !important;

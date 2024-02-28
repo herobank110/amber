@@ -113,10 +113,12 @@ const prevNextConcerts = (props: { id: number }) => {
           )
         : [],
       nextConcert
-        ? link({ href: `/concert/${nextConcert.id}` }).append(
-            $("<span>", { text: "Next Concert" }),
-            icon({ icon: "arrow_forward" })
-          )
+        ? link({ href: `/concert/${nextConcert.id}` })
+            .addClass("nextConcert")
+            .append(
+              $("<span>", { text: "Next Concert" }),
+              icon({ icon: "arrow_forward" })
+            )
         : []
     );
   });
