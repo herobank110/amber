@@ -35,7 +35,7 @@ export function initHomeScrollAnims() {
   animate(
     ".upcomingCover",
     [
-      { visibility: "visible", opacity: 0.3 },
+      { visibility: "visible", opacity: 1 },
       { visibility: "hidden", opacity: 0 },
     ],
     { timeRange: "exit 40% 100%", fill: "both", easing: "linear" }
