@@ -49,8 +49,12 @@ nav {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     & > .hamburger {
-      margin-left: 1em;
-      background: url("../../rsrc/hamburger.png") left / 37% no-repeat;
+      margin-left: 2em;
+      display: grid;
+      align-items: center;
+      .material-symbols-outlined {
+        font-size: 28pt;
+      }
     }
     & > .logo {
       justify-self: center;

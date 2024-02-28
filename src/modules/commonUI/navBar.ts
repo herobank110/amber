@@ -1,6 +1,6 @@
 import $ from "jquery";
 import "./navBar.scss";
-import { link } from "../../utils/view";
+import { icon, link } from "../../utils/view";
 
 export const makeNavBar = () =>
   $("<nav>").append(
@@ -37,7 +37,9 @@ const logoItem = () =>
 
 const mobileNav = () =>
   $("<div>", { class: "mobile" }).append(
-    $("<div>", { class: "hamburger" })
+    $("<div>", { class: "hamburger" }).append(
+      icon({ icon: "menu" })
+    )
       //
       .on("click", () => toggleSideBar()),
     logoItem(),
