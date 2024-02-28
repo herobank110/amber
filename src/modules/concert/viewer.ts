@@ -31,7 +31,7 @@ export function concertViewerPage(onDone = () => {}) {
 
   return $("<main>", { id: "concertDetailsPage" }).append(
     //
-    $("<div>", { class: "concertDetails", text: 'Loading...' })
+    $("<div>", { class: "concertDetails", text: "Loading..." })
   );
 }
 
@@ -73,7 +73,8 @@ const concertDetails = (props: Concert) =>
       $("<span>", { text: longDate(props.when), class: "when" })
     ),
     programme({ items: props.programme }),
-    props.facebook ? facebookButton(props.facebook) : $()
+    props.facebook ? facebookButton(props.facebook) : $(),
+    prevNextConcerts({ id: props.id })
   );
 
 const programme = (props: { items?: ProgrammeItem[] }) =>
@@ -95,6 +96,32 @@ const programme = (props: { items?: ProgrammeItem[] }) =>
         )
       )
     );
+
+const prevNextConcerts = (props: { id: number }) => {
+  getConcerts().then((concerts) => {
+    concerts.sort((a, b) => a.when.localeCompare(b.when));
+    const current = new Date(concerts.find((c) => c.id === props.id)!.when);
+    const nextConcert = concerts.find((c) => new Date(c.when) > current);
+    const prevConcert = concerts
+      .reverse()
+      .find((c) => new Date(c.when) < current);
+    $(".prevNextConcerts").append(
+      prevConcert
+        ? link({ href: `/concert/${prevConcert.id}` }).append(
+            icon({ icon: "arrow_back" }),
+            $("<span>", { text: "Previous Concert" })
+          )
+        : [],
+      nextConcert
+        ? link({ href: `/concert/${nextConcert.id}` }).append(
+            $("<span>", { text: "Next Concert" }),
+            icon({ icon: "arrow_forward" })
+          )
+        : []
+    );
+  });
+  return $("<div>", { class: "prevNextConcerts" });
+};
 
 async function onClickDelete(id: number) {
   if (confirm("Are you sure you want to delete this concert?")) {

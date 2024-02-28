@@ -3,6 +3,16 @@
   display: grid;
 }
 
+@mixin iconLink() {
+    display: flex;
+    align-items: center;
+    gap: 0.5ch;
+  text-decoration: none;
+  &:hover > :not(.material-symbols-outlined) {
+    text-decoration: underline;
+  }
+}
+
 .concertDetails {
   justify-self: center;
   display: grid;
@@ -14,13 +24,7 @@
   & .backButton {
     justify-self: start;
     color: #cc3232 !important;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 0.5ch;
-    &:hover > :not(.material-symbols-outlined) {
-      text-decoration: underline;
-    }
+    @include iconLink();
   }
 
   & .posterWrap {
@@ -66,6 +70,19 @@
       li {
         list-style: lower-roman;
       }
+    }
+  }
+
+  .prevNextConcerts {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 500px;
+    padding: 1em 0;
+
+    a {
+      color: #cc3232 !important;
+      @include iconLink();
     }
   }
 }
