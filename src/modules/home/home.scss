@@ -263,6 +263,8 @@ section.tenYears {
     grid-template-columns: repeat(3, 1fr);
   }
 
+  // will-change: margin-top;
+
   & > * {
     aspect-ratio: 9 / 12;
     // height: min-content;

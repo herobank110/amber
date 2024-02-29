@@ -69,13 +69,14 @@ export function initHomeScrollAnims() {
   //   );
   // });
 
-  animate(
-    ".posters",
-    // { marginTop: ["-120%", "0%"] },
-    // { marginTop: ["0%", "-120%"] },
-    { marginTop: ["-25lvh", "25lvh"] },
-    { timeRange: "cover 0% 100%", fill: "both", easing: "linear" }
-  );
+  // !!! removing posters animation - too laggy !!!
+  // animate(
+  //   ".posters",
+  //   // { marginTop: ["-120%", "0%"] },
+  //   // { marginTop: ["0%", "-120%"] },
+  //   { marginTop: ["-25lvh", "25lvh"] },
+  //   { timeRange: "cover 0% 100%", fill: "both", easing: "linear" }
+  // );
 
   // animate(
   //   ".upcoming",
