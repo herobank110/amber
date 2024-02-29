@@ -311,8 +311,6 @@ section.about {
   border: 2px solid #eee;
   // margin: 0 auto 4em;
   padding: 1em;
-  overflow: none;
-  gap: 1em;
   background: #eee;
   border-radius: 16px;
   @media screen and (max-width: 500px) {
@@ -326,24 +324,31 @@ section.about {
 
   .leftRight {
     position: absolute;
-    bottom: 5%;
-    left: 1%;
-    width: 98%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 97%;
     display: flex;
+    pointer-events: none;
     justify-content: space-between;
     div {
-      background: #aaa4;
+      height: 100%;
       color: white;
       padding: 0.5em;
       border-radius: 8px;
+      width: 13%;
       cursor: pointer;
       user-select: none;
-      transition: 0.3s;
+      pointer-events: all;
+      color: #eee;
+      transition: background 0.2s;
       &:hover {
-        background: #aaaa;
+        background: #aaa2;
       }
+      display: grid;
+      place-content: center;
       .material-symbols-outlined {
-        font-size: 2em;
+        font-size: 2.5em;
       }
     }
   }

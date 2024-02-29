@@ -246,6 +246,8 @@ export const gallery = () => {
     $("<img>")
   );
 
+  setTimeout(() => {
   galleryMove(0);
+  }, 0)
   return el;
 };
