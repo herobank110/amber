@@ -230,7 +230,9 @@ function galleryMove(delta: number) {
   console.debug(`galleryMove(delta=${delta})`);
   galleryIndex =
     (galleryIndex + delta + galleryImages.length) % galleryImages.length;
-  $(".gallery img").attr("src", galleryImages[galleryIndex]);
+  const el = $(".gallery");  // global!
+  el.find("img").attr("src", galleryImages[galleryIndex]);
+  el.find(".dot").removeClass("big").eq(galleryIndex).addClass("big");
 }
 
 export const gallery = () => {

@@ -375,6 +375,11 @@ section.about {
       width: $s;
       height: $s;
       border-radius: 50%;
+      transition: outline .1s;
+      outline: 2px solid transparent;
+      &.big {
+        outline: 2px solid #0004;
+      }
     }
   }
 }
