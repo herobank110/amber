@@ -1,6 +1,7 @@
+import $ from "jquery";
 import { animate, initVideoScrollAutoPlayPause } from "../../utils/animUtils";
 
-export function initHomeScrollAnims() {
+export async function initHomeScrollAnims() {
   initTenYearVideoInteraction();
 
   // create the animations
@@ -22,33 +23,44 @@ export function initHomeScrollAnims() {
   //   { marginTop: ["20px", "23vmin"] },
   //   { timeRange: "exit 65% 80%", fill: "both", easing: "linear" }
   // )
-  animate(
-    "#logo",
-    { width: ["40lvh", "100px"] },
-    { timeRange: "exit 0% 50%", fill: "both", easing: "linear" }
-  );
-  animate(
-    ".logoWrap",
-    { height: ["40lvh", "100px"] },
-    { timeRange: "exit 10% 100%", fill: "both", easing: "linear" }
-  );
-  animate(
-    ".upcomingCover",
-    [
-      { visibility: "visible", opacity: 1 },
-      { visibility: "hidden", opacity: 0 },
-    ],
-    { timeRange: "exit 40% 100%", fill: "both", easing: "linear" }
-  );
-
-  animate(
-    "nav",
-    [
-      { visibility: "hidden", opacity: 0 },
-      { visibility: "visible", opacity: 1 },
-    ],
-    { timeRange: "exit 40% 100%", fill: "both", easing: "linear" }
-  );
+  if (true || !(window as any).ScrollTimeline) {
+    // @ts-ignore
+    await import("../../lib/scroll-timeline");
+    animate(
+      "#logo",
+      { width: ["40lvh", "100px"] },
+      { timeRange: "exit 0% 50%", fill: "both", easing: "linear" }
+    );
+    animate(
+      ".logoWrap",
+      { height: ["40lvh", "100px"] },
+      { timeRange: "exit 10% 100%", fill: "both", easing: "linear" }
+    );
+    animate(
+      ".upcomingCover",
+      [
+        { visibility: "visible", opacity: 1 },
+        { visibility: "hidden", opacity: 0 },
+      ],
+      { timeRange: "exit 40% 100%", fill: "both", easing: "linear" }
+    );
+    animate(
+      "nav",
+      [
+        { visibility: "hidden", opacity: 0 },
+        { visibility: "visible", opacity: 1 },
+      ],
+      { timeRange: "exit 40% 100%", fill: "both", easing: "linear" }
+    );
+  } else {
+    // TODO: TESTING
+    // const timeline = new (window as any).ScrollTimeline({
+    //   scrollSource: $(".t1")[0],
+    //   orientation: "block",
+    //   timeRange: "exit 0% 50%",
+    // });
+    // $("#logo")[0].animate({ width: ["40lvh", "100px"] }, { timeline });
+  }
 
   // [1, 3].forEach((n) => {
   //   animate(

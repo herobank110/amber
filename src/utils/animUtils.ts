@@ -1,4 +1,3 @@
-import "../lib/scroll-timeline";
 import { queryAncestor } from "./utils";
 
 export function animate(
@@ -11,6 +10,10 @@ export function animate(
   const trackEl = queryAncestor(animEl, ".t");
   if (!trackEl) throw new Error(`Couldn't find track for selector ${selector}`);
   const timeline = new ViewTimeline({ subject: trackEl });
+  const re = /(\w+)\W+(\d+%)\W+(\d+%)/;
+  // if (!re.test(options.timeRange || ""))
+  //   throw new Error(`Invalid timeRange: ${options.timeRange}`);
+  // timeline.
   animEl.animate(keyframes, { ...options, timeline });
 }
 
