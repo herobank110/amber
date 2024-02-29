@@ -104,15 +104,7 @@ export const mainHome = () =>
       <h2>About Us</h2>
       <p>Roath Chamber Orchestra (formerly St Anne's Orchestra) was founded in September 2013 by a group of musical young professionals who regularly met on a Wednesday evening for few drinks. On realising there was at least 1/8 of an orchestra in the room the ensemble was formed and the first mission was to find additional keen music makers in the beautiful city of Cardiff!
       <p>Since then the orchestra has grown in strength and ambition performing at least four public concerts a year including a Family Concert in the Summer Term. Our repertoire is mainly chamber orchestral works (symphonies and overtures) with members of the orchestra regularly volunteering to perform a concerto with the rest of the ensemble. We have performed works by composers such as Bach, Mozart, Beethoven, Schubert and Tchaikovsky.
-      <div class="gallery">
-        <img src="${IMG_0392}" />
-        <img src="${IMG_1592}" />
-        <img src="${IMG_3432}" />
-        <img src="${IMG_5986}" />
-        <img src="${IMG_5997}" />
-        <img src="${IMG_9111}" />
-        <img src="${IMG_9908}" />
-      </div>
+      <div class="gallery"> </div>
     </section>
   </div>
   <div class="t t5">
@@ -207,7 +199,7 @@ export const upcomingSection = (props: { concert: Concert }) =>
         },
       }),
       $("<div>", { class: "info" }).append(
-        $('<h3>', {text: props.concert.title}),
+        $("<h3>", { text: props.concert.title }),
         $("<span>", { text: longDate(props.concert.when) }),
         props.concert.facebook ? facebookButton(props.concert.facebook) : []
       )
@@ -218,4 +210,19 @@ export const notYetScheduled = () =>
   $("<div>", { class: "upcoming" }).append(
     $("<h2>", { text: "Upcoming Concert" }),
     $("<p>", { text: "Check back soon for details of our next concert." })
+  );
+
+const galleryImages = [
+  IMG_0392,
+  IMG_1592,
+  IMG_3432,
+  IMG_5986,
+  IMG_5997,
+  IMG_9111,
+  IMG_9908,
+];
+
+export const gallery = () =>
+  $("<div>", { class: "gallery" }).append(
+    galleryImages.map((x) => $("<img>", { src: x }))
   );
