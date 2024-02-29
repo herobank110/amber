@@ -246,8 +246,8 @@ export const gallery = () => {
     $("<img>")
   );
 
-  setTimeout(() => {
-  galleryMove(0);
-  }, 0)
+  // initialize after adding to the DOM
+  // stupid global state HAHAHA
+  setTimeout(() => galleryMove(0), 0);
   return el;
 };
