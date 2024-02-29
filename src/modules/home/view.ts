@@ -243,7 +243,10 @@ export const gallery = () => {
         .append(icon({ icon: "chevron_right" }))
         .on("click", galleryRight)
     ),
-    $("<img>")
+    $("<img>"),
+    $("<div>", { class: "dots" }).append(
+      galleryImages.map(() => $("<span>", { class: "dot" }))
+    )
   );
 
   // initialize after adding to the DOM

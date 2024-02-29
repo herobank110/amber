@@ -310,7 +310,8 @@ section.about {
   aspect-ratio: 1.8 / 1;
   border: 2px solid #eee;
   // margin: 0 auto 4em;
-  padding: 1em;
+  $pb: 2em;
+  padding: 1em 1em $pb;
   background: #eee;
   border-radius: 16px;
   @media screen and (max-width: 500px) {
@@ -356,6 +357,25 @@ section.about {
   & img {
     border-radius: 8px;
     width: 100%;
+  }
+
+  .dots {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: $pb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    .dot {
+      background: #0004;
+      $s: 7px;
+      width: $s;
+      height: $s;
+      border-radius: 50%;
+    }
   }
 }
 
