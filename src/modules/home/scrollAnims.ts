@@ -1,4 +1,6 @@
 import $ from "jquery";
+// bundled for now
+import "../../lib/scroll-timeline";
 import { animate, initVideoScrollAutoPlayPause } from "../../utils/animUtils";
 
 export async function initHomeScrollAnims() {
@@ -25,7 +27,7 @@ export async function initHomeScrollAnims() {
   // )
   if (true || !(window as any).ScrollTimeline) {
     // @ts-ignore
-    await import("../../lib/scroll-timeline");
+    // await import("../../lib/scroll-timeline");
     animate(
       "#logo",
       { width: ["40lvh", "100px"] },
