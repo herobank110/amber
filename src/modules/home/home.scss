@@ -309,9 +309,9 @@ section.about {
   width: min(calc(90vw - 2ch), 170lvh, 900px);
   aspect-ratio: 1.8 / 1;
   border: 2px solid #eee;
-  margin: 0 auto 4em;
+  // margin: 0 auto 4em;
   padding: 1em;
-  overflow-x: scroll;
+  overflow: none;
   gap: 1em;
   background: #eee;
   border-radius: 16px;
@@ -324,30 +324,33 @@ section.about {
 
   position: relative;
 
-.leftRight {
-  position: absolute;
-  top: 40%;
-  left: 3%;
-  width: 94%;
-  display: flex;
-  justify-content: space-between;
-  div {
-    background: #000a;
-    color: white;
-    padding: 0.5em;
-    border-radius: 8px;
-    cursor: pointer;
-    user-select: none;
-    transition: 0.3s;
-    &:hover {
-      background: #000;
+  .leftRight {
+    position: absolute;
+    bottom: 5%;
+    left: 1%;
+    width: 98%;
+    display: flex;
+    justify-content: space-between;
+    div {
+      background: #aaa4;
+      color: white;
+      padding: 0.5em;
+      border-radius: 8px;
+      cursor: pointer;
+      user-select: none;
+      transition: 0.3s;
+      &:hover {
+        background: #aaaa;
+      }
+      .material-symbols-outlined {
+        font-size: 2em;
+      }
     }
-
   }
-}
 
   & img {
     border-radius: 8px;
+    width: 100%;
   }
 }
 
