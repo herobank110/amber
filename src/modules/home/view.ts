@@ -22,7 +22,7 @@ import IMG_9111 from "../../rsrc/IMG_9111.jpg";
 import IMG_9908 from "../../rsrc/IMG_9908.jpg";
 import { Concert } from "../amberDb/amberDb";
 import { longDate, resizeImage } from "../../utils/utils";
-import { facebookButton } from "../../utils/view";
+import { facebookButton, icon } from "../../utils/view";
 
 export const mainHome = () =>
   `
@@ -222,7 +222,30 @@ const galleryImages = [
   IMG_9908,
 ];
 
-export const gallery = () =>
-  $("<div>", { class: "gallery" }).append(
-    galleryImages.map((x) => $("<img>", { src: x }))
+// HAHAHA no structure for me!
+let galleryIndex = 0;
+const galleryLeft = () => galleryMove(-1);
+const galleryRight = () => galleryMove(1);
+function galleryMove(delta: number) {
+  console.debug(`galleryMove(delta=${delta})`);
+  galleryIndex =
+    (galleryIndex + delta + galleryImages.length) % galleryImages.length;
+  $(".gallery img").attr("src", galleryImages[galleryIndex]);
+}
+
+export const gallery = () => {
+  const el = $("<div>", { class: "gallery" }).append(
+    $("<div>", { class: "leftRight" }).append(
+      $("<div>")
+        .append(icon({ icon: "chevron_left" }))
+        .on("click", galleryLeft),
+      $("<div>")
+        .append(icon({ icon: "chevron_right" }))
+        .on("click", galleryRight)
+    ),
+    $("<img>")
   );
+
+  galleryMove(0);
+  return el;
+};

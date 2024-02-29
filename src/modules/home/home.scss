@@ -322,6 +322,30 @@ section.about {
     border: unset;
   }
 
+  position: relative;
+
+.leftRight {
+  position: absolute;
+  top: 40%;
+  left: 3%;
+  width: 94%;
+  display: flex;
+  justify-content: space-between;
+  div {
+    background: #000a;
+    color: white;
+    padding: 0.5em;
+    border-radius: 8px;
+    cursor: pointer;
+    user-select: none;
+    transition: 0.3s;
+    &:hover {
+      background: #000;
+    }
+
+  }
+}
+
   & img {
     border-radius: 8px;
   }
