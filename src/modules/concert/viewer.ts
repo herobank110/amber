@@ -131,21 +131,21 @@ const prevNextConcerts = (props: { id: number }) => {
 
 const mediaSection = () =>
   $("<div>", { class: "mediaSection" }).append(
-    $('<h3>', { text: "Videos" }),
-    $('<div>', { class: "playerRoot" }).append(
-      $('<div>', { class: "player" }).append(
-        $('<video>', {
-          src: "https://roathchamber.s3.eu-west-2.amazonaws.com/concert/37/Anna_1.mp4",
+    $("<h3>", { text: "Videos" }),
+    $("<div>", { class: "playerRoot" }).append(
+      $("<div>", { class: "player" }).append(
+        $("<video>", {
+          src: "https://roathchamber.s3.eu-west-2.amazonaws.com/concert/37/David.mp4",
           controls: true,
         })
-      ),
+      )
       // iconButton({
       //   icon: "play_arrow",
       //   class: "playButton",
       //   title: "Play Video",
       // })
     )
-  )
+  );
 
 async function onClickDelete(id: number) {
   if (confirm("Are you sure you want to delete this concert?")) {
