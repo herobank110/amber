@@ -1,7 +1,7 @@
 import $ from "jquery";
 import Noty from "noty";
 import { facebookButton, icon, iconButton, link } from "../../utils/view";
-import { longDate, setLocation } from "../../utils/utils";
+import { isDevMode, longDate, setLocation } from "../../utils/utils";
 import { getConcert } from "./common";
 import "./viewer.scss";
 import {
@@ -48,6 +48,9 @@ const adminControls = (props: { id: number }) =>
     }).on("click", () => onClickDelete(props.id))
   );
 
+// only show media section on one concert for now with hardcoded values
+const MEDIA_TEST_ID = isDevMode() ? 3 : 37;
+
 /**
  * Details about the concert
  * This is mutated for the editor as well.
@@ -73,6 +76,7 @@ const concertDetails = (props: Concert) =>
       $("<span>", { text: longDate(props.when), class: "when" })
     ),
     programme({ items: props.programme }),
+    props.id == MEDIA_TEST_ID ? mediaSection() : $(),
     props.facebook ? facebookButton(props.facebook) : $(),
     prevNextConcerts({ id: props.id })
   );
@@ -124,6 +128,24 @@ const prevNextConcerts = (props: { id: number }) => {
   });
   return $("<div>", { class: "prevNextConcerts" });
 };
+
+const mediaSection = () =>
+  $("<div>", { class: "mediaSection" }).append(
+    $('<h3>', { text: "Videos" }),
+    $('<div>', { class: "playerRoot" }).append(
+      $('<div>', { class: "player" }).append(
+        $('<video>', {
+          src: "https://roathchamber.s3.eu-west-2.amazonaws.com/concert/37/Anna_1.mp4",
+          controls: true,
+        })
+      ),
+      // iconButton({
+      //   icon: "play_arrow",
+      //   class: "playButton",
+      //   title: "Play Video",
+      // })
+    )
+  )
 
 async function onClickDelete(id: number) {
   if (confirm("Are you sure you want to delete this concert?")) {

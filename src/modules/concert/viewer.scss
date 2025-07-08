@@ -90,4 +90,23 @@
       @include iconLink();
     }
   }
+
+  .mediaSection {
+    // background-color: red;
+    // height: 100px;
+    // width: 100%;
+
+    h3 {
+      margin: 0 0 0.25rem;
+    }
+
+    & video {
+      width: 100%;
+      height: auto;
+      max-height: 400px;
+      object-fit: cover;
+      border-radius: 8px;
+      // box-shadow: 1px 0px 0px 1px #0001, 3px 1px 8px 0px #0003;
+    }
+  }
 }
