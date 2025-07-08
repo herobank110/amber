@@ -371,15 +371,19 @@ section.about {
     justify-content: center;
     gap: 1rem;
     .dot {
-      background: #0004;
-      $s: 7px;
+      // background: #0004;
+      background: radial-gradient(#0004 39%, transparent 40%);
+      cursor: pointer;
+      $s: 2px;
+      padding: 6px;
       width: $s;
       height: $s;
       border-radius: 50%;
       transition: outline .1s;
-      outline: 2px solid transparent;
+      // outline: 2px solid transparent;
       &.big {
-        outline: 2px solid #0004;
+        // outline: 2px solid #0004;
+        background: #0004;
       }
     }
   }
