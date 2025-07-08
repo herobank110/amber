@@ -224,15 +224,18 @@ const galleryImages = [
 
 // HAHAHA no structure for me!
 let galleryIndex = 0;
-const galleryLeft = () => galleryMove(-1);
-const galleryRight = () => galleryMove(1);
-function galleryMove(delta: number) {
+const galleryLeft = () => galleryMoveDelta(-1);
+const galleryRight = () => galleryMoveDelta(1);
+function galleryMoveDelta(delta: number) {
   console.debug(`galleryMove(delta=${delta})`);
   galleryIndex =
     (galleryIndex + delta + galleryImages.length) % galleryImages.length;
-  const el = $(".gallery");  // global!
-  el.find("img").attr("src", galleryImages[galleryIndex]);
-  el.find(".dot").removeClass("big").eq(galleryIndex).addClass("big");
+  galleryMove(galleryIndex);
+}
+function galleryMove(index: number) {
+  const el = $(".gallery"); // global!
+  el.find("img").attr("src", galleryImages[index]);
+  el.find(".dot").removeClass("big").eq(index).addClass("big");
 }
 
 export const gallery = () => {
@@ -247,12 +250,15 @@ export const gallery = () => {
     ),
     $("<img>"),
     $("<div>", { class: "dots" }).append(
-      galleryImages.map(() => $("<span>", { class: "dot" }))
+      galleryImages.map((_, i) =>
+        $("<span>", { class: "dot" }) //
+          .on("click", () => galleryMove(i))
+      )
     )
   );
 
   // initialize after adding to the DOM
   // stupid global state HAHAHA
-  setTimeout(() => galleryMove(0), 0);
+  setTimeout(() => galleryMoveDelta(0), 0);
   return el;
 };
