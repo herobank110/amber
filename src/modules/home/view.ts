@@ -228,11 +228,12 @@ const galleryLeft = () => galleryMoveDelta(-1);
 const galleryRight = () => galleryMoveDelta(1);
 function galleryMoveDelta(delta: number) {
   console.debug(`galleryMove(delta=${delta})`);
-  galleryIndex =
+  const index =
     (galleryIndex + delta + galleryImages.length) % galleryImages.length;
-  galleryMove(galleryIndex);
+  galleryMove(index);
 }
 function galleryMove(index: number) {
+  galleryIndex = index; // update global state !!!!
   const el = $(".gallery"); // global!
   el.find("img").attr("src", galleryImages[index]);
   el.find(".dot").removeClass("big").eq(index).addClass("big");
