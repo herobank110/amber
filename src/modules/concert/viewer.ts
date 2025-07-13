@@ -129,21 +129,29 @@ const prevNextConcerts = (props: { id: number }) => {
   return $("<div>", { class: "prevNextConcerts" });
 };
 
+const videos = [
+  "https://roathchamber.s3.eu-west-2.amazonaws.com/concert/37/Kat+2.mp4",
+  "https://roathchamber.s3.eu-west-2.amazonaws.com/concert/37/Trio.mp4",
+  "https://roathchamber.s3.eu-west-2.amazonaws.com/concert/37/David.mp4",
+  "https://roathchamber.s3.eu-west-2.amazonaws.com/concert/37/Devil+Stick.mp4",
+  "https://roathchamber.s3.eu-west-2.amazonaws.com/concert/37/Cellos+and+Bass.mp4",
+  "https://roathchamber.s3.eu-west-2.amazonaws.com/concert/37/Grindle.mp4",
+  "https://roathchamber.s3.eu-west-2.amazonaws.com/concert/37/Piano.mp4",
+  "https://roathchamber.s3.eu-west-2.amazonaws.com/concert/37/Anna_1.mp4",
+]
+
 const mediaSection = () =>
   $("<div>", { class: "mediaSection" }).append(
     $("<h3>", { text: "Videos" }),
-    $("<div>", { class: "playerRoot" }).append(
-      $("<div>", { class: "player" }).append(
-        $("<video>", {
-          src: "https://roathchamber.s3.eu-west-2.amazonaws.com/concert/37/David.mp4",
-          controls: true,
-        })
+    ...videos.map((video) =>
+      $("<div>", { class: "playerRoot" }).append(
+        $("<div>", { class: "player" }).append(
+          $("<video>", {
+            src: video,
+            controls: true,
+          })
+        )
       )
-      // iconButton({
-      //   icon: "play_arrow",
-      //   class: "playButton",
-      //   title: "Play Video",
-      // })
     )
   );
 
