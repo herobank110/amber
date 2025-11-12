@@ -130,24 +130,56 @@ const prevNextConcerts = (props: { id: number }) => {
 };
 
 const videos = [
-  "https://roathchamber.s3.eu-west-2.amazonaws.com/concert/37/Kat+2.mp4",
-  "https://roathchamber.s3.eu-west-2.amazonaws.com/concert/37/Trio.mp4",
-  "https://roathchamber.s3.eu-west-2.amazonaws.com/concert/37/David.mp4",
-  "https://roathchamber.s3.eu-west-2.amazonaws.com/concert/37/Devil+Stick.mp4",
-  "https://roathchamber.s3.eu-west-2.amazonaws.com/concert/37/Cellos+and+Bass.mp4",
-  "https://roathchamber.s3.eu-west-2.amazonaws.com/concert/37/Grindle.mp4",
-  "https://roathchamber.s3.eu-west-2.amazonaws.com/concert/37/Piano.mp4",
-  "https://roathchamber.s3.eu-west-2.amazonaws.com/concert/37/Anna_1.mp4",
-]
+  {
+    title:
+      "Weber: Allegro from Clarinet Concerto No. 2 in E Flat Major - Soloist: Kat Aldridge",
+    src: "https://roathchamber.s3.eu-west-2.amazonaws.com/concert/37/Kat+2.mp4",
+  },
+  {
+    title:
+      "Mozart: Minuet and Trio from Divertimento for String Trio - Siwan Edwards, Patrick Lucas, James Patrick",
+    src: "https://roathchamber.s3.eu-west-2.amazonaws.com/concert/37/Trio.mp4",
+  },
+  {
+    title:
+      "Haydn: Allegro Moderato from Violin Concerto No. 4 in G Major - Soloist: David Kanekanian",
+    src: "https://roathchamber.s3.eu-west-2.amazonaws.com/concert/37/David.mp4",
+  },
+  {
+    title:
+      "Vivaldi: Largo and Allegro molto from Concerto in C Major for Flautino - Soloist: Nicola Loten",
+    src: "https://roathchamber.s3.eu-west-2.amazonaws.com/concert/37/Devil+Stick.mp4",
+  },
+  {
+    title:
+      "Brahms: Hungarian Dence No. 5 (arr.) - Lucy March, Jane Thomas, James Patrick, Eve Tarring, Mel Smith",
+    src: "https://roathchamber.s3.eu-west-2.amazonaws.com/concert/37/Cellos+and+Bass.mp4",
+  },
+  {
+    title:
+      "Telemann: Presto from Concerto for Viola in G Major - Soloist: James Grindle",
+    src: "https://roathchamber.s3.eu-west-2.amazonaws.com/concert/37/Grindle.mp4",
+  },
+  {
+    title:
+      "Shostakovich: Andante from Piano Concerto No. 2 (arr.) - Siwan Edwards, Mel Smith",
+    src: "https://roathchamber.s3.eu-west-2.amazonaws.com/concert/37/Piano.mp4",
+  },
+  {
+    title: "De Falla: Danse Espagnole (arr.) - Soloist: Anna Ng",
+    src: "https://roathchamber.s3.eu-west-2.amazonaws.com/concert/37/Anna_1.mp4",
+  },
+];
 
 const mediaSection = () =>
   $("<div>", { class: "mediaSection" }).append(
     $("<h3>", { text: "Videos" }),
     ...videos.map((video) =>
       $("<div>", { class: "playerRoot" }).append(
+        $("<h4>", { class: "title", text: video.title }),
         $("<div>", { class: "player" }).append(
           $("<video>", {
-            src: video,
+            src: video.src,
             controls: true,
           })
         )
